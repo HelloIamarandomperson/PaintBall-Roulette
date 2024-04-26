@@ -50,7 +50,7 @@ int main() {
                 printf("Click... Bang! ...That probably hurt... you should like, not shoot yourself... or something...");
                 OpponentHealth--;
             }else{
-                printf("Click.... It was a blank... Bit of a gambler are you?");
+                printf("Click.... It was a blank... Bit of a gambler, are you?");
                 }
                     }else{
                         if (OpponentOrYou() == 'o'||'O'){
@@ -73,7 +73,18 @@ int main() {
                         }
                 }
                         }else{
-                        
+                        int whoTheyShootin = rand() % (2) //1 is player, 2 is opponent
+                        if(whoTheyShootin == 1){
+                            printf("They raise the gun... towards you...")
+                            if ( cylinder[chamber] == 'B'){
+                                printf("Click... Bang! ...That probably hurt... you should like, not get shot... or something...");
+                                OpponentHealth--;
+                                }else{
+                                    printf("Click.... It was a blank... This time...");
+                                }
+                            }else{
+
+                            }
                         }
         }
 }
@@ -95,3 +106,10 @@ char OpponentOrYou() {
     response = tolower(response);
     return response;
 }
+
+
+
+
+
+
+
