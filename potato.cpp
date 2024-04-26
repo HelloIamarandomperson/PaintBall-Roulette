@@ -73,9 +73,9 @@ int main() {
                         }
                 }
                         }else{
-                        int whoTheyShootin = rand() % (2) //1 is player, 2 is opponent
+                        int whoTheyShootin = rand() % (2); //1 is player, 2 is opponent
                         if(whoTheyShootin == 1){
-                            printf("They raise the gun... towards you...")
+                            printf("They raise the gun... towards you...");
                             if ( cylinder[chamber] == 'B'){
                                 printf("Click... Bang! ...That probably hurt... you should like, not get shot... or something...");
                                 OpponentHealth--;
