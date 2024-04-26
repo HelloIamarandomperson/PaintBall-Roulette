@@ -42,51 +42,63 @@ int main() {
     checkMag(cylinder); // Print the updated cylinder (for dev purposes)
     int whosTurn = 0; //whos turn it is (0 is the player, 1 is next person, etc...)
     // round 1
+    while (true){
     for(int chamber = 0; chamber <= slots; chamber++){
-        if(whosTurn == 0){
+        if (whosTurn == 0){
             if(yourHealth > 0 && OpponentHealth > 0){
                 if (OpponentOrYou() == 's'||'S'){
-            if ( cylinder[chamber] == 'B'){
-                printf("Click... Bang! ...That probably hurt... you should like, not shoot yourself... or something...");
-                OpponentHealth--;
-            }else{
-                printf("Click.... It was a blank... Bit of a gambler, are you?");
+                    if ( cylinder[chamber] == 'B'){
+                        printf("Click... Bang! ...That probably hurt... you should like, not shoot yourself... or something...");
+                        OpponentHealth--;
+                    }
+                    else{
+                        printf("Click.... It was a blank... Bit of a gambler, are you?");
+                    }
                 }
-                    }else{
-                        if (OpponentOrYou() == 'o'||'O'){
-                        whosTurn++;
-                            if ( cylinder[chamber] == 'B'){
+                else{
+                    if (OpponentOrYou() == 'o'||'O'){
+                            whosTurn++;
+                        if ( cylinder[chamber] == 'B'){
                             printf("Click.... Bang! It was a live round!");
                             OpponentHealth--;
-                            }else{
-                                whosTurn++;
-                                printf("Click.... It was a blank...");
-                                }
+                        }
+                        else{
+                            whosTurn++;
+                            printf("Click.... It was a blank...");
                             }
-
                         }
-            }else{
-                if(yourHealth > 0){
-                printf("You are dead. Shouldent have shot yourself probably. L+ratio+skill-issue");
-                    }else{
-                        printf("You killed the poor innocent other person. Hooray for you.");
-                        }
+                    }
                 }
-                        }else{
-                        int whoTheyShootin = rand() % (2); //1 is player, 2 is opponent
-                        if(whoTheyShootin == 1){
-                            printf("They raise the gun... towards you...");
-                            if ( cylinder[chamber] == 'B'){
-                                printf("Click... Bang! ...That probably hurt... you should like, not get shot... or something...");
+                else{
+                    if(yourHealth > 0){
+                        printf("You are dead. Shouldent have shot yourself probably. L+ratio+skill-issue");
+                    }
+                    else{
+                        printf("You killed the poor innocent other person. Hooray for you.");
+                    }
+                }
+            }
+            else{
+            int whoTheyShootin = rand() % (2); //1 is player, 2 is opponent
+                if(whoTheyShootin == 1){
+                    printf("They raise the gun... towards you...");
+                    if ( cylinder[chamber] == 'B'){
+                        printf("Click... Bang! ...That probably hurt... you should like, not get shot... or something...");
                                 OpponentHealth--;
-                                }else{
-                                    printf("Click.... It was a blank... This time...");
-                                }
-                            }else{
+                    }else{
+                        printf("Click.... It was a blank... This time...");
+                    }
+                }else{
 
-                            }
-                        }
+                }
+            }
         }
+
+        printf("for the this test game i have it so you can leave at any time so it doesn't go on forever, just type l to leave here to leave");
+        if (OpponentOrYou() == 'l'){
+            break;
+        }
+    }
 }
 void checkMag(char cylinder[]) {
     for (int i = 0; i < slots; i++) {
