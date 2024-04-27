@@ -2,11 +2,11 @@
 #include <time.h>
 #include <stdlib.h>
 #include <ctype.h>
-
+#include "functions_separated.cpp"
 char Shot(int slots,  char cylinder[]);
 char OpponentOrYou();
 int slots = 6;
-void checkMag(char cylinder[]);
+void checkMag(int slots,char cylinder[]);
 
 int main() {
     // Declarations
@@ -37,7 +37,7 @@ int main() {
     printf("There are %d bullets and %d blanks in the gun.\n", bullets, blanks);
     printf("The gun has been loaded randomly, and has a total of %d slots.\n", slots);
 
-    checkMag(cylinder); // Print the updated cylinder (for dev purposes)
+    checkMag(slots,cylinder); // Print the updated cylinder (for dev purposes)
     bool yourTurn = true; //whos turn it is (0 is the player, 1 is next person, etc...)
     // round 1
     while (true){
@@ -75,9 +75,11 @@ int main() {
                 else{
                     if(yourHealth < 0){
                         printf("You are dead. Shouldent have shot yourself probably. L+ratio+skill-issue");
+                        break;
                     }
                     else{
                         printf("You killed the poor innocent other person. Hooray for you.");
+                        break;
                     }
                 }
             }
