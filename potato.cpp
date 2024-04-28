@@ -1,10 +1,26 @@
-#include <stdio.h>
-
+#include <stdio.h> // Standard input/output functions
+#include <stdlib.h> // General utilities
+#include <string.h> // String manipulation functions
+#include <math.h> // Mathematical functions
+#include <ctype.h> // Character classification functions
+#include <stdbool.h> // Boolean type definitions
+#include <limits.h> // Minimum and maximum values for data types
 #include <time.h>
+#include <chrono>
+#include <thread>
+// Additional common includes based on functionality
+#include <fstream> // File stream operations (for C++)
+#include <memory.h> // Additional memory management functions
 
-#include <stdlib.h>
-
-#include <ctype.h>
+// Platform-specific headers
+#ifdef _WIN32
+#include <windows.h>
+#else
+#ifdef linux
+#include <unistd.h> // POSIX-compliant systems
+#include <pthread.h> // Threading (POSIX threads)
+#endif
+#endif
 
 #include "functions_separated.cpp"
 
@@ -23,6 +39,7 @@ int main() {
     char cylinder[slots];
     int reload;
     char choice;
+    char PlayersChoice;
     // Initialize the cylinder with blanks
     for (int i = 0; i < slots; i++) {
         cylinder[i] = '\0';
@@ -49,10 +66,12 @@ int main() {
         for (int chamber = 0; chamber < slots; chamber++) {
             while (yourTurn == true) {
                 if (yourHealth > 0 && OpponentHealth > 0) {
-                    printf("You have %d health.\n", yourHealth);
+                    fflush(stdin);
+                    printf("\nYou have %d health.\n", yourHealth);
                     printf("Your opponent has %d health.\n", OpponentHealth);
                     printf("If you choose to shoot yourself (s), you get to shoot again. \nIf you choose to shoot your opponent (o), it is no longer your turn.\n\n");
-                    if (OpponentOrYou() == 's') {
+                    char PlayersChoice = OpponentOrYou();
+                    if (PlayersChoice == 's') {
                         if (cylinder[chamber] == 'B') {
                             printf("Click... Bang! ...That probably hurt... you should like, not shoot yourself... or something...");
                             OpponentHealth--;
@@ -62,20 +81,21 @@ int main() {
                             break;
                         }
                     } else {
-                        if (OpponentOrYou() == 'o') {
-                            yourTurn = false;
+                        if (PlayersChoice == 'o') {
                             if (cylinder[chamber] == 'B') {
                                 printf("Click.... Bang! It was a live round!");
                                 OpponentHealth--;
                             } else {
+
                                 printf("Click.... It was a blank...");
                             }
+                            yourTurn = false;
                             break;
                         }
                     }
                 } else {
                     if (yourHealth < 0) {
-                        printf("You are dead. Shouldent have shot yourself probably. L+ratio+skill-issue");
+                        printf("You are dead. Should'nt have shot yourself probably. L+ratio+skill-issue");
                         break;
                     } else {
                         printf("You killed the poor innocent other person. Hooray for you.");
@@ -86,14 +106,18 @@ int main() {
             while (yourTurn == false) {
                 int whoTheyShootin = rand() % (2); //1 is player, 2 is opponent
                 if (whoTheyShootin == 1) {
-                    printf("They raise the gun... towards you...");
+                    printf("\nThey raise the gun...");
+                    Sleep(1000);
+                    printf("\ntowards you...");
+                    Sleep(1000);
                     if (cylinder[chamber] == 'B') {
                         printf("Click... Bang! ...That probably hurt... you should like, not get shot... or something...");
-                        yourTurn = true;
                         OpponentHealth--;
                     } else {
                         printf("Click.... It was a blank... This time...");
                     }
+                    yourTurn = true;
+                    break;
                 } else {
 
                 }
