@@ -42,14 +42,6 @@ int main() {
     }
 
     // Load the bullets randomly into the cylinder
-    //for (int i = 0; i < bullets; i++) {
-     //   reload = rand() % slots;
-     //   if (cylinder[reload] == '\0') {
-     //       cylinder[reload] = 'B';
-     //   } else {
-     //       i--;
-     //   }
-    //}
     LoadRandomBullets(bullets, slots, cylinder, reload);
     // Print initial game state
     printf("There are %d bullets and %d blanks in the gun.\n", bullets, blanks);
@@ -127,9 +119,11 @@ int main() {
             }
         }
         fflush(stdin);
-        printf("for the this test game i have it so you can leave at any time so it doesn't go on forever, just type l to leave here to leave");
-        if (OpponentOrYou() == 'l') {
-            break;
-        }
+        LoadRandomBullets(bullets, slots, cylinder, reload);
+        checkMag(slots, cylinder);
+        //printf("for the this test game i have it so you can leave at any time so it doesn't go on forever, just type l to leave here to leave");
+        //if (OpponentOrYou() == 'l') {
+        //    break;
+        //}
     }
 }
