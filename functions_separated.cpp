@@ -6,6 +6,7 @@
 
 
 void checkMag(int slots,char cylinder[]) {
+    printf("\n");
     for (int i = 0; i < slots; i++) {
         if (cylinder[i] == '\0') {
             printf("0 ");
@@ -25,6 +26,7 @@ char OpponentOrYou() {
 }
 
 char LoadRandomBullets(int bullets,int slots, char cylinder[], int reload){
+    srand(time(NULL));
     for (int i = 0; i < bullets; i++) {
         reload = rand() % slots;
         if (cylinder[reload] == '\0') {
