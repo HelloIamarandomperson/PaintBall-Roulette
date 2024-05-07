@@ -23,3 +23,16 @@ char OpponentOrYou() {
     response = tolower(response);
     return response;
 }
+
+char LoadRandomBullets(int bullets,int slots, char cylinder[], int reload){
+    for (int i = 0; i < bullets; i++) {
+        reload = rand() % slots;
+        if (cylinder[reload] == '\0') {
+            cylinder[reload] = 'B';
+        } else {
+            i--;
+        }
+    }
+
+
+}

@@ -15,11 +15,7 @@
 // Platform-specific headers
 #ifdef _WIN32
 #include <windows.h>
-#else
-#ifdef linux
-#include <unistd.h> // POSIX-compliant systems
-#include <pthread.h> // Threading (POSIX threads)
-#endif
+
 #endif
 
 #include "functions_separated.cpp"
@@ -28,7 +24,7 @@ char Shot(int slots, char cylinder[]);
 char OpponentOrYou();
 int slots = 6;
 void checkMag(int slots, char cylinder[]);
-
+char LoadRandomBullets(int bullets,int slots, char cylinder[], int reload);
 int main() {
     // Declarations
     int yourHealth = 3;
@@ -46,15 +42,15 @@ int main() {
     }
 
     // Load the bullets randomly into the cylinder
-    for (int i = 0; i < bullets; i++) {
-        reload = rand() % slots;
-        if (cylinder[reload] == '\0') {
-            cylinder[reload] = 'B';
-        } else {
-            i--;
-        }
-    }
-
+    //for (int i = 0; i < bullets; i++) {
+     //   reload = rand() % slots;
+     //   if (cylinder[reload] == '\0') {
+     //       cylinder[reload] = 'B';
+     //   } else {
+     //       i--;
+     //   }
+    //}
+    LoadRandomBullets(bullets, slots, cylinder, reload);
     // Print initial game state
     printf("There are %d bullets and %d blanks in the gun.\n", bullets, blanks);
     printf("The gun has been loaded randomly, and has a total of %d slots.\n", slots);
