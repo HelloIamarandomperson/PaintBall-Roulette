@@ -90,16 +90,14 @@ int main() {
                         }
                     }
                 }
-                if (yourHealth <= 0) {
-                    printf("You are dead. Should'nt have shot yourself probably. L+ratio+skill-issue");
-                    return 0;
-                    break;
-                } else if(OpponentHealth <= 0) {
-                    printf("You killed the poor innocent other person. Hooray for you.");
-                    return 0;
-                    break;
-                    }
-                }
+            }
+            if (yourHealth <= 0) {
+                printf("You are dead. Should'nt have shot yourself probably. L+ratio+skill-issue");
+                return 0;
+            } else if(OpponentHealth <= 0) {
+                printf("You killed the poor innocent other person. Hooray for you.");
+                return 0;
+            }
             while (yourTurn == false) {
                 int whoTheyShootin = rand() % (2); //1 is player, 2 is opponent
                 if (whoTheyShootin == 1) {
