@@ -1,21 +1,20 @@
 #include <stdio.h> // Standard input/output functions
 #include <stdlib.h> // General utilities
 #include <string.h> // String manipulation functions
-#include <math.h> // Mathematical functions
+//#include <math.h> // Mathematical functions
 #include <ctype.h> // Character classification functions
 #include <stdbool.h> // Boolean type definitions
-#include <limits.h> // Minimum and maximum values for data types
+//#include <limits.h> // Minimum and maximum values for data types
 #include <time.h>
-#include <chrono>
-#include <thread>
+//#include <chrono>
+//#include <thread>
 // Additional common includes based on functionality
-#include <fstream> // File stream operations (for C++)
-#include <memory.h> // Additional memory management functions
+//#include <fstream> // File stream operations (for C++)
+//#include <memory.h> // Additional memory management functions
 
 // Platform-specific headers
 #ifdef _WIN32
 #include <windows.h>
-
 #endif
 
 #include "functions_separated.cpp"
