@@ -100,7 +100,6 @@ int main() {
                     break;
                     }
                 }
-            }
             while (yourTurn == false) {
                 int whoTheyShootin = rand() % (2); //1 is player, 2 is opponent
                 if (whoTheyShootin == 1) {
