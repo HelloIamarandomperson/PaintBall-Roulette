@@ -92,9 +92,11 @@ int main() {
                 } else {
                     if (yourHealth < 0) {
                         printf("You are dead. Should'nt have shot yourself probably. L+ratio+skill-issue");
+                        return 0;
                         break;
                     } else {
                         printf("You killed the poor innocent other person. Hooray for you.");
+                        return 0;
                         break;
                     }
                 }
