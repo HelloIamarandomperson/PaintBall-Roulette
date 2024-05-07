@@ -60,10 +60,18 @@ int main() {
     printf("The gun has been loaded randomly, and has a total of %d slots.\n", slots);
 
     checkMag(slots, cylinder); // Print the updated cylinder (for dev purposes)
-    bool yourTurn = true; //whos turn it is (0 is the player, 1 is next person, etc...)
+    bool nextTurn = true; //whos turn it is next (0 is the player, 1 is next person, etc...)
+    bool yourTurn;  //whos turn it is next (0 is the player, 1 is next person, etc...)
     // round 1
     while (true) {
         for (int chamber = 0; chamber < slots; chamber++) {
+            if (nextTurn == true){
+                yourTurn = true;
+            }
+            else{
+                yourTurn = false;
+            }
+
             while (yourTurn == true) {
                 if (yourHealth > 0 && OpponentHealth > 0) {
                     fflush(stdin);
@@ -74,7 +82,7 @@ int main() {
                     if (PlayersChoice == 's') {
                         if (cylinder[chamber] == 'B') {
                             printf("Click... Bang! ...That probably hurt... you should like, not shoot yourself... or something...");
-                            OpponentHealth--;
+                            yourHealth--;
                             break;
                         } else {
                             printf("Click.... It was a blank... Bit of a gambler, are you?\n");
@@ -83,13 +91,13 @@ int main() {
                     } else {
                         if (PlayersChoice == 'o') {
                             if (cylinder[chamber] == 'B') {
+                                fflush(stdin);
                                 printf("Click.... Bang! It was a live round!");
                                 OpponentHealth--;
                             } else {
-
                                 printf("Click.... It was a blank...");
                             }
-                            yourTurn = false;
+                            nextTurn = false;
                             break;
                         }
                     }
@@ -112,17 +120,17 @@ int main() {
                     Sleep(1000);
                     if (cylinder[chamber] == 'B') {
                         printf("Click... Bang! ...That probably hurt... you should like, not get shot... or something...");
-                        OpponentHealth--;
+                        yourHealth--;
                     } else {
                         printf("Click.... It was a blank... This time...");
                     }
-                    yourTurn = true;
+                    nextTurn = true;
                     break;
                 } else {
-
                 }
             }
         }
+        fflush(stdin);
         printf("for the this test game i have it so you can leave at any time so it doesn't go on forever, just type l to leave here to leave");
         if (OpponentOrYou() == 'l') {
             break;
