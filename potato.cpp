@@ -36,6 +36,7 @@ int main() {
     int reload;
     char choice;
     char PlayersChoice;
+    int Money;
     // Initialize the cylinder with blanks
     for (int i = 0; i < slots; i++) {
         cylinder[i] = '\0';
@@ -59,7 +60,6 @@ int main() {
             else{
                 yourTurn = false;
             }
-
             while (yourTurn == true) {
                 if (yourHealth > 0 && OpponentHealth > 0) {
                     fflush(stdin);
