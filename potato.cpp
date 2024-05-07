@@ -2,8 +2,8 @@
 #include <stdlib.h> // General utilities
 #include <string.h> // String manipulation functions
 //#include <math.h> // Mathematical functions
-#include <ctype.h> // Character classification functions
-#include <stdbool.h> // Boolean type definitions
+//#include <ctype.h> // Character classification functions
+//#include <stdbool.h> // Boolean type definitions
 //#include <limits.h> // Minimum and maximum values for data types
 #include <time.h>
 //#include <chrono>
