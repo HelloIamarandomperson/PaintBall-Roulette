@@ -3,6 +3,9 @@
 #include <time.h>
 #include <stdlib.h>
 #include <ctype.h>
+#ifdef _WIN32
+#include <windows.h>
+#endif
 
 
 void checkMag(int slots,char cylinder[]) {
@@ -26,6 +29,7 @@ char OpponentOrYou() {
 }
 
 char LoadRandomBullets(int bullets,int slots, char cylinder[], int reload){
+    int blanks = slots-bullets;
     srand(time(NULL));
     for (int i = 0; i < bullets; i++) {
         reload = rand() % slots;
@@ -35,6 +39,9 @@ char LoadRandomBullets(int bullets,int slots, char cylinder[], int reload){
             i--;
         }
     }
-
+    Sleep(3000);
+    printf("\nThere are %d bullets and %d blanks in the gun.\n", bullets, blanks);
+    printf("The gun has been loaded randomly, and has a total of %d slots.\n", slots);
+    Sleep(3000);
 
 }
