@@ -62,7 +62,6 @@ int main() {
             while (yourTurn == true) {
                 if (Playerturn(yourHealth, OpponentHealth, cylinder, chamber, nextTurnIsPlayer) == false){
                     break;
-
                 }
             }
             while (yourTurn == false) {
@@ -98,10 +97,8 @@ int main() {
                 return 0;
             }
         }
-
         fflush(stdin);
         LoadRandomBullets(bullets, slots, cylinder, reload);
-
         checkMag(slots, cylinder);
         //printf("for the this test game i have it so you can leave at any time so it doesn't go on forever, just type l to leave here to leave");
         //if (OpponentOrYou() == 'l') {

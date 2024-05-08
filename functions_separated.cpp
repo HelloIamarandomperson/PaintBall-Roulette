@@ -38,10 +38,10 @@ void LoadRandomBullets(int &bullets, int &slots, char cylinder[], int &reload){
             i--;
         }
     }
-    Sleep(3000);
+    Sleep(2000);
     printf("\nThere are %d bullets and %d blanks in the gun.\n", bullets, blanks);
     printf("The gun has been loaded randomly, and has a total of %d slots.\n", slots);
-    Sleep(3000);
+    Sleep(2000);
 }
 
 bool Playerturn(int &yourHealth, int &OpponentHealth, char cylinder[], int &chamber, bool &nextTurnIsPlayer){
