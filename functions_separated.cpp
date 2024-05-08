@@ -7,7 +7,7 @@
 
 
 
-void checkMag(int slots, char cylinder[]) {
+void checkMag(int &slots, char cylinder[]) {
     printf("\n");
     for (int i = 0; i < slots; i++) {
         if (cylinder[i] == '\0') {
