@@ -23,7 +23,6 @@ char Shot(int slots, char cylinder[]);
 char OpponentOrYou();
 void checkMag(int slots, char cylinder[]);
 void LoadRandomBullets(int &bullets, int &slots, char cylinder[], int &reload);
-
 bool Playerturn(int &yourHealth, int &OpponentHealth, char cylinder[], int &chamber, bool &nextTurnIsPlayer);
 int main() {
     // Declarations

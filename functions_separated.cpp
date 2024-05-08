@@ -3,9 +3,8 @@
 #include <time.h>
 #include <stdlib.h>
 #include <ctype.h>
-#ifdef _WIN32
 #include <windows.h>
-#endif
+
 
 
 void checkMag(int slots, char cylinder[]) {
@@ -47,8 +46,8 @@ void LoadRandomBullets(int &bullets, int &slots, char cylinder[], int &reload){
 
 bool Playerturn(int &yourHealth, int &OpponentHealth, char cylinder[], int &chamber, bool &nextTurnIsPlayer){
     fflush(stdin);
-    printf("\nYou have %d health.\n", yourHealth);
-    printf("Your opponent has %d health.\n", OpponentHealth);
+    printf("\nYou have %d health., yourHealth");
+    printf("\nYour opponent has %d health.\n", OpponentHealth);
     printf("If you choose to shoot yourself (s), you get to shoot again. \nIf you choose to shoot your opponent (o), it is no longer your turn.\n\n");
     char PlayersChoice = OpponentOrYou();
     if (PlayersChoice == 's') {
