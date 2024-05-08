@@ -44,8 +44,6 @@ int main() {
     // Load the bullets randomly into the cylinder
     LoadRandomBullets(bullets, slots, cylinder, reload);
     // Print initial game state
-    printf("There are %d bullets and %d blanks in the gun.\n", bullets, blanks);
-    printf("The gun has been loaded randomly, and has a total of %d slots.\n", slots);
 
     //checkMag(slots, cylinder); // Print the updated cylinder (for dev purposes)
     bool nextTurnIsPlayer = true; //whos turn it is next (0 is the player, 1 is next person, etc...)
@@ -106,10 +104,6 @@ int main() {
                         if (chamber == slots){
                             fflush(stdin); //placeholder solution
                             LoadRandomBullets(bullets, slots, cylinder, reload);
-                            Sleep(3000);
-                            printf("\nThere are %d bullets and %d blanks in the gun.\n", bullets, blanks);
-                            printf("The gun has been loaded randomly, and has a total of %d slots.\n", slots);
-                            Sleep(3000);
 
                         }
                     } else {
@@ -132,10 +126,7 @@ int main() {
 
         fflush(stdin);
         LoadRandomBullets(bullets, slots, cylinder, reload);
-        Sleep(3000);
-        printf("\nThere are %d bullets and %d blanks in the gun.\n", bullets, blanks);
-        printf("The gun has been loaded randomly, and has a total of %d slots.\n", slots);
-        Sleep(3000);
+
         //checkMag(slots, cylinder);
         //printf("for the this test game i have it so you can leave at any time so it doesn't go on forever, just type l to leave here to leave");
         //if (OpponentOrYou() == 'l') {
