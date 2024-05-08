@@ -8,7 +8,7 @@
 #endif
 
 
-void checkMag(int slots,char cylinder[]) {
+void checkMag(int slots, char cylinder[]) {
     printf("\n");
     for (int i = 0; i < slots; i++) {
         if (cylinder[i] == '\0') {
@@ -28,7 +28,7 @@ char OpponentOrYou() {
     return response;
 }
 
-char LoadRandomBullets(int bullets,int slots, char cylinder[], int reload){
+void LoadRandomBullets(int &bullets, int &slots, char cylinder[], int &reload){
     int blanks = slots-bullets;
     srand(time(NULL));
     for (int i = 0; i < bullets; i++) {
@@ -43,5 +43,37 @@ char LoadRandomBullets(int bullets,int slots, char cylinder[], int reload){
     printf("\nThere are %d bullets and %d blanks in the gun.\n", bullets, blanks);
     printf("The gun has been loaded randomly, and has a total of %d slots.\n", slots);
     Sleep(3000);
+}
 
+bool Playerturn(int &yourHealth, int &OpponentHealth, char cylinder[], int &chamber, bool &nextTurnIsPlayer){
+    fflush(stdin);
+    printf("\nYou have %d health.\n", yourHealth);
+    printf("Your opponent has %d health.\n", OpponentHealth);
+    printf("If you choose to shoot yourself (s), you get to shoot again. \nIf you choose to shoot your opponent (o), it is no longer your turn.\n\n");
+    char PlayersChoice = OpponentOrYou();
+    if (PlayersChoice == 's') {
+        if (cylinder[chamber] == 'B') {
+            printf("Click... Bang! ...That probably hurt... you should like, not shoot yourself... or something...");
+            yourHealth--;
+            nextTurnIsPlayer = true;
+            return false;
+        } else {
+            printf("Click.... It was a blank... Bit of a gambler, are you?\n");
+            nextTurnIsPlayer = true;
+            return false;
+        }
+    } else {
+        if (PlayersChoice == 'o') {
+            nextTurnIsPlayer = false;
+            if (cylinder[chamber] == 'B') {
+                fflush(stdin);
+                printf("Click.... Bang! It was a live round!");
+                OpponentHealth--;
+            } else {
+                printf("Click.... It was a blank...");
+            }
+            return false;
+        }
+    }
+    return true;
 }

@@ -23,7 +23,9 @@ char Shot(int slots, char cylinder[]);
 char OpponentOrYou();
 int slots = 6;
 void checkMag(int slots, char cylinder[]);
-char LoadRandomBullets(int bullets,int slots, char cylinder[], int reload);
+void LoadRandomBullets(int &bullets, int &slots, char cylinder[], int &reload);
+
+bool Playerturn(int &yourHealth, int &OpponentHealth, char cylinder[], int &chamber, bool &nextTurnIsPlayer);
 int main() {
     // Declarations
     int yourHealth = 5;
@@ -45,7 +47,7 @@ int main() {
     LoadRandomBullets(bullets, slots, cylinder, reload);
     // Print initial game state
 
-    //checkMag(slots, cylinder); // Print the updated cylinder (for dev purposes)
+    checkMag(slots, cylinder); // Print the updated cylinder (for dev purposes)
     bool nextTurnIsPlayer = true; //whos turn it is next (0 is the player, 1 is next person, etc...)
     bool yourTurn;  //whos turn it is next (0 is the player, 1 is next person, etc...)
     // round 1
@@ -59,34 +61,9 @@ int main() {
                 yourTurn = false;
             }
             while (yourTurn == true) {
-                if (yourHealth > 0 && OpponentHealth > 0) {
-                    fflush(stdin);
-                    printf("\nYou have %d health.\n", yourHealth);
-                    printf("Your opponent has %d health.\n", OpponentHealth);
-                    printf("If you choose to shoot yourself (s), you get to shoot again. \nIf you choose to shoot your opponent (o), it is no longer your turn.\n\n");
-                    char PlayersChoice = OpponentOrYou();
-                    if (PlayersChoice == 's') {
-                        if (cylinder[chamber] == 'B') {
-                            printf("Click... Bang! ...That probably hurt... you should like, not shoot yourself... or something...");
-                            yourHealth--;
-                            break;
-                        } else {
-                            printf("Click.... It was a blank... Bit of a gambler, are you?\n");
-                            break;
-                        }
-                    } else {
-                        if (PlayersChoice == 'o') {
-                            if (cylinder[chamber] == 'B') {
-                                fflush(stdin);
-                                printf("Click.... Bang! It was a live round!");
-                                OpponentHealth--;
-                            } else {
-                                printf("Click.... It was a blank...");
-                            }
-                            nextTurnIsPlayer = false;
-                            break;
-                        }
-                    }
+                if (Playerturn(yourHealth, OpponentHealth, cylinder, chamber, nextTurnIsPlayer) == false){
+                    break;
+
                 }
             }
             while (yourTurn == false) {
@@ -126,7 +103,7 @@ int main() {
         fflush(stdin);
         LoadRandomBullets(bullets, slots, cylinder, reload);
 
-        //checkMag(slots, cylinder);
+        checkMag(slots, cylinder);
         //printf("for the this test game i have it so you can leave at any time so it doesn't go on forever, just type l to leave here to leave");
         //if (OpponentOrYou() == 'l') {
         //    break;
