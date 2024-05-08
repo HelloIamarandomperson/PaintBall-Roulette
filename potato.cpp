@@ -26,8 +26,8 @@ void checkMag(int slots, char cylinder[]);
 char LoadRandomBullets(int bullets,int slots, char cylinder[], int reload);
 int main() {
     // Declarations
-    int yourHealth = 3;
-    int OpponentHealth = 3;
+    int yourHealth = 5;
+    int OpponentHealth = 5;
     srand(time(NULL));
     int bullets = rand() % (slots);
     int blanks = slots - bullets;
@@ -47,13 +47,14 @@ int main() {
     printf("There are %d bullets and %d blanks in the gun.\n", bullets, blanks);
     printf("The gun has been loaded randomly, and has a total of %d slots.\n", slots);
 
-    checkMag(slots, cylinder); // Print the updated cylinder (for dev purposes)
-    bool nextTurn = true; //whos turn it is next (0 is the player, 1 is next person, etc...)
+    //checkMag(slots, cylinder); // Print the updated cylinder (for dev purposes)
+    bool nextTurnIsPlayer = true; //whos turn it is next (0 is the player, 1 is next person, etc...)
     bool yourTurn;  //whos turn it is next (0 is the player, 1 is next person, etc...)
     // round 1
     while (true) {
         for (int chamber = 0; chamber < slots; chamber++) {
-            if (nextTurn == true){
+            fflush(stdin);
+            if (nextTurnIsPlayer == true){
                 yourTurn = true;
             }
             else{
@@ -84,10 +85,40 @@ int main() {
                             } else {
                                 printf("Click.... It was a blank...");
                             }
-                            nextTurn = false;
+                            nextTurnIsPlayer = false;
                             break;
                         }
                     }
+                }
+            }
+
+            while (yourTurn == false) {
+                int whoTheyShootin = rand() % (2); //1 is player, 2 is opponent
+                if (whoTheyShootin == 1) {
+                    printf("\nThey raise the gun...");
+                    Sleep(1000);
+                    printf("\ntowards you...");
+                    Sleep(1000);
+                    if (cylinder[chamber] == 'B') {
+                        fflush(stdin);
+                        printf("Click... \nBang! ...That probably hurt... you should like, not get shot... or something...");
+                        yourHealth--;
+                        if (chamber == slots){
+                            fflush(stdin); //placeholder solution
+                            LoadRandomBullets(bullets, slots, cylinder, reload);
+                            Sleep(3000);
+                            printf("\nThere are %d bullets and %d blanks in the gun.\n", bullets, blanks);
+                            printf("The gun has been loaded randomly, and has a total of %d slots.\n", slots);
+                            Sleep(3000);
+
+                        }
+                    } else {
+                        printf("Click.... It was a blank... This time...");
+                    }
+                    nextTurnIsPlayer = true;
+                    break;
+                //} else {
+                //}
                 }
             }
             if (yourHealth <= 0) {
@@ -97,28 +128,15 @@ int main() {
                 printf("You killed the poor innocent other person. Hooray for you.");
                 return 0;
             }
-            while (yourTurn == false) {
-                int whoTheyShootin = rand() % (2); //1 is player, 2 is opponent
-                if (whoTheyShootin == 1) {
-                    printf("\nThey raise the gun...");
-                    Sleep(1000);
-                    printf("\ntowards you...");
-                    Sleep(1000);
-                    if (cylinder[chamber] == 'B') {
-                        printf("Click... Bang! ...That probably hurt... you should like, not get shot... or something...");
-                        yourHealth--;
-                    } else {
-                        printf("Click.... It was a blank... This time...");
-                    }
-                    nextTurn = true;
-                    break;
-                } else {
-                }
-            }
         }
+
         fflush(stdin);
         LoadRandomBullets(bullets, slots, cylinder, reload);
-        checkMag(slots, cylinder);
+        Sleep(3000);
+        printf("\nThere are %d bullets and %d blanks in the gun.\n", bullets, blanks);
+        printf("The gun has been loaded randomly, and has a total of %d slots.\n", slots);
+        Sleep(3000);
+        //checkMag(slots, cylinder);
         //printf("for the this test game i have it so you can leave at any time so it doesn't go on forever, just type l to leave here to leave");
         //if (OpponentOrYou() == 'l') {
         //    break;
