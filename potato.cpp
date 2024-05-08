@@ -13,21 +13,21 @@
 //#include <memory.h> // Additional memory management functions
 
 // Platform-specific headers
-#ifdef _WIN32
+
 #include <windows.h>
-#endif
+
 
 #include "functions_separated.cpp"
 
 char Shot(int slots, char cylinder[]);
 char OpponentOrYou();
-int slots = 6;
 void checkMag(int slots, char cylinder[]);
 void LoadRandomBullets(int &bullets, int &slots, char cylinder[], int &reload);
 
 bool Playerturn(int &yourHealth, int &OpponentHealth, char cylinder[], int &chamber, bool &nextTurnIsPlayer);
 int main() {
     // Declarations
+    int slots = 6;
     int yourHealth = 5;
     int OpponentHealth = 5;
     srand(time(NULL));
