@@ -29,8 +29,8 @@ int main() {
     int yourHealth = 5;
     int OpponentHealth = 5;
     srand(time(NULL));
-    int bullets = rand() % (slots);
-    int blanks = slots - bullets;
+    int bullets;
+    int blanks;
     char cylinder[slots];
     int reload;
     char choice;
