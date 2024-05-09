@@ -64,8 +64,9 @@ int main() {
                 }
             }
             while (yourTurn == false) {
-                int whoTheyShootin = rand() % (2); //1 is player, 2 is opponent
+                int whoTheyShootin = 1;//rand() % (2); //1 is player, 2 is opponent
                 if (whoTheyShootin == 1) {
+                    nextTurnIsPlayer = true;
                     printf("\nThey raise the gun...");
                     Sleep(1000);
                     printf("\ntowards you...");
@@ -77,6 +78,7 @@ int main() {
                         if (chamber == slots){
                             fflush(stdin); //placeholder solution
                             LoadRandomBullets(bullets, slots, cylinder, reload);
+                            checkMag(slots, cylinder);
 
                         }
                     } else {
@@ -92,7 +94,7 @@ int main() {
                 printf("You are dead. Should'nt have shot yourself probably. L+ratio+skill-issue");
                 return 0;
             } else if(OpponentHealth <= 0) {
-                printf("You killed the poor innocent other person. Hooray for you.");
+                printf("\nYou killed the poor innocent other person. Hooray for you.");
                 return 0;
             }
         }

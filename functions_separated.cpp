@@ -28,8 +28,9 @@ char OpponentOrYou() {
 }
 
 void LoadRandomBullets(int &bullets, int &slots, char cylinder[], int &reload){
+    printf("\nThe gun is being loaded");
     int blanks = slots-bullets;
-    srand(time(NULL));
+    //srand(time(NULL));
     for (int i = 0; i < bullets; i++) {
         reload = rand() % slots;
         if (cylinder[reload] == '\0') {
@@ -74,5 +75,6 @@ bool Playerturn(int &yourHealth, int &OpponentHealth, char cylinder[], int &cham
             return false;
         }
     }
+    printf("Invalid Option, s or o");
     return true;
 }
