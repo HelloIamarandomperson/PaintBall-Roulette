@@ -29,6 +29,9 @@ char OpponentOrYou() {
 
 void LoadRandomBullets(int &bullets, int &slots, char cylinder[], int &reload){
     bullets = rand() % (slots);
+    for (int i = 0; i < slots; i++) {
+        cylinder[i] = '\0';
+    }
     printf("\nThe gun is being loaded");
     int blanks = slots-bullets;
     //srand(time(NULL));

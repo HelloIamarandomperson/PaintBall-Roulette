@@ -4,7 +4,6 @@
 #include <windows.h>
 #include <time.h>
 
-
 #include "functions_separated.cpp"
 
 char OpponentOrYou();
@@ -20,15 +19,12 @@ int main() {
     srand(time(NULL));
     int bullets;
     int blanks;
-    char cylinder[slots];
+    char cylinder[slots] = {'\0'};
     int reload;
     char choice;
     char PlayersChoice;
     int Money;
-    // Initialize the cylinder with blanks
-    for (int i = 0; i < slots; i++) {
-        cylinder[i] = '\0';
-    }
+
 
     // Load the bullets randomly into the cylinder
     LoadRandomBullets(bullets, slots, cylinder, reload);
