@@ -18,11 +18,10 @@ int main() {
     int OpponentHealth = 5;
     srand(time(NULL));
     int bullets;
-    int blanks;
     char cylinder[slots] = {'\0'};
     int reload;
     char choice;
-    char PlayersChoice;
+    //char PlayersChoice;
     int Money = 0;
 
 
