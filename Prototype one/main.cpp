@@ -21,7 +21,6 @@ int main() {
     char cylinder[slots] = {'\0'};
     int reload;
     char choice;
-    //char PlayersChoice;
     int Money = 0;
 
 
