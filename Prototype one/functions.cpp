@@ -49,20 +49,23 @@ void LoadRandomBullets(int &bullets, int &slots, char cylinder[], int &reload){
     Sleep(2000);
 }
 
-bool Playerturn(int &yourHealth, int &OpponentHealth, char cylinder[], int &chamber, bool &nextTurnIsPlayer){
+bool Playerturn(int &yourHealth, int &OpponentHealth, char cylinder[], int &chamber, bool &nextTurnIsPlayer, int &Money){
     fflush(stdin);
     printf("\nYou have %d health.", yourHealth);
-    printf("\nYour opponent has %d health.\n", OpponentHealth);
-    printf("If you choose to shoot yourself (s), you get to shoot again. \nIf you choose to shoot your opponent (o), it is no longer your turn.\n\n");
+    printf("\nYour opponent has %d health.", OpponentHealth);
+    printf("\nYou have %d coins.", Money);
+    printf("\nIf you choose to shoot yourself (s), you get to shoot again. \nIf you choose to shoot your opponent (o), it is no longer your turn.\n\n");
     char PlayersChoice = OpponentOrYou();
     if (PlayersChoice == 's') {
         if (cylinder[chamber] == 'B') {
             printf("Click... Bang! ...That probably hurt... you should like, not shoot yourself... or something...");
             yourHealth--;
+            Money += 15;
             nextTurnIsPlayer = true;
             return false;
         } else {
             printf("Click.... It was a blank... Bit of a gambler, are you?\n");
+            Money += 5;
             nextTurnIsPlayer = true;
             return false;
         }

@@ -9,7 +9,7 @@
 char OpponentOrYou();
 void checkMag(int &slots, char cylinder[]);
 void LoadRandomBullets(int &bullets, int &slots, char cylinder[], int &reload);
-bool Playerturn(int &yourHealth, int &OpponentHealth, char cylinder[], int &chamber, bool &nextTurnIsPlayer);
+bool Playerturn(int &yourHealth, int &OpponentHealth, char cylinder[], int &chamber, bool &nextTurnIsPlayer, int &money);
 
 int main() {
     // Declarations
@@ -23,7 +23,7 @@ int main() {
     int reload;
     char choice;
     char PlayersChoice;
-    int Money;
+    int Money = 0;
 
 
     // Load the bullets randomly into the cylinder
@@ -44,7 +44,7 @@ int main() {
                 yourTurn = false;
             }
             while (yourTurn == true) {
-                if (Playerturn(yourHealth, OpponentHealth, cylinder, chamber, nextTurnIsPlayer) == false){
+                if (Playerturn(yourHealth, OpponentHealth, cylinder, chamber, nextTurnIsPlayer, Money) == false){
                     break;
                 }
             }
