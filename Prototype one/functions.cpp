@@ -72,6 +72,17 @@ bool OpponentDummyTurn(bool &nextTurnIsPlayer, int &chamber, char cylinder[], in
     return false;
 }
 
+bool checkIfGameCont(int &OpponentHealth, int &yourHealth){
+    if (yourHealth <= 0) {
+        printf("You are dead. Should'nt have shot yourself probably. L+ratio+skill-issue");
+        return false;
+    } else if(OpponentHealth <= 0) {
+        printf("\nYou killed the poor innocent other person. Hooray for you.");
+        return false;
+    }
+    return true;
+}
+
 bool Playerturn(int &yourHealth, int &OpponentHealth, char cylinder[], int &chamber, bool &nextTurnIsPlayer, int &Money){
     fflush(stdin);
     printf("\nYou have %d health.", yourHealth);

@@ -9,6 +9,7 @@
 char OpponentOrYou();
 void checkMag(int &slots, char cylinder[]);
 void LoadRandomBullets(int &bullets, int &slots, char cylinder[], int &reload);
+bool checkIfGameCont(int &OpponentHealth, int &yourHealth);
 bool Playerturn(int &yourHealth, int &OpponentHealth, char cylinder[], int &chamber, bool &nextTurnIsPlayer, int &money);
 bool OpponentDummyTurn(bool &nextTurnIsPlayer, int &chamber, char cylinder[], int &OpponentHealth, int &slots, int &yourHealth, int &bullets, int &reload);
 int main() {
@@ -52,13 +53,16 @@ int main() {
                     break;
                 }
             }
-            if (yourHealth <= 0) {
-                printf("You are dead. Should'nt have shot yourself probably. L+ratio+skill-issue");
-                return 0;
-            } else if(OpponentHealth <= 0) {
-                printf("\nYou killed the poor innocent other person. Hooray for you.");
+            if (checkIfGameCont(OpponentHealth, yourHealth) == false){
                 return 0;
             }
+            //if (yourHealth <= 0) {
+            //    printf("You are dead. Should'nt have shot yourself probably. L+ratio+skill-issue");
+            //    return 0;
+            //} else if(OpponentHealth <= 0) {
+            //    printf("\nYou killed the poor innocent other person. Hooray for you.");
+            //    return 0;
+            //}
         }
         fflush(stdin);
         LoadRandomBullets(bullets, slots, cylinder, reload);
