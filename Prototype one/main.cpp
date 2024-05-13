@@ -51,27 +51,6 @@ int main() {
                     nextTurnIsPlayer = true;
                     break;
                 }
-              //  int whoTheyShootin = 1;//rand() % (2); //1 is player, 2 is opponent
-             //   if (whoTheyShootin == 1) {
-               //     nextTurnIsPlayer = true;
-                //    printf("\nThey raise the gun...");
-                  //  Sleep(1000);
-                  //  printf("\ntowards you...");
-                   // Sleep(1000);
-                   // if (cylinder[chamber] == 'B') {
-                    //    fflush(stdin);
-                     //   printf("Click... \nBang! ...That probably hurt... you should like, not get shot... or something...");
-                    //    yourHealth--;
-                    //    if (chamber == slots){
-                     //       fflush(stdin); //placeholder solution
-                    //        LoadRandomBullets(bullets, slots, cylinder, reload);
-                    //        checkMag(slots, cylinder);
-                    //    }
-                    //} else {
-                    //    printf("Click.... It was a blank... This time...");
-                    //}
-                //} else {
-                //}
             }
             if (yourHealth <= 0) {
                 printf("You are dead. Should'nt have shot yourself probably. L+ratio+skill-issue");
