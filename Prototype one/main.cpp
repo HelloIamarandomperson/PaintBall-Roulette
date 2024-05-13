@@ -56,20 +56,9 @@ int main() {
             if (checkIfGameCont(OpponentHealth, yourHealth) == false){
                 return 0;
             }
-            //if (yourHealth <= 0) {
-            //    printf("You are dead. Should'nt have shot yourself probably. L+ratio+skill-issue");
-            //    return 0;
-            //} else if(OpponentHealth <= 0) {
-            //    printf("\nYou killed the poor innocent other person. Hooray for you.");
-            //    return 0;
-            //}
         }
         fflush(stdin);
         LoadRandomBullets(bullets, slots, cylinder, reload);
         checkMag(slots, cylinder);
-        //printf("for the this test game i have it so you can leave at any time so it doesn't go on forever, just type l to leave here to leave");
-        //if (OpponentOrYou() == 'l') {
-        //    break;
-        //}
     }
 }
