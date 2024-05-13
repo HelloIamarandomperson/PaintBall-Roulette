@@ -61,4 +61,5 @@ int main() {
         LoadRandomBullets(bullets, slots, cylinder, reload);
         checkMag(slots, cylinder);
     }
+    printf("adfjawleadfjawlerfalwekjwejadfjawlerfalwekjwejadfjawlerfalwekjwejadfjawlerfalwekjwejadfjawlerfalwekjwejadfjawlerfalwekjwejadfjawlerfalwekjwejadfjawlerfalwekjwejrfalwekjwej");
 }
