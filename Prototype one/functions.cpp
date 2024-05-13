@@ -47,7 +47,30 @@ void LoadRandomBullets(int &bullets, int &slots, char cylinder[], int &reload){
     Sleep(2000);
 }
 
-void OpponentTurn();
+bool OpponentDummyTurn(bool &nextTurnIsPlayer, int &chamber, char cylinder[], int &OpponentHealth, int &slots, int &yourHealth, int &bullets, int &reload){
+    int whoTheyShootin = 1;//rand() % (2); //1 is player, 2 is opponent
+    if (whoTheyShootin == 1) {
+        nextTurnIsPlayer = true;
+        printf("\nThey raise the gun...");
+        Sleep(1000);
+        printf("\ntowards you...");
+        Sleep(1000);
+        if (cylinder[chamber] == 'B') {
+            fflush(stdin);
+            printf("Click... \nBang! ...That probably hurt... you should like, not get shot... or something...");
+            yourHealth--;
+            if (chamber == slots){
+                fflush(stdin); //placeholder solution
+                LoadRandomBullets(bullets, slots, cylinder, reload);
+                checkMag(slots, cylinder);
+            }
+        } else {
+            printf("Click.... It was a blank... This time...");
+        }
+    }
+    nextTurnIsPlayer = true;
+    return false;
+}
 
 bool Playerturn(int &yourHealth, int &OpponentHealth, char cylinder[], int &chamber, bool &nextTurnIsPlayer, int &Money){
     fflush(stdin);
