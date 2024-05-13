@@ -16,7 +16,7 @@ int main() {
     // Declarations
     int slots = 6;
     int yourHealth = 5;
-    int OpponentHealth = 5;
+    int OpponentHealth = 3;
     srand(time(NULL));
     int bullets;
     char cylinder[slots] = {'\0'};
