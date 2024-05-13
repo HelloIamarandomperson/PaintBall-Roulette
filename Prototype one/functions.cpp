@@ -6,7 +6,6 @@
 #include <windows.h>
 
 
-
 void checkMag(int &slots, char cylinder[]) {
     printf("\n");
     for (int i = 0; i < slots; i++) {
@@ -18,7 +17,6 @@ void checkMag(int &slots, char cylinder[]) {
     }
     printf("\n");
 }
-
 
 char OpponentOrYou() {
     char response;
@@ -49,12 +47,14 @@ void LoadRandomBullets(int &bullets, int &slots, char cylinder[], int &reload){
     Sleep(2000);
 }
 
+void OpponentTurn();
+
 bool Playerturn(int &yourHealth, int &OpponentHealth, char cylinder[], int &chamber, bool &nextTurnIsPlayer, int &Money){
     fflush(stdin);
     printf("\nYou have %d health.", yourHealth);
     printf("\nYour opponent has %d health.", OpponentHealth);
     printf("\nYou have %d coins.", Money);
-    printf("\nIf you choose to shoot yourself (s), you get to shoot again. \nIf you choose to shoot your opponent (o), it is no longer your turn.\n\n");
+    printf("\nIf you choose to shoot yourself (s), you get to shoot again. \nIf you choose to shoot your opponent (o), it is no longer your turn. If you choose to go to shop press (p)\n\n");
     char PlayersChoice = OpponentOrYou();
     if (PlayersChoice == 's') {
         if (cylinder[chamber] == 'B') {
@@ -69,20 +69,22 @@ bool Playerturn(int &yourHealth, int &OpponentHealth, char cylinder[], int &cham
             nextTurnIsPlayer = true;
             return false;
         }
-    } else {
-        if (PlayersChoice == 'o') {
-            nextTurnIsPlayer = false;
-            if (cylinder[chamber] == 'B') {
-                fflush(stdin);
-                printf("Click.... Bang! It was a live round!");
-                OpponentHealth--;
-            } else {
-                printf("Click.... It was a blank...");
-            }
-            return false;
+    } else if (PlayersChoice == 'o') {
+        nextTurnIsPlayer = false;
+        if (cylinder[chamber] == 'B') {
+            fflush(stdin);
+            printf("Click.... Bang! It was a live round!");
+            OpponentHealth--;
+        } else {
+            printf("Click.... It was a blank...");
         }
+        return false;
     }
-    printf("Invalid Option, s or o");
+    else if (PlayersChoice == 'p') {
+        printf("shop in beta testing right now you can't actually access it");
+        }
+    else{
+        printf("Invalid Option, s or o");
+    }
     return true;
 }
-
