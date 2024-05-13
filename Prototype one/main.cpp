@@ -23,7 +23,6 @@ int main() {
     int reload;
     int Money = 0;
 
-
     // Load the bullets randomly into the cylinder
     LoadRandomBullets(bullets, slots, cylinder, reload);
     // Print initial game state
