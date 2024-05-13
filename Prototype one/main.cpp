@@ -54,12 +54,14 @@ int main() {
                 }
             }
             if (checkIfGameCont(OpponentHealth, yourHealth) == false){
-                return 0;
+                break;
             }
+        }
+        if (checkIfGameCont(OpponentHealth, yourHealth) == false){
+            break;
         }
         fflush(stdin);
         LoadRandomBullets(bullets, slots, cylinder, reload);
         checkMag(slots, cylinder);
     }
-    printf("adfjawleadfjawlerfalwekjwejadfjawlerfalwekjwejadfjawlerfalwekjwejadfjawlerfalwekjwejadfjawlerfalwekjwejadfjawlerfalwekjwejadfjawlerfalwekjwejadfjawlerfalwekjwejrfalwekjwej");
 }
