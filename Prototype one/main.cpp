@@ -21,7 +21,6 @@ int main() {
     int bullets;
     char cylinder[slots] = {'\0'};
     int reload;
-    char choice;
     int Money = 0;
 
 
