@@ -18,7 +18,7 @@ void checkMag(int &slots, char cylinder[]) {
     printf("\n");
 }
 
-char OpponentOrYou() {
+char PlayerChoice() {
     char response;
     scanf("%c", &response);
     response = tolower(response);
@@ -89,7 +89,7 @@ bool Playerturn(int &yourHealth, int &OpponentHealth, char cylinder[], int &cham
     printf("\nYour opponent has %d health.", OpponentHealth);
     printf("\nYou have %d coins.", Money);
     printf("\nIf you choose to shoot yourself (s), you get to shoot again. \nIf you choose to shoot your opponent (o), it is no longer your turn. If you choose to go to shop press (p)\n\n");
-    char PlayersChoice = OpponentOrYou();
+    char PlayersChoice = PlayerChoice();
     if (PlayersChoice == 's') {
         if (cylinder[chamber] == 'B') {
             printf("Click... Bang! ...That probably hurt... you should like, not shoot yourself... or something...");
@@ -115,10 +115,22 @@ bool Playerturn(int &yourHealth, int &OpponentHealth, char cylinder[], int &cham
         return false;
     }
     else if (PlayersChoice == 'p') {
-        printf("shop in beta testing right now you can't actually access it");
+        fflush(stdin);
+        printf("shop in beta testing right now");
+        printf("\nwould you like to buy a extra bullet? Cost 5 coins!\n");
+        char PlayersChoice = PlayerChoice();
+        if (PlayersChoice == 'y'){
+            printf("\nGood, the item is useless by the way.");
+            Money =- 5;
+        }
+        else{
+            printf("\nok, thanks for visiting the shop!");
+        }
+
         }
     else{
-        printf("Invalid Option, s or o");
+        printf("Invalid Option, s or o or p");
+
     }
     return true;
 }
