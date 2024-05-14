@@ -41,15 +41,17 @@
 	<ctype.h>
 	<windows.h>
 
-1715625003 source:\\ad.ocdsb.ca\studenthome\9\emerk1\github\russanroulete\prototype one\main.cpp
+1715703830 source:\\ad.ocdsb.ca\studenthome\9\emerk1\github\russanroulete\prototype one\main.cpp
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<windows.h>
 	<time.h>
+	<windows.h>
 	"functions.cpp"
+	"BitmapsTest.cpp"
 
-1715625003 \\ad.ocdsb.ca\studenthome\9\emerk1\github\russanroulete\prototype one\functions.cpp
+1715704703 \\ad.ocdsb.ca\studenthome\9\emerk1\github\russanroulete\prototype one\functions.cpp
 	<stdio.h>
 	<stdio.h>
 	<time.h>
@@ -63,6 +65,11 @@
 	<allegro5/allegro_native_dialog.h>
 
 1715647467 c:\users\elaine\documents\github\russanroulete\prototype one\bitmapstest.cpp
+	<allegro5/allegro.h>
+	<allegro5/allegro_image.h>
+	<allegro5/allegro_native_dialog.h>
+
+1715704396 \\ad.ocdsb.ca\studenthome\9\emerk1\github\russanroulete\prototype one\bitmapstest.cpp
 	<allegro5/allegro.h>
 	<allegro5/allegro_image.h>
 	<allegro5/allegro_native_dialog.h>

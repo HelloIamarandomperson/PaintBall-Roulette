@@ -28,9 +28,10 @@ int main() {
     int bullets;
     char cylinder[slots] = {'\0'};
     int reload;
+    struct inventory{
+    };
     int Money = 0;
 
-    //BitMapTest();
     HANDLE hThread;
     DWORD dwThreadId;
     hThread = CreateThread(NULL, 0, BitmapTest, NULL, 0, &dwThreadId);
@@ -38,7 +39,7 @@ int main() {
         printf("Error creating thread\n");
         return 1;
     }
-
+    //sets up thread for bitmapstest
 
     // Load the bullets randomly into the cylinder
     LoadRandomBullets(bullets, slots, cylinder, reload);

@@ -56,7 +56,7 @@ DWORD WINAPI BitmapTest(LPVOID lpParam) {
     // Update the display
     al_flip_display();
 
-    // Wait for a short time (adjust as needed)
+    // Wait for aq short time (adjust as needed)
     al_rest(10.0); // Wait for 5 seconds
 
     // Clean up
