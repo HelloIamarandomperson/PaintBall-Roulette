@@ -29,20 +29,22 @@ DWORD WINAPI BitmapTest(LPVOID lpParam) {
     	return -1;
 	}
 
-	// Declare a BITMAP called image, setting it's initial value to nullptr
-	ALLEGRO_BITMAP *image = nullptr;
-
-	// Initialize Allegro
-
+	// Declare the bitmaps setting it's initial value to nullptr
+	ALLEGRO_BITMAP *Table = nullptr;
+    ALLEGRO_BITMAP *Dummy = nullptr;
+    ALLEGRO_BITMAP *Player = nullptr;
     // Create a display
     // Load the background image
-    image = al_load_bitmap("backgroundTable.png");
-    if (!image) {
+    Table = al_load_bitmap("backgroundTable.png");
+    Dummy = al_load_bitmap("Dummy.png");
+    Player = al_load_bitmap("PlayerCharacter.png");
+    if (!Table  || !Dummy || !Player) {
         al_show_native_message_box(display, "Error", "Error", "Failed to load image!",
                                     nullptr, ALLEGRO_MESSAGEBOX_ERROR);
         al_destroy_display(display);
         return -1;
     }
+
 
     // Optionally clear the display
     //al_clear_to_color(al_map_rgb(0, 0, 0));
@@ -62,21 +64,33 @@ DWORD WINAPI BitmapTest(LPVOID lpParam) {
     //al_draw_bitmap(image, 50, 0, 0);
     //al_flip_display();
     // Clean up
-    al_rest(3.0);
 
+    al_rest(1.0);
+    al_draw_bitmap(Table, 0, 0, 0);
+    al_flip_display();
+    al_rest(.2);
+    al_draw_bitmap(Dummy, 0, 0, 0);
+    al_flip_display();
+    al_rest(.2);
+    al_draw_bitmap(Player, 0, 0, 0);
+    al_flip_display();
     while (true){
-        al_rest(1.0); // Wait for 5 seconds
+        al_rest(1.0); // Wait for 1 second
         al_clear_to_color(al_map_rgb(0, 0, 0));
-        al_draw_bitmap(image, 0, 5, 0);
+        al_draw_bitmap(Table, 0, 0, 0);
+        al_draw_bitmap(Dummy, 0, 0, 0);
+        al_draw_bitmap(Player, 0, 0, 0);
         al_flip_display();
     // Clean up
-        al_rest(1.0); // Wait for 5 seconds
+        al_rest(1.0); // Wait for 1 second
         al_clear_to_color(al_map_rgb(0, 0, 0));
-        al_draw_bitmap(image, 0, 0, 0);
+        al_draw_bitmap(Table, 0, 0, 0);
+        al_draw_bitmap(Dummy, 0, 0, 0);
+        al_draw_bitmap(Player, 0, 0, 0);
         al_flip_display();
 
     }
-    al_destroy_bitmap(image);
+    al_destroy_bitmap(Table);
     al_destroy_display(display);
 
     return 0;
