@@ -3,10 +3,13 @@
 #include <string.h> // String manipulation functions
 #include <windows.h>
 #include <time.h>
+#include <windows.h>
+
 
 #include "functions.cpp"
 #include "BitmapsTest.cpp"
-int BitMapTest(int argc, char *argv[]);
+
+
 char OpponentOrYou();
 void checkMag(int &slots, char cylinder[]);
 void LoadRandomBullets(int &bullets, int &slots, char cylinder[], int &reload);
@@ -14,6 +17,8 @@ bool checkIfGameCont(int &OpponentHealth, int &yourHealth);
 bool Playerturn(int &yourHealth, int &OpponentHealth, char cylinder[], int &chamber, bool &nextTurnIsPlayer, int &money);
 bool OpponentDummyTurn(bool &nextTurnIsPlayer, int &chamber, char cylinder[], int &OpponentHealth, int &slots, int &yourHealth, int &bullets, int &reload);
 
+
+DWORD WINAPI BitmapTest(LPVOID lpParam);
 int main() {
     // Declarations
     int slots = 6;
@@ -24,6 +29,16 @@ int main() {
     char cylinder[slots] = {'\0'};
     int reload;
     int Money = 0;
+
+    //BitMapTest();
+    HANDLE hThread;
+    DWORD dwThreadId;
+    hThread = CreateThread(NULL, 0, BitmapTest, NULL, 0, &dwThreadId);
+    if (hThread == NULL) {
+        printf("Error creating thread\n");
+        return 1;
+    }
+
 
     // Load the bullets randomly into the cylinder
     LoadRandomBullets(bullets, slots, cylinder, reload);
@@ -64,4 +79,6 @@ int main() {
         LoadRandomBullets(bullets, slots, cylinder, reload);
         checkMag(slots, cylinder);
     }
+    WaitForSingleObject(hThread, INFINITE);
+    CloseHandle(hThread);
 }

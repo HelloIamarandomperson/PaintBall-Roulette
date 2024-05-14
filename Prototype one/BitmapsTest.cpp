@@ -7,7 +7,7 @@
 const int SCREEN_W = 800;       // screen width
 const int SCREEN_H = 600 ;       // screen height
 
-int BitMapTest(int argc, char *argv[]) {
+DWORD WINAPI BitmapTest(LPVOID lpParam) {
 	ALLEGRO_DISPLAY *display = nullptr;
 
 	// Initialize Allegro
@@ -32,8 +32,6 @@ int BitMapTest(int argc, char *argv[]) {
 	// Declare a BITMAP called image, setting it's initial value to nullptr
 	ALLEGRO_BITMAP *image = nullptr;
 
-
-
 	// Initialize Allegro
 
     // Create a display
@@ -47,7 +45,7 @@ int BitMapTest(int argc, char *argv[]) {
     }
 
     // Optionally clear the display
-    al_clear_to_color(al_map_rgb(0, 0, 0));
+    //al_clear_to_color(al_map_rgb(0, 0, 0));
 
     // Draw the background image
     al_draw_bitmap(image, 0, 0, 0); // Draw at top-left corner with no rotation

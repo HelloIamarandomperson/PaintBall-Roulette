@@ -23,12 +23,13 @@
 	<ctype.h>
 	<windows.h>
 
-1715645865 source:c:\users\elaine\documents\github\russanroulete\prototype one\main.cpp
+1715647878 source:c:\users\elaine\documents\github\russanroulete\prototype one\main.cpp
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<windows.h>
 	<time.h>
+	<windows.h>
 	"functions.cpp"
 	"BitmapsTest.cpp"
 
@@ -61,7 +62,7 @@
 	<allegro5/allegro_image.h>
 	<allegro5/allegro_native_dialog.h>
 
-1715645628 c:\users\elaine\documents\github\russanroulete\prototype one\bitmapstest.cpp
+1715647467 c:\users\elaine\documents\github\russanroulete\prototype one\bitmapstest.cpp
 	<allegro5/allegro.h>
 	<allegro5/allegro_image.h>
 	<allegro5/allegro_native_dialog.h>
