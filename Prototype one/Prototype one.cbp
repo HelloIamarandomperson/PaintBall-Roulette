@@ -31,6 +31,7 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="BitmapsTest.cpp" />
 		<Unit filename="functions.cpp">
 			<Option weight="80" />
 			<Option target="&lt;{~None~}&gt;" />

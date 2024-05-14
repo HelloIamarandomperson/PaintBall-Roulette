@@ -5,13 +5,15 @@
 #include <time.h>
 
 #include "functions.cpp"
-
+#include "BitmapsTest.cpp"
+int BitMapTest(int argc, char *argv[]);
 char OpponentOrYou();
 void checkMag(int &slots, char cylinder[]);
 void LoadRandomBullets(int &bullets, int &slots, char cylinder[], int &reload);
 bool checkIfGameCont(int &OpponentHealth, int &yourHealth);
 bool Playerturn(int &yourHealth, int &OpponentHealth, char cylinder[], int &chamber, bool &nextTurnIsPlayer, int &money);
 bool OpponentDummyTurn(bool &nextTurnIsPlayer, int &chamber, char cylinder[], int &OpponentHealth, int &slots, int &yourHealth, int &bullets, int &reload);
+
 int main() {
     // Declarations
     int slots = 6;
