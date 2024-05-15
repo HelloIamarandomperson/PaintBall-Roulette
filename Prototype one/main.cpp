@@ -29,6 +29,7 @@ int main() {
     char cylinder[slots] = {'\0'};
     int reload;
     char AllegroAction[50] = {'t'};
+    Allegro[0] = 'm';
     struct inventory{
         int Money = 0;
         int DoubleBullet = 0;

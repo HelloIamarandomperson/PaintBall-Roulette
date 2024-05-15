@@ -7,6 +7,8 @@
 const int SCREEN_W = 800;       // screen width
 const int SCREEN_H = 600 ;       // screen height
 
+char Allegro[50] = {'t'};
+
 DWORD WINAPI BitmapTest(LPVOID lpParam) {
     char* AllegroAction = reinterpret_cast<char*>(lpParam);
     //memset(AllegroAction, 't', sizeof(AllegroAction));
@@ -41,7 +43,6 @@ DWORD WINAPI BitmapTest(LPVOID lpParam) {
     ALLEGRO_BITMAP *Dummyfires = nullptr;
     ALLEGRO_BITMAP *Dummyflash = nullptr;
 
-
     // Create a display
     // Load the background image
     Table = al_load_bitmap("backgroundTable.png");
@@ -55,7 +56,6 @@ DWORD WINAPI BitmapTest(LPVOID lpParam) {
         al_destroy_display(display);
         return -1;
     }
-
 
     // Optionally clear the display
     //al_clear_to_color(al_map_rgb(0, 0, 0));
