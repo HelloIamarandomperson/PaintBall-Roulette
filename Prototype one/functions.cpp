@@ -115,14 +115,14 @@ bool Playerturn(int &yourHealth, int &OpponentHealth, char cylinder[], int &cham
     else if (PlayersChoice == 'p') {
         fflush(stdin);
         printf("shop in beta testing right now");
-        printf("\nwould you like to buy a extra bullet? Cost 5 coins!\n");
+        printf("\nwould you like to buy a double bullet? Cost 5 coins!\n");
         char PlayersChoice = PlayerChoice();
         if (PlayersChoice == 'y'){
             if (Money < 5){
                 printf("\nHaha poor");
             }
             else{
-                printf("\nGood, the item is useless by the way.");
+                printf("\n Here you go");
                 Money =- 5;
             }
         }

@@ -30,6 +30,8 @@ int main() {
     int reload;
     char AllegroAction[50] = {'t'};
     struct inventory{
+        int Money = 0;
+        int DoubleBullet = 0;
     };
     int Money = 0;
 

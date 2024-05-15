@@ -9,10 +9,10 @@ const int SCREEN_H = 600 ;       // screen height
 
 DWORD WINAPI BitmapTest(LPVOID lpParam) {
     char* AllegroAction = reinterpret_cast<char*>(lpParam);
-    memset(AllegroAction, 't', sizeof(AllegroAction));
-    for (int i = 0; i < sizeof(AllegroAction); i++){
-        printf("%c", AllegroAction[i]);
-    }
+    //memset(AllegroAction, 't', sizeof(AllegroAction));
+    //for (int i = 0; i < sizeof(AllegroAction); i++){
+    //    printf("%c", AllegroAction[i]);
+    //}
 
 	ALLEGRO_DISPLAY *display = nullptr;
 	// Initialize Allegro
