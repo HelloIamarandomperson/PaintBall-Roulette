@@ -28,13 +28,16 @@ int main() {
     int bullets;
     char cylinder[slots] = {'\0'};
     int reload;
+    char AllegroAction[50] = {'t'};
     struct inventory{
     };
     int Money = 0;
 
     HANDLE hThread;
     DWORD dwThreadId;
-    hThread = CreateThread(NULL, 0, BitmapTest, NULL, 0, &dwThreadId);
+
+    //hThread = CreateThread(NULL, 0, BitmapTest, NULL, 0, &dwThreadId);
+    hThread = CreateThread(NULL, 0, BitmapTest, AllegroAction, 0, &dwThreadId);
     if (hThread == NULL) {
         printf("Error creating thread\n");
         return 1;

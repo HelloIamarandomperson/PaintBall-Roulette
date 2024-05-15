@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <windows.h>
-
+#include <string.h>
 
 void checkMag(int &slots, char cylinder[]) {
     printf("\n");
@@ -27,9 +27,7 @@ char PlayerChoice() {
 
 void LoadRandomBullets(int &bullets, int &slots, char cylinder[], int &reload){
     bullets = rand() % (slots);
-    for (int i = 0; i < slots; i++) {
-        cylinder[i] = '\0';
-    }
+    memset(cylinder, '\0', slots);
     printf("\nThe gun is being loaded");
     int blanks = slots-bullets;
     //srand(time(NULL));
