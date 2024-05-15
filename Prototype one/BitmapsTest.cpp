@@ -1,5 +1,7 @@
 
 
+#include "Headers.h"
+
 // You must include the allegro header files
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_image.h>
@@ -7,9 +9,10 @@
 const int SCREEN_W = 800;       // screen width
 const int SCREEN_H = 600 ;       // screen height
 
-char Allegro[50] = {'t'};
+char Allegro[50] = {'\0'};
 
 DWORD WINAPI BitmapTest(LPVOID lpParam) {
+    memset(Allegro, '\0', sizeof(Allegro));
     char* AllegroAction = reinterpret_cast<char*>(lpParam);
     //memset(AllegroAction, 't', sizeof(AllegroAction));
     //for (int i = 0; i < sizeof(AllegroAction); i++){
@@ -45,9 +48,9 @@ DWORD WINAPI BitmapTest(LPVOID lpParam) {
 
     // Create a display
     // Load the background image
-    Table = al_load_bitmap("backgroundTable.png");
+    Table = al_load_bitmap("Table.png");
     Dummy = al_load_bitmap("Dummy.png");
-    Player = al_load_bitmap("PlayerCharacter.png");
+    Player = al_load_bitmap("Player.png");
     Dummyfires = al_load_bitmap("Dummyshoot.png");
     Dummyflash = al_load_bitmap("DummyFlash.png");
     if (!Table  || !Dummy || !Player || !Dummyfires || !Dummyflash) {
@@ -91,24 +94,49 @@ DWORD WINAPI BitmapTest(LPVOID lpParam) {
     al_rest(.2);
     al_draw_bitmap(Player, 0, 0, 0);
     al_flip_display();
+    al_clear_to_color(al_map_rgb(0, 0, 0));
     while (true){
-        if (AllegroAction[0] != '\0'){
+        if (Allegro[0] != '\0'){
+            if (strcmp(Allegro, "Dummy fires")){
+               memset(Allegro, '\0', sizeof(Allegro));
+                al_clear_to_color(al_map_rgb(0, 0, 0));
+                al_draw_bitmap(Table, 0, 0, 0);
+                al_draw_bitmap(Dummyfires, 0, 0, 0);
+                al_draw_bitmap(Player, 0, 0, 0);
+                al_flip_display();
+                al_rest(.9);
+                al_clear_to_color(al_map_rgb(0, 0, 0));
+                al_draw_bitmap(Table, 0, 0, 0);
+                al_draw_bitmap(Dummyfires, 0, 0, 0);
+                al_draw_bitmap(Player, 0, 0, 0);
+                al_draw_bitmap(Dummyflash, 0, 0, 0);
+                al_flip_display();
+                al_rest(.3);
+                al_clear_to_color(al_map_rgb(0, 0, 0));
+                al_draw_bitmap(Table, 0, 0, 0);
+                al_draw_bitmap(Dummyfires, 0, 0, 0);
+                al_draw_bitmap(Player, 0, 0, 0);
+                al_flip_display();
+                al_rest(.4);
+            }
+
 
         }
         else{
-           al_rest(1.0); // Wait for 1 second
+        al_rest(0); // Wait for 1 second
         al_clear_to_color(al_map_rgb(0, 0, 0));
         al_draw_bitmap(Table, 0, 0, 0);
         al_draw_bitmap(Dummy, 0, 0, 0);
         al_draw_bitmap(Player, 0, 0, 0);
         al_flip_display();
     // Clean up
-        al_rest(1.0); // Wait for 1 second
+        al_rest(.1); // Wait for 1 second
         al_clear_to_color(al_map_rgb(0, 0, 0));
         al_draw_bitmap(Table, 0, 0, 0);
         al_draw_bitmap(Dummy, 0, 0, 0);
         al_draw_bitmap(Player, 0, 0, 0);
         al_flip_display();
+
         }
     }
     al_destroy_bitmap(Table);

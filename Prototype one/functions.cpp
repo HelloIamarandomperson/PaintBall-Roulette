@@ -6,6 +6,9 @@
 #include <windows.h>
 #include <string.h>
 
+#include "Headers.h"
+
+
 void checkMag(int &slots, char cylinder[]) {
     printf("\n");
     for (int i = 0; i < slots; i++) {
@@ -50,7 +53,9 @@ bool OpponentDummyTurn(bool &nextTurnIsPlayer, int &chamber, char cylinder[], in
     if (whoTheyShootin == 1) {
         nextTurnIsPlayer = true;
         printf("\nThey raise the gun...");
-        Sleep(1000);
+        Sleep(500);
+        strcpy(Allegro, "Dummy Fires");
+        Sleep(500);
         printf("\ntowards you...");
         Sleep(1000);
         if (cylinder[chamber] == 'B') {
@@ -103,8 +108,10 @@ bool Playerturn(int &yourHealth, int &OpponentHealth, char cylinder[], int &cham
         }
     } else if (PlayersChoice == 'o') {
         nextTurnIsPlayer = false;
+
         if (cylinder[chamber] == 'B') {
             fflush(stdin);
+            strcpy(Allegro, "Player Fires");
             printf("Click.... Bang! It was a live round!");
             OpponentHealth--;
         } else {

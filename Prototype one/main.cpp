@@ -8,6 +8,7 @@
 
 #include "functions.cpp"
 #include "BitmapsTest.cpp"
+#include "Headers.h"
 
 
 char OpponentOrYou();
