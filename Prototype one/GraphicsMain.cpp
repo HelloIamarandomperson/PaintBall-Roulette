@@ -12,7 +12,6 @@ const int SCREEN_H = 600 ;       // screen height
 char Allegro[50] = {'\0'};
 
 DWORD WINAPI AllegroMain(LPVOID lpParam) {
-    memset(Allegro, '\0', sizeof(Allegro));
     char* AllegroAction = reinterpret_cast<char*>(lpParam);
     //memset(AllegroAction, 't', sizeof(AllegroAction));
     //for (int i = 0; i < sizeof(AllegroAction); i++){

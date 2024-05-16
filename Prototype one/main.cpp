@@ -29,7 +29,7 @@ int main() {
     int bullets;
     char cylinder[slots] = {'\0'};
     int reload;
-    char AllegroAction[50] = {'t'};
+
     Allegro[0] = 'm';
 
 
@@ -37,7 +37,7 @@ int main() {
     DWORD dwThreadId;
 
     //hThread = CreateThread(NULL, 0, AllegroMain, NULL, 0, &dwThreadId);
-    hThread = CreateThread(NULL, 0, AllegroMain, AllegroAction, 0, &dwThreadId);
+    hThread = CreateThread(NULL, 0, AllegroMain, NULL, 0, &dwThreadId);
     if (hThread == NULL) {
         printf("Error creating thread\n");
         return 1;
