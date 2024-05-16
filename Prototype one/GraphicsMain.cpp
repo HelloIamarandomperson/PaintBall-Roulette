@@ -1,6 +1,7 @@
 
 #include <windows.h>
 #include "Headers.h"
+#include "graphicsFunctions.cpp"
 
 // You must include the allegro header files
 #include <allegro5/allegro.h>

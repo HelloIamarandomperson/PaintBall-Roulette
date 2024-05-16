@@ -32,11 +32,9 @@ int main() {
 
     Allegro[0] = 'm';
 
-
     HANDLE hThread;
     DWORD dwThreadId;
 
-    //hThread = CreateThread(NULL, 0, AllegroMain, NULL, 0, &dwThreadId);
     hThread = CreateThread(NULL, 0, AllegroMain, NULL, 0, &dwThreadId);
     if (hThread == NULL) {
         printf("Error creating thread\n");
