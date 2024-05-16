@@ -31,11 +31,7 @@ int main() {
     int reload;
     char AllegroAction[50] = {'t'};
     Allegro[0] = 'm';
-    struct inventory{
-        int Money = 0;
-        int DoubleBullet = 0;
-    };
-    int Money = 0;
+
 
     HANDLE hThread;
     DWORD dwThreadId;
@@ -66,7 +62,7 @@ int main() {
                 yourTurn = false;
             }
             while (yourTurn == true) {
-                if (Playerturn(yourHealth, OpponentHealth, cylinder, chamber, nextTurnIsPlayer, Money) == false){
+                if (Playerturn(yourHealth, OpponentHealth, cylinder, chamber, nextTurnIsPlayer, PlayerInventory) == false){
                     break;
                 }
             }

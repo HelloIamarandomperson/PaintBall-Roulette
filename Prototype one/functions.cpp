@@ -8,6 +8,11 @@
 
 #include "Headers.h"
 
+struct inventory{
+        int Money = 0;
+        int DoubleBullet = 0;
+    };
+    inventory PlayerInventory;
 
 void checkMag(int &slots, char cylinder[]) {
     printf("\n");
@@ -86,23 +91,23 @@ bool checkIfGameCont(int &OpponentHealth, int &yourHealth){
     return true;
 }
 
-bool Playerturn(int &yourHealth, int &OpponentHealth, char cylinder[], int &chamber, bool &nextTurnIsPlayer, int &Money){
+bool Playerturn(int &yourHealth, int &OpponentHealth, char cylinder[], int &chamber, bool &nextTurnIsPlayer, inventory &PlayerInventory){
     fflush(stdin);
     printf("\nYou have %d health.", yourHealth);
     printf("\nYour opponent has %d health.", OpponentHealth);
-    printf("\nYou have %d coins.", Money);
+    printf("\nYou have %d coins.", PlayerInventory.Money);
     printf("\nIf you choose to shoot yourself (s), you get to shoot again. \nIf you choose to shoot your opponent (o), it is no longer your turn. If you choose to go to shop press (p)\n\n");
     char PlayersChoice = PlayerChoice();
     if (PlayersChoice == 's') {
         if (cylinder[chamber] == 'B') {
             printf("Click... Bang! ...That probably hurt... you should like, not shoot yourself... or something...");
             yourHealth--;
-            Money += 15;
+            PlayerInventory.Money += 15;
             nextTurnIsPlayer = true;
             return false;
         } else {
             printf("Click.... It was a blank... Bit of a gambler, are you?\n");
-            Money += 5;
+            PlayerInventory.Money += 5;
             nextTurnIsPlayer = true;
             return false;
         }
@@ -125,12 +130,12 @@ bool Playerturn(int &yourHealth, int &OpponentHealth, char cylinder[], int &cham
         printf("\nwould you like to buy a double bullet? Cost 5 coins!\n");
         char PlayersChoice = PlayerChoice();
         if (PlayersChoice == 'y'){
-            if (Money < 5){
+            if (PlayerInventory.Money < 5){
                 printf("\nHaha poor");
             }
             else{
                 printf("\n Here you go");
-                Money =- 5;
+                PlayerInventory.Money -= 5;
             }
         }
         else{
