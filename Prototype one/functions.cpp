@@ -67,11 +67,6 @@ bool OpponentDummyTurn(bool &nextTurnIsPlayer, int &chamber, char cylinder[], in
             fflush(stdin);
             printf("Click... \nBang! ...That probably hurt... you should like, not get shot... or something...");
             yourHealth--;
-            //if (chamber == slots){
-            //    fflush(stdin); //placeholder solution
-            //    LoadRandomBullets(bullets, slots, cylinder, reload);
-            //    checkMag(slots, cylinder);
-            //}
         } else {
             printf("Click.... It was a blank... This time...");
         }
