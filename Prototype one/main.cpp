@@ -83,6 +83,7 @@ int main() {
         LoadRandomBullets(bullets, slots, cylinder, reload);
         checkMag(slots, cylinder);
     }
+    strcpy(Allegro, "Game Ends");
     WaitForSingleObject(hThread, INFINITE);
     CloseHandle(hThread);
 }

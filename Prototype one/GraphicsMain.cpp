@@ -150,6 +150,9 @@ DWORD WINAPI AllegroMain(LPVOID lpParam) {
                 al_flip_display();
                 al_rest(.4);
             }
+            else if (strcmp(Allegro, "Game Ends") == 0){
+                break;
+            }
         }
         else{
         al_rest(0); // Wait for 1 second
