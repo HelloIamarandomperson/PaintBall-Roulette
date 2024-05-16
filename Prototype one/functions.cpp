@@ -47,10 +47,10 @@ void LoadRandomBullets(int &bullets, int &slots, char cylinder[], int &reload){
             i--;
         }
     }
-    Sleep(2000);
-    printf("\nThere are %d bullets and %d blanks in the gun.\n", bullets, blanks);
-    printf("The gun has been loaded randomly, and has a total of %d slots.\n", slots);
-    Sleep(2000);
+    Sleep(1000);
+    printf("\nThere are %i bullets and %i blanks in the gun.\n", bullets, blanks);
+    printf("The gun has been loaded randomly, and has a total of %i slots.\n", slots);
+    Sleep(1000);
 }
 
 bool OpponentDummyTurn(bool &nextTurnIsPlayer, int &chamber, char cylinder[], int &OpponentHealth, int &slots, int &yourHealth, int &bullets, int &reload){
@@ -67,11 +67,11 @@ bool OpponentDummyTurn(bool &nextTurnIsPlayer, int &chamber, char cylinder[], in
             fflush(stdin);
             printf("Click... \nBang! ...That probably hurt... you should like, not get shot... or something...");
             yourHealth--;
-            if (chamber == slots){
-                fflush(stdin); //placeholder solution
-                LoadRandomBullets(bullets, slots, cylinder, reload);
-                checkMag(slots, cylinder);
-            }
+            //if (chamber == slots){
+            //    fflush(stdin); //placeholder solution
+            //    LoadRandomBullets(bullets, slots, cylinder, reload);
+            //    checkMag(slots, cylinder);
+            //}
         } else {
             printf("Click.... It was a blank... This time...");
         }
@@ -93,9 +93,9 @@ bool checkIfGameCont(int &OpponentHealth, int &yourHealth){
 
 bool Playerturn(int &yourHealth, int &OpponentHealth, char cylinder[], int &chamber, bool &nextTurnIsPlayer, inventory &PlayerInventory){
     fflush(stdin);
-    printf("\nYou have %d health.", yourHealth);
-    printf("\nYour opponent has %d health.", OpponentHealth);
-    printf("\nYou have %d coins.", PlayerInventory.Money);
+    printf("\nYou have %i health.", yourHealth);
+    printf("\nYour opponent has %i health.", OpponentHealth);
+    printf("\nYou have %i coins and %i DoubleBullets", PlayerInventory.Money, PlayerInventory.DoubleBullet);
     printf("\nIf you choose to shoot yourself (s), you get to shoot again. \nIf you choose to shoot your opponent (o), it is no longer your turn. If you choose to go to shop press (p)\n\n");
     char PlayersChoice = PlayerChoice();
     if (PlayersChoice == 's') {
@@ -136,6 +136,7 @@ bool Playerturn(int &yourHealth, int &OpponentHealth, char cylinder[], int &cham
             else{
                 printf("\n Here you go");
                 PlayerInventory.Money -= 5;
+                PlayerInventory.DoubleBullet += 1;
             }
         }
         else{
