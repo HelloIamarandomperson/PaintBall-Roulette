@@ -14,10 +14,6 @@ char Allegro[50] = {'\0'};
 
 DWORD WINAPI AllegroMain(LPVOID lpParam) {
     char* AllegroAction = reinterpret_cast<char*>(lpParam);
-    //memset(AllegroAction, 't', sizeof(AllegroAction));
-    //for (int i = 0; i < sizeof(AllegroAction); i++){
-    //    printf("%c", AllegroAction[i]);
-    //}
 
 	ALLEGRO_DISPLAY *display = nullptr;
 	// Initialize Allegro
