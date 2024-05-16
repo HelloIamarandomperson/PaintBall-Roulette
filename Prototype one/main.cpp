@@ -3,11 +3,11 @@
 #include <string.h> // String manipulation functions
 #include <windows.h>
 #include <time.h>
-#include <windows.h>
+
 
 
 #include "functions.cpp"
-#include "BitmapsTest.cpp"
+#include "GraphicsMain.cpp"
 #include "Headers.h"
 
 
@@ -19,7 +19,7 @@ bool Playerturn(int &yourHealth, int &OpponentHealth, char cylinder[], int &cham
 bool OpponentDummyTurn(bool &nextTurnIsPlayer, int &chamber, char cylinder[], int &OpponentHealth, int &slots, int &yourHealth, int &bullets, int &reload);
 
 
-DWORD WINAPI BitmapTest(LPVOID lpParam);
+DWORD WINAPI AllegroMain(LPVOID lpParam);
 int main() {
     // Declarations
     int slots = 6;
@@ -40,8 +40,8 @@ int main() {
     HANDLE hThread;
     DWORD dwThreadId;
 
-    //hThread = CreateThread(NULL, 0, BitmapTest, NULL, 0, &dwThreadId);
-    hThread = CreateThread(NULL, 0, BitmapTest, AllegroAction, 0, &dwThreadId);
+    //hThread = CreateThread(NULL, 0, AllegroMain, NULL, 0, &dwThreadId);
+    hThread = CreateThread(NULL, 0, AllegroMain, AllegroAction, 0, &dwThreadId);
     if (hThread == NULL) {
         printf("Error creating thread\n");
         return 1;

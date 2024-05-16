@@ -108,10 +108,10 @@ bool Playerturn(int &yourHealth, int &OpponentHealth, char cylinder[], int &cham
         }
     } else if (PlayersChoice == 'o') {
         nextTurnIsPlayer = false;
-
+        strcpy(Allegro, "Player Fires");
+        Sleep(2000);
         if (cylinder[chamber] == 'B') {
             fflush(stdin);
-            strcpy(Allegro, "Player Fires");
             printf("Click.... Bang! It was a live round!");
             OpponentHealth--;
         } else {

@@ -1,5 +1,5 @@
 
-
+#include <windows.h>
 #include "Headers.h"
 
 // You must include the allegro header files
@@ -11,7 +11,7 @@ const int SCREEN_H = 600 ;       // screen height
 
 char Allegro[50] = {'\0'};
 
-DWORD WINAPI BitmapTest(LPVOID lpParam) {
+DWORD WINAPI AllegroMain(LPVOID lpParam) {
     memset(Allegro, '\0', sizeof(Allegro));
     char* AllegroAction = reinterpret_cast<char*>(lpParam);
     //memset(AllegroAction, 't', sizeof(AllegroAction));
@@ -119,8 +119,9 @@ DWORD WINAPI BitmapTest(LPVOID lpParam) {
                 al_flip_display();
                 al_rest(.4);
             }
+            else if (strcmp(Allegro, "Player fires")){
 
-
+            }
         }
         else{
         al_rest(0); // Wait for 1 second
