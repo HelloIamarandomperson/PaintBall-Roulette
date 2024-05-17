@@ -1,18 +1,17 @@
 //Including standard libraries
 
-
 //Including the other files
 #include "GraphicsMain.cpp"
 
-struct inventory{
+struct inventory {
     //struct inventory is used to store the inventory of the player and the opponent.
-        int Money = 0;
-        int DoubleBullet = 0;
-    };
-    //initializes player inventory.
-    inventory PlayerInventory;
+    int Money = 0;
+    int DoubleBullet = 0;
+};
+//initializes player inventory.
+inventory PlayerInventory;
 
-void checkMag(int &slots, char cylinder[]) {
+void checkMag(int & slots, char cylinder[]) {
     //This is a dev function to check the Mag inside
     printf("\n");
     for (int i = 0; i < slots; i++) {
@@ -28,12 +27,12 @@ void checkMag(int &slots, char cylinder[]) {
 char PlayerChoice() {
     //PlayerChoice is a scanf function that lowers all responses to their lower form for convenience.
     char response;
-    scanf("%c", &response);
+    scanf("%c", & response);
     response = tolower(response);
     return response;
 }
 
-void LoadRandomBullets(int &bullets, int &slots, char cylinder[], int &reload){
+void LoadRandomBullets(int & bullets, int & slots, char cylinder[], int & reload) {
     //Load Random Bullets is designed to load the bullets randomly
     bullets = rand() % (slots);
     //randomizes bullet count.
@@ -49,15 +48,15 @@ void LoadRandomBullets(int &bullets, int &slots, char cylinder[], int &reload){
             i--;
         }
     }
-    int blanks = slots-bullets;
+    int blanks = slots - bullets;
     Sleep(1000);
     printf("\nThere are %i bullets and %i blanks in the gun.\n", bullets, blanks);
     printf("The gun has been loaded randomly, and has a total of %i slots.\n", slots);
     Sleep(1000);
 }
 
-bool OpponentDummyTurn(bool &nextTurnIsPlayer, int &chamber, char cylinder[], int &OpponentHealth, int &slots, int &yourHealth, int &bullets, int &reload){
-    int whoTheyShootin = 1;//rand() % (2); //1 is player, 2 is opponent
+bool OpponentDummyTurn(bool & nextTurnIsPlayer, int & chamber, char cylinder[], int & OpponentHealth, int & slots, int & yourHealth, int & bullets, int & reload) {
+    int whoTheyShootin = 1; //rand() % (2); //1 is player, 2 is opponent
     if (whoTheyShootin == 1) {
         nextTurnIsPlayer = true;
         printf("\nThey raise the gun...");
@@ -79,19 +78,19 @@ bool OpponentDummyTurn(bool &nextTurnIsPlayer, int &chamber, char cylinder[], in
     return false;
 }
 
-bool checkIfGameCont(int &OpponentHealth, int &yourHealth){
+bool checkIfGameCont(int & OpponentHealth, int & yourHealth) {
     //checks if both are alive, else returns false.
     if (yourHealth <= 0) {
         printf("You are dead. Shouldn't have shot yourself probably. L+ratio+skill-issue");
         return false;
-    } else if(OpponentHealth <= 0) {
+    } else if (OpponentHealth <= 0) {
         printf("\nYou killed the poor innocent other person. Hooray for you.");
         return false;
     }
     return true;
 }
 
-bool Playerturn(int &yourHealth, int &OpponentHealth, char cylinder[], int &chamber, bool &nextTurnIsPlayer, inventory &PlayerInventory){
+bool Playerturn(int & yourHealth, int & OpponentHealth, char cylinder[], int & chamber, bool & nextTurnIsPlayer, inventory & PlayerInventory) {
     fflush(stdin);
     //fflush to fix bug.
     printf("\nYou have %i health.", yourHealth);
@@ -102,6 +101,8 @@ bool Playerturn(int &yourHealth, int &OpponentHealth, char cylinder[], int &cham
     //Self explanatory.
     if (PlayersChoice == 's') {
         //if player choose to shoot themselves
+        nextTurnIsPlayer = true;
+        //Makes it so the next turn is still the player
         if (cylinder[chamber] == 'B') {
             //if chamber contains bullet.
             printf("Click... Bang! ...That probably hurt... you should like, not shoot yourself... or something...");
@@ -109,48 +110,51 @@ bool Playerturn(int &yourHealth, int &OpponentHealth, char cylinder[], int &cham
             //lowers health by one
             PlayerInventory.Money += 15;
             //Adds money.
-            nextTurnIsPlayer = true;
             return false;
         } else {
             printf("Click.... It was a blank... Bit of a gambler, are you?\n");
+            //Adds money.
             PlayerInventory.Money += 5;
-            nextTurnIsPlayer = true;
+
             return false;
         }
     } else if (PlayersChoice == 'o') {
+        //if the player shoots the opponent
         nextTurnIsPlayer = false;
+        //make it so the Opponents turn is next.
         strcpy(Allegro, "Player Fires");
+        //Makes it so the screen shows the player shooting.
         Sleep(2000);
         if (cylinder[chamber] == 'B') {
+            //If chamber contains bullet
             fflush(stdin);
+            //fflush here to fix bug
             printf("Click.... Bang! It was a live round!");
+            //opponent loses health.
             OpponentHealth--;
         } else {
             printf("Click.... It was a blank...");
         }
         return false;
-    }
-    else if (PlayersChoice == 'p') {
+    } else if (PlayersChoice == 'p') {
+
         fflush(stdin);
         printf("shop in beta testing right now");
         printf("\nwould you like to buy a double bullet? Cost 5 coins!\n");
         char PlayersChoice = PlayerChoice();
-        if (PlayersChoice == 'y'){
-            if (PlayerInventory.Money < 5){
+        if (PlayersChoice == 'y') {
+            if (PlayerInventory.Money < 5) {
                 printf("\nHaha poor");
-            }
-            else{
+            } else {
                 printf("\n Here you go");
                 PlayerInventory.Money -= 5;
                 PlayerInventory.DoubleBullet += 1;
             }
-        }
-        else{
+        } else {
             printf("\nok, thanks for visiting the shop!");
         }
 
-        }
-    else{
+    } else {
         printf("Invalid Option, s or o or p");
 
     }

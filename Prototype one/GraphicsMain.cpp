@@ -60,29 +60,10 @@ DWORD WINAPI AllegroMain(LPVOID lpParam) {
         return -1;
     }
 
-    // Optionally clear the display
-    //al_clear_to_color(al_map_rgb(0, 0, 0));
-
-    // Draw the background image
-    //al_draw_bitmap(image, 0, 0, 0); // Draw at top-left corner with no rotation
 
     // Optionally wait for user input
     // al_wait_for_event(event_queue, &event);
 
-    // Update the display
-    //al_flip_display();
-
-    // Wait for aq short time (adjust as needed)
-    //al_rest(3.0); // Wait for 5 seconds
-    //al_clear_to_color(al_map_rgb(0, 0, 0));
-    //al_draw_bitmap(image, 50, 0, 0);
-    //al_flip_display();
-    // Clean up
-
-
-
-    //al_draw_bitmap(Dummyfires, 0, 0, 0);
-    //al_draw_bitmap(Dummyflash, 0, 0, 0);
     Button();
 
     al_rest(1.0);
