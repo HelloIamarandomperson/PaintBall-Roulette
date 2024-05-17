@@ -101,28 +101,7 @@ DWORD WINAPI AllegroMain(LPVOID lpParam) {
             }
             else if (strcmp(Allegro, "Player Fires") == 0){
                 memset(Allegro, '\0', sizeof(Allegro));
-                al_clear_to_color(al_map_rgb(0, 0, 0));
-                al_draw_bitmap(Table, 0, 0, 0);
-                al_draw_bitmap(Dummy, 0, 0, 0);
-                al_draw_bitmap(Player, 0, 0, 0);
-                al_draw_bitmap(Playerfires, 0, 0, 0);
-                al_flip_display();
-                al_rest(.9);
-                al_clear_to_color(al_map_rgb(0, 0, 0));
-                al_draw_bitmap(Table, 0, 0, 0);
-                al_draw_bitmap(Dummy, 0, 0, 0);
-                al_draw_bitmap(Player, 0, 0, 0);
-                al_draw_bitmap(Playerfires, 0, 0, 0);
-                al_draw_bitmap(Playerflash, 0, 0, 0);
-                al_flip_display();
-                al_rest(.3);
-                al_clear_to_color(al_map_rgb(0, 0, 0));
-                al_draw_bitmap(Table, 0, 0, 0);
-                al_draw_bitmap(Dummy, 0, 0, 0);
-                al_draw_bitmap(Player, 0, 0, 0);
-                al_draw_bitmap(Playerfires, 0, 0, 0);
-                al_flip_display();
-                al_rest(.4);
+                PlayerShootsDummy(Table, Dummy, Player, Playerfires, Playerflash);
             }
             else if (strcmp(Allegro, "Game Ends") == 0){
                 break;
