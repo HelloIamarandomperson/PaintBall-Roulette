@@ -6,8 +6,10 @@
 #include <stdio.h>
 #include <ctype.h>
 
-
-
+#include <allegro5/allegro.h>
+#include <allegro5/allegro_image.h>
+#include <allegro5/allegro_native_dialog.h>
+#include <allegro5/allegro_primitives.h>
 
 extern char Allegro[50]; // Declaration of the global variable
 
