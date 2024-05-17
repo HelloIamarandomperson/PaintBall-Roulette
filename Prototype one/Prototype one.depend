@@ -90,13 +90,12 @@
 	<allegro5/allegro_image.h>
 	<allegro5/allegro_native_dialog.h>
 
-1715970630 \\ad.ocdsb.ca\studenthome\9\emerk1\github\russanroulete\prototype one\headers.h
+1715970784 \\ad.ocdsb.ca\studenthome\9\emerk1\github\russanroulete\prototype one\headers.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<windows.h>
 	<time.h>
-	<stdio.h>
 	<ctype.h>
 	<allegro5/allegro.h>
 	<allegro5/allegro_image.h>

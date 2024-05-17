@@ -3,7 +3,6 @@
 #include <string.h> // String manipulation functions
 #include <windows.h>
 #include <time.h>
-#include <stdio.h>
 #include <ctype.h>
 
 #include <allegro5/allegro.h>
