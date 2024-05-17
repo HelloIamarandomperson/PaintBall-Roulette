@@ -1,12 +1,11 @@
 
-#include <windows.h>
-#include "Headers.h"
+
+
 #include "graphicsFunctions.cpp"
 
 // You must include the allegro header files
 
-const int SCREEN_W = 800;       // screen width
-const int SCREEN_H = 600 ;       // screen height
+
 
 
 void DummyShootsPlayer(ALLEGRO_BITMAP *Table, ALLEGRO_BITMAP *Dummyfires, ALLEGRO_BITMAP *Player, ALLEGRO_BITMAP *Dummyflash);
@@ -15,6 +14,8 @@ DWORD WINAPI AllegroMain(LPVOID lpParam) {
 	ALLEGRO_DISPLAY *display = nullptr;
 	// Initialize Allegro
 	al_init();
+	al_init_primitives_addon();
+    al_install_mouse();
 
 	// Initialize display
 	display = al_create_display(SCREEN_W, SCREEN_H);
@@ -82,7 +83,7 @@ DWORD WINAPI AllegroMain(LPVOID lpParam) {
 
     //al_draw_bitmap(Dummyfires, 0, 0, 0);
     //al_draw_bitmap(Dummyflash, 0, 0, 0);
-
+    Button();
 
     al_rest(1.0);
     al_draw_bitmap(Table, 0, 0, 0);

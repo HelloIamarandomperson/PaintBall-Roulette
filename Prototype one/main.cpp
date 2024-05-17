@@ -1,16 +1,12 @@
 
 //Including standard libraries
-#include <stdio.h> // Standard input/output functions
-#include <stdlib.h> // General utilities
-#include <string.h> // String manipulation functions
-#include <windows.h>
-#include <time.h>
+
 
 
 //Including the other files
 #include "functions.cpp"
-#include "GraphicsMain.cpp"
-#include "Headers.h"
+
+
 
 //Initializing the Functions
 char OpponentOrYou();

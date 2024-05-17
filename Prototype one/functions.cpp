@@ -1,14 +1,8 @@
 //Including standard libraries
-#include <stdio.h>
-#include <stdio.h>
-#include <time.h>
-#include <stdlib.h>
-#include <ctype.h>
-#include <windows.h>
-#include <string.h>
+
 
 //Including the other files
-#include "Headers.h"
+#include "GraphicsMain.cpp"
 
 struct inventory{
     //struct inventory is used to store the inventory of the player and the opponent.
