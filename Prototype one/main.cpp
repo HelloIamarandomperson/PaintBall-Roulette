@@ -6,16 +6,6 @@
 //Including the other files
 #include "functions.cpp"
 
-
-
-//Initializing the Functions
-char OpponentOrYou();
-void checkMag(int &slots, char cylinder[]);
-void LoadRandomBullets(int &bullets, int &slots, char cylinder[], int &reload);
-bool checkIfGameCont(int &OpponentHealth, int &yourHealth);
-bool Playerturn(int &yourHealth, int &OpponentHealth, char cylinder[], int &chamber, bool &nextTurnIsPlayer, int &money);
-bool OpponentDummyTurn(bool &nextTurnIsPlayer, int &chamber, char cylinder[], int &OpponentHealth, int &slots, int &yourHealth, int &bullets, int &reload);
-
 //Creating the thread.
 DWORD WINAPI AllegroMain(LPVOID lpParam);
 

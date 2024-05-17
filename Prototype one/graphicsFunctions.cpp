@@ -1,9 +1,7 @@
 
 
-
+//Including the other files
 #include "ButtonsTest.cpp"
-
-char Allegro[50] = {'\0'};
 
 
 void DummyShootsPlayer(ALLEGRO_BITMAP *Table, ALLEGRO_BITMAP *Dummyfires, ALLEGRO_BITMAP *Player, ALLEGRO_BITMAP *Dummyflash){

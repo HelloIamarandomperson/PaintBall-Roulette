@@ -134,11 +134,13 @@ bool Playerturn(int & yourHealth, int & OpponentHealth, char cylinder[], int & c
             OpponentHealth--;
         } else {
             printf("Click.... It was a blank...");
+            //if miss thats it.
         }
         return false;
     } else if (PlayersChoice == 'p') {
-
+        //if player goes to shop
         fflush(stdin);
+        //fflush to fix bug.
         printf("shop in beta testing right now");
         printf("\nwould you like to buy a double bullet? Cost 5 coins!\n");
         char PlayersChoice = PlayerChoice();

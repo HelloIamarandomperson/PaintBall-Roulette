@@ -1,9 +1,9 @@
+//Including the other file
 #include "Headers.h"
- //This code checks whether the mouse is within the bounds of the yellow square that has been drawn and checks whether it has been clicked
 
 int Button() {
 
-    ALLEGRO_EVENT_QUEUE * event_queue = nullptr;
+
     bool RunEvent = true;
 
     event_queue = al_create_event_queue();

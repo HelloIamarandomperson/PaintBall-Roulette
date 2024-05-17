@@ -1,17 +1,8 @@
-
-
-
+//Including the other files
 #include "graphicsFunctions.cpp"
 
-// You must include the allegro header files
-
-
-
-
-void DummyShootsPlayer(ALLEGRO_BITMAP *Table, ALLEGRO_BITMAP *Dummyfires, ALLEGRO_BITMAP *Player, ALLEGRO_BITMAP *Dummyflash);
 DWORD WINAPI AllegroMain(LPVOID lpParam) {
 
-	ALLEGRO_DISPLAY *display = nullptr;
 	// Initialize Allegro
 	al_init();
 	al_init_primitives_addon();
@@ -34,13 +25,7 @@ DWORD WINAPI AllegroMain(LPVOID lpParam) {
 	}
 
 	// Declare the bitmaps setting it's initial value to nullptr
-	ALLEGRO_BITMAP *Table = nullptr;
-    ALLEGRO_BITMAP *Dummy = nullptr;
-    ALLEGRO_BITMAP *Player = nullptr;
-    ALLEGRO_BITMAP *Dummyfires = nullptr;
-    ALLEGRO_BITMAP *Dummyflash = nullptr;
-    ALLEGRO_BITMAP *Playerfires = nullptr;
-    ALLEGRO_BITMAP *Playerflash = nullptr;
+
 
     // Create a display
     // Load the background image
