@@ -10,8 +10,8 @@
 #include <allegro5/allegro_native_dialog.h>
 #include <allegro5/allegro_primitives.h>
 char Allegro[50]; // Declaration of the global variable
+bool RunEvent = true;
 
-//
 
 ALLEGRO_DISPLAY *display = nullptr;
 ALLEGRO_BITMAP *Table = nullptr;

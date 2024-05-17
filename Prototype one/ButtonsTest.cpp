@@ -4,7 +4,7 @@
 int Button() {
 
 
-    bool RunEvent = true;
+
 
     event_queue = al_create_event_queue();
     al_register_event_source(event_queue, al_get_mouse_event_source());

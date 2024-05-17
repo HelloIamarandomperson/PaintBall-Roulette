@@ -15,7 +15,7 @@ DWORD WINAPI AllegroMain(LPVOID lpParam) {
                                  nullptr, ALLEGRO_MESSAGEBOX_ERROR);
        	return -1;
 	}
- 	al_set_window_title(display, "Allegro gamescreen");
+ 	al_set_window_title(display, "PaintBall Roulette");
 
 	// Initialize image add on
  	if (!al_init_image_addon()) {
@@ -37,7 +37,7 @@ DWORD WINAPI AllegroMain(LPVOID lpParam) {
     Playerfires = al_load_bitmap("PlayerGun.png");
     Playerflash = al_load_bitmap("PlayerFlash.png");
 
-
+    //check if images are missing
     if (!Table  || !Dummy || !Player || !Dummyfires || !Dummyflash || !Playerflash || !Playerfires) {
         al_show_native_message_box(display, "Error", "Error", "Failed to load image!",
                                     nullptr, ALLEGRO_MESSAGEBOX_ERROR);
@@ -51,6 +51,7 @@ DWORD WINAPI AllegroMain(LPVOID lpParam) {
 
     Button();
 
+    //Start up phase.
     al_rest(1.0);
     al_draw_bitmap(Table, 0, 0, 0);
     al_flip_display();
@@ -61,6 +62,8 @@ DWORD WINAPI AllegroMain(LPVOID lpParam) {
     al_draw_bitmap(Player, 0, 0, 0);
     al_flip_display();
     al_clear_to_color(al_map_rgb(0, 0, 0));
+
+
     while (true){
         if (Allegro[0] != '\0'){
             if (strcmp(Allegro, "Dummy Fires") == 0){
