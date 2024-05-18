@@ -11,6 +11,16 @@
 #include <allegro5/allegro_primitives.h>
 char Allegro[50]; // Declaration of the global variable
 bool RunEvent = true;
+int yourHealth = 5;
+int OpponentHealth = 3;
+bool nextTurnIsPlayer = true; //whos turn it is next (0 is the player, 1 is next person, etc...)
+bool yourTurn;
+int slots = 6;
+int bullets;
+int reload;
+int chamber;
+char cylinder[6];
+char response;
 
 
 ALLEGRO_DISPLAY *display = nullptr;

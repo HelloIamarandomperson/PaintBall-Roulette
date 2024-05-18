@@ -11,13 +11,16 @@ DWORD WINAPI AllegroMain(LPVOID lpParam);
 
 int main() {
     // Initializing the variables
-    int slots = 6;
-    int yourHealth = 5;
-    int OpponentHealth = 3;
+    al_init();
+	al_init_primitives_addon();
+    al_install_mouse();
+
+    event_queue = al_create_event_queue();
+    al_register_event_source(event_queue, al_get_mouse_event_source());
+
+    char cylinder[slots];
     srand(time(NULL));
-    int bullets;
-    char cylinder[slots] = {'\0'};
-    int reload;
+
     //making the variables needed for the thread
     HANDLE hThread;
     DWORD dwThreadId;
@@ -33,8 +36,7 @@ int main() {
     LoadRandomBullets(bullets, slots, cylinder, reload);
 
     checkMag(slots, cylinder); // Print the updated cylinder (for dev purposes)
-    bool nextTurnIsPlayer = true; //whos turn it is next (0 is the player, 1 is next person, etc...)
-    bool yourTurn;  //whos turn it is next (0 is the player, 1 is next person, etc...)
+     //whos turn it is next (0 is the player, 1 is next person, etc...)
     // round 1
     while (true) {
         //While true for a convenient infinite loop that can only be broken with breaks.

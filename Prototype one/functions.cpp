@@ -26,7 +26,7 @@ void checkMag(int & slots, char cylinder[]) {
 
 char PlayerChoice() {
     //PlayerChoice is a scanf function that lowers all responses to their lower form for convenience.
-    char response;
+    strcpy(Allegro, "Player Is Choosing");
     scanf("%c", & response);
     response = tolower(response);
     return response;
@@ -90,7 +90,28 @@ bool checkIfGameCont(int & OpponentHealth, int & yourHealth) {
     return true;
 }
 
-bool Playerturn(int & yourHealth, int & OpponentHealth, char cylinder[], int & chamber, bool & nextTurnIsPlayer, inventory & PlayerInventory) {
+void PlayerShootsOpponent(bool &nextTurnIsPlayer, int &chamber, char cylinder[], int &OpponentHealth){
+    //if the player shoots the opponent
+    nextTurnIsPlayer = false;
+    //make it so the Opponents turn is next.
+    strcpy(Allegro, "Player Fires");
+    //Makes it so the screen shows the player shooting.
+    Sleep(1000);
+    if (cylinder[chamber] == 'B') {
+        //If chamber contains bullet
+        fflush(stdin);
+        //fflush here to fix bug
+        printf("Click.... Bang! It was a live round!");
+        //opponent loses health.
+        OpponentHealth--;
+    } else {
+        printf("Click.... It was a blank...");
+            //if miss thats it.
+    }
+
+}
+
+bool Playerturn(int &yourHealth, int &OpponentHealth, char cylinder[], int &chamber, bool &nextTurnIsPlayer, inventory &PlayerInventory) {
     fflush(stdin);
     //fflush to fix bug.
     printf("\nYou have %i health.", yourHealth);
@@ -119,23 +140,7 @@ bool Playerturn(int & yourHealth, int & OpponentHealth, char cylinder[], int & c
             return false;
         }
     } else if (PlayersChoice == 'o') {
-        //if the player shoots the opponent
-        nextTurnIsPlayer = false;
-        //make it so the Opponents turn is next.
-        strcpy(Allegro, "Player Fires");
-        //Makes it so the screen shows the player shooting.
-        Sleep(2000);
-        if (cylinder[chamber] == 'B') {
-            //If chamber contains bullet
-            fflush(stdin);
-            //fflush here to fix bug
-            printf("Click.... Bang! It was a live round!");
-            //opponent loses health.
-            OpponentHealth--;
-        } else {
-            printf("Click.... It was a blank...");
-            //if miss thats it.
-        }
+        PlayerShootsOpponent(nextTurnIsPlayer, chamber, cylinder, OpponentHealth);
         return false;
     } else if (PlayersChoice == 'p') {
         //if player goes to shop
@@ -162,3 +167,6 @@ bool Playerturn(int & yourHealth, int & OpponentHealth, char cylinder[], int & c
     }
     return true;
 }
+
+
+

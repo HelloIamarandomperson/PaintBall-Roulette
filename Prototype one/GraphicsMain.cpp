@@ -2,11 +2,7 @@
 #include "graphicsFunctions.cpp"
 
 DWORD WINAPI AllegroMain(LPVOID lpParam) {
-
 	// Initialize Allegro
-	al_init();
-	al_init_primitives_addon();
-    al_install_mouse();
 
 	// Initialize display
 	display = al_create_display(SCREEN_W, SCREEN_H);
@@ -49,7 +45,6 @@ DWORD WINAPI AllegroMain(LPVOID lpParam) {
     // Optionally wait for user input
     // al_wait_for_event(event_queue, &event);
 
-    Button();
 
     //Start up phase.
     al_rest(1.0);
@@ -66,7 +61,13 @@ DWORD WINAPI AllegroMain(LPVOID lpParam) {
 
     while (true){
         if (Allegro[0] != '\0'){
-            if (strcmp(Allegro, "Dummy Fires") == 0){
+            if (strcmp(Allegro, "Player Is Choosing") == 0){
+                memset(Allegro, '\0', sizeof(Allegro));
+                Button(cylinder, chamber);
+
+            }
+            else if (strcmp(Allegro, "Dummy Fires") == 0){
+                memset(Allegro, '\0', sizeof(Allegro));
                 DummyShootsPlayer(Table, Dummyfires, Player, Dummyflash);
             }
             else if (strcmp(Allegro, "Player Fires") == 0){
@@ -74,23 +75,27 @@ DWORD WINAPI AllegroMain(LPVOID lpParam) {
                 PlayerShootsDummy(Table, Dummy, Player, Playerfires, Playerflash);
             }
             else if (strcmp(Allegro, "Game Ends") == 0){
-                break;
+                RunEvent = false;
             }
         }
         else{
         al_rest(0); // Wait for 1 second
         al_clear_to_color(al_map_rgb(0, 0, 0));
+        al_draw_rectangle(0, 600, 200, 800, al_map_rgb(200, 200, 0), 10);
         al_draw_bitmap(Table, 0, 0, 0);
         al_draw_bitmap(Dummy, 0, 0, 0);
         al_draw_bitmap(Player, 0, 0, 0);
         al_flip_display();
+        //Button(cylinder, chamber);
     // Clean up
         al_rest(.1); // Wait for 1 second
         al_clear_to_color(al_map_rgb(0, 0, 0));
+        al_draw_rectangle(0, 600, 200, 800, al_map_rgb(200, 200, 0), 10);
         al_draw_bitmap(Table, 0, 0, 0);
         al_draw_bitmap(Dummy, 0, 0, 0);
         al_draw_bitmap(Player, 0, 0, 0);
         al_flip_display();
+        //Button(cylinder, chamber);
 
         }
     }
