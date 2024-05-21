@@ -87,7 +87,7 @@ DWORD WINAPI AllegroMain(LPVOID lpParam) {
         al_draw_bitmap(Player, 0, 0, 0);
         al_flip_display();
         //Button(cylinder, chamber);
-    // Clean up
+        // Clean up
         al_rest(.1); // Wait for 1 second
         al_clear_to_color(al_map_rgb(0, 0, 0));
         al_draw_rectangle(0, 600, 200, 800, al_map_rgb(200, 200, 0), 10);

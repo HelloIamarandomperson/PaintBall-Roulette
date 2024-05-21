@@ -21,8 +21,10 @@ int reload;
 int chamber;
 char cylinder[6];
 char response;
+bool Gamerun = true;
 
 
+ALLEGRO_TIMER *timer = nullptr;
 ALLEGRO_DISPLAY *display = nullptr;
 ALLEGRO_BITMAP *Table = nullptr;
 ALLEGRO_BITMAP *Dummy = nullptr;
@@ -35,5 +37,7 @@ ALLEGRO_BITMAP *Playerflash = nullptr;
 
 ALLEGRO_EVENT_QUEUE *event_queue = nullptr;
 
+
+const float FPS = 60;
 const int SCREEN_W = 800;       // screen width
 const int SCREEN_H = 800 ;       // screen height
