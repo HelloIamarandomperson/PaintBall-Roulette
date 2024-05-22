@@ -5,7 +5,6 @@
 #include "functions.cpp"
 
 // Creating the thread.
-DWORD WINAPI AllegroMain(LPVOID lpParam);
 
 int main() {
     // Initializing the variables
@@ -26,15 +25,10 @@ int main() {
     srand(time(NULL));
 
     // making the variables needed for the thread
-    HANDLE hThread;
-    DWORD dwThreadId;
     // making the thread.
-    hThread = CreateThread(NULL, 0, AllegroMain, NULL, 0, &dwThreadId);
+    AllegroMain();
     // If thread does not run make error message
-    if (hThread == NULL) {
-        printf("Error creating thread\n");
-        return 1;
-    }
+
 
     // Load the bullets randomly into the cylinder
     LoadRandomBullets(bullets, slots, cylinder, reload);
@@ -97,7 +91,5 @@ int main() {
     }
     strcpy(Allegro, "Game Ends");
     // Runs command ending allegro
-    WaitForSingleObject(hThread, INFINITE);
-    CloseHandle(hThread);
     // ends thread.
 }

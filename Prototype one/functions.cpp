@@ -49,10 +49,8 @@ void LoadRandomBullets(int & bullets, int & slots, char cylinder[], int & reload
         }
     }
     int blanks = slots - bullets;
-    Sleep(1000);
     printf("\nThere are %i bullets and %i blanks in the gun.\n", bullets, blanks);
     printf("The gun has been loaded randomly, and has a total of %i slots.\n", slots);
-    Sleep(1000);
 }
 
 bool OpponentDummyTurn(bool & nextTurnIsPlayer, int & chamber, char cylinder[], int & OpponentHealth, int & slots, int & yourHealth, int & bullets, int & reload) {
@@ -60,11 +58,8 @@ bool OpponentDummyTurn(bool & nextTurnIsPlayer, int & chamber, char cylinder[], 
     if (whoTheyShootin == 1) {
         nextTurnIsPlayer = true;
         printf("\nThey raise the gun...");
-        Sleep(500);
         strcpy(Allegro, "Dummy Fires");
-        Sleep(500);
         printf("\ntowards you...");
-        Sleep(1000);
         if (cylinder[chamber] == 'B') {
             //If chamber contains bullet.
             fflush(stdin);
@@ -96,7 +91,6 @@ void PlayerShootsOpponent(bool &nextTurnIsPlayer, int &chamber, char cylinder[],
     //make it so the Opponents turn is next.
     strcpy(Allegro, "Player Fires");
     //Makes it so the screen shows the player shooting.
-    Sleep(1000);
     if (cylinder[chamber] == 'B') {
         //If chamber contains bullet
         fflush(stdin);
