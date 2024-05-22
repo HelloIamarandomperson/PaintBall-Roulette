@@ -45,6 +45,7 @@ int main() {
             // with breaks.
                 // For loop for until chamber is empty.
                 if (nextTurnIsPlayer == true) {
+
                     // if next player is supposed to be the player it sets the
                     // variable to true.
                     yourTurn = true;
@@ -54,9 +55,7 @@ int main() {
                 }
                 if (yourTurn == true) {
                     // if it is the players turn.
-                    if (Playerturn(yourHealth, OpponentHealth, cylinder,
-                                   chamber, nextTurnIsPlayer,
-                                   PlayerInventory) == false) {
+                    if (Playerturn(yourHealth, OpponentHealth, cylinder, chamber, nextTurnIsPlayer, PlayerInventory) == false) {
                         // Function for player's turn.
                     }
                 }
