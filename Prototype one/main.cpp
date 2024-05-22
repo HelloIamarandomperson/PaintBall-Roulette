@@ -47,7 +47,6 @@ int main() {
     while (Gamerun == true) {
         ALLEGRO_EVENT eventOrder;
         al_wait_for_event(event_queue, &eventOrder);
-        while (true) {
             // While true for a convenient infinite loop that can only be broken
             // with breaks.
             for (int chamber = 0; chamber < slots; chamber++) {
@@ -95,8 +94,6 @@ int main() {
             checkMag(slots, cylinder);
             // checkMag is for dev pourposes only and shows the inside of the
             // maganzine
-        }
-        Gamerun = false;
     }
     strcpy(Allegro, "Game Ends");
     // Runs command ending allegro
