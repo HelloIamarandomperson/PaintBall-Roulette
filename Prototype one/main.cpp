@@ -37,16 +37,13 @@ int main() {
                                 // whos turn it is next (0 is the player, 1 is
                                 // next person, etc...)
     // round 1
-
+    int chamber = 0;
     while (Gamerun == true) {
         ALLEGRO_EVENT eventOrder;
         al_wait_for_event(event_queue, &eventOrder);
             // While true for a convenient infinite loop that can only be broken
             // with breaks.
-            for (int chamber = 0; chamber < slots; chamber++) {
                 // For loop for until chamber is empty.
-                fflush(stdin);
-                // fflush to stop a glitch from happening.
                 if (nextTurnIsPlayer == true) {
                     // if next player is supposed to be the player it sets the
                     // variable to true.
@@ -55,39 +52,40 @@ int main() {
                     // else it is the opponents turn
                     yourTurn = false;
                 }
-                while (yourTurn == true) {
+                if (yourTurn == true) {
                     // if it is the players turn.
                     if (Playerturn(yourHealth, OpponentHealth, cylinder,
                                    chamber, nextTurnIsPlayer,
                                    PlayerInventory) == false) {
                         // Function for player's turn.
-                        break;
                     }
                 }
-                while (yourTurn == false) {
+                if (yourTurn == false) {
                     // If not player turn
                     if (OpponentDummyTurn(nextTurnIsPlayer, chamber, cylinder, OpponentHealth, slots, yourHealth, bullets, reload) == false) {
                         // run function for the opponents turn
                         nextTurnIsPlayer = true;
-                        break;
                     }
-                }
-                if (checkIfGameCont(OpponentHealth, yourHealth) == false) {
-                    // if the game should have ended the game ends
-                    break;
-                }
             }
             if (checkIfGameCont(OpponentHealth, yourHealth) == false) {
                 // if the game should have ended the game ends
                 break;
             }
+
+            frameOfGame();
+
             fflush(stdin);
             // fflush to fix a bug.
-            LoadRandomBullets(bullets, slots, cylinder, reload);
-            // If the code gets here then the cylinder is empty so I reload here
-            checkMag(slots, cylinder);
-            // checkMag is for dev pourposes only and shows the inside of the
-            // maganzine
+
+            if (chamber == slots){
+                LoadRandomBullets(bullets, slots, cylinder, reload);
+                // If the code gets here then the cylinder is empty so I reload here
+                checkMag(slots, cylinder);
+                // checkMag is for dev pourposes only and shows the inside of the
+                // maganzine
+            }
+            chamber++;
+
     }
     strcpy(Allegro, "Game Ends");
     // Runs command ending allegro
