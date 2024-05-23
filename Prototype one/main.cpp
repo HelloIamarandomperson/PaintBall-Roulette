@@ -43,7 +43,7 @@ int main() {
         al_wait_for_event(event_queue, &eventOrder);
             // While true for a convenient infinite loop that can only be broken
             // with breaks.
-                // For loop for until chamber is empty.
+            // For loop for until chamber is empty.
                 if (nextTurnIsPlayer == true) {
 
                     // if next player is supposed to be the player it sets the
