@@ -32,7 +32,7 @@ ALLEGRO_BITMAP *Dummyfires = nullptr;
 ALLEGRO_BITMAP *Dummyflash = nullptr;
 ALLEGRO_BITMAP *Playerfires = nullptr;
 ALLEGRO_BITMAP *Playerflash = nullptr;
-
+ALLEGRO_BITMAP *Buttons = nullptr;
 
 ALLEGRO_EVENT_QUEUE *event_queue = nullptr;
 

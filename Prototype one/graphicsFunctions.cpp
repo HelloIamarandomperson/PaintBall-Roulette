@@ -2,6 +2,7 @@
 #include "Headers.h"
 
 void PlayerShootsOpponent(bool &nextTurnIsPlayer, int &chamber, char cylinder[], int &OpponentHealth);
+
 int Button(char cylinder[], int &chamber) {
     RunEvent = true;
     // first 2 is coords for the top vertices's's, next 2 is for the bottom one.
@@ -95,18 +96,18 @@ bool frameOfGame(){
         }
         else{
         al_clear_to_color(al_map_rgb(0, 0, 0));
-        al_draw_rectangle(0, 600, 200, 800, al_map_rgb(200, 200, 0), 10);
         al_draw_bitmap(Table, 0, 0, 0);
         al_draw_bitmap(Dummy, 0, 0, 0);
         al_draw_bitmap(Player, 0, 0, 0);
+        al_draw_bitmap(Buttons, 0, 600, 0);
         al_flip_display();
         //Button(cylinder, chamber);
         // Clean up
         al_clear_to_color(al_map_rgb(0, 0, 0));
-        al_draw_rectangle(0, 600, 200, 800, al_map_rgb(200, 200, 0), 10);
         al_draw_bitmap(Table, 0, 0, 0);
         al_draw_bitmap(Dummy, 0, 0, 0);
         al_draw_bitmap(Player, 0, 0, 0);
+        al_draw_bitmap(Buttons, 0, 600, 0);
         al_flip_display();
         //Button(cylinder, chamber);
         }

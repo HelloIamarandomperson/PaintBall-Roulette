@@ -32,9 +32,10 @@ int AllegroMain() {
     Dummyflash = al_load_bitmap("DummyFlash.png");
     Playerfires = al_load_bitmap("PlayerGun.png");
     Playerflash = al_load_bitmap("PlayerFlash.png");
+    Buttons = al_load_bitmap("buttons.png");
 
     //check if images are missing
-    if (!Table  || !Dummy || !Player || !Dummyfires || !Dummyflash || !Playerflash || !Playerfires) {
+    if (!Table  || !Dummy || !Player || !Dummyfires || !Dummyflash || !Playerflash || !Playerfires || !Buttons) {
         al_show_native_message_box(display, "Error", "Error", "Failed to load image!",
                                     nullptr, ALLEGRO_MESSAGEBOX_ERROR);
         al_destroy_display(display);
@@ -55,6 +56,10 @@ int AllegroMain() {
     al_flip_display();
     al_rest(.2);
     al_draw_bitmap(Player, 0, 0, 0);
+    al_flip_display();
+    al_clear_to_color(al_map_rgb(0, 0, 0));
+    al_rest(.2);
+    al_draw_bitmap(Buttons, 0, 600, 0);
     al_flip_display();
     al_clear_to_color(al_map_rgb(0, 0, 0));
 
