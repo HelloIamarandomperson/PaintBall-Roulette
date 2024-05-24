@@ -1,6 +1,17 @@
 //Including the other files
-#include "graphicsFunctions.cpp"
-
+#include "Headers.h"
+extern ALLEGRO_TIMER *timer;
+extern ALLEGRO_DISPLAY *display;
+extern ALLEGRO_BITMAP *Table;
+extern ALLEGRO_BITMAP *Dummy;
+extern ALLEGRO_BITMAP *Player;
+extern ALLEGRO_BITMAP *Dummyfires;
+extern ALLEGRO_BITMAP *Dummyflash;
+extern ALLEGRO_BITMAP *Playerfires;
+extern ALLEGRO_BITMAP *Playerflash;
+extern ALLEGRO_BITMAP *Buttons;
+extern ALLEGRO_EVENT_QUEUE *event_queue;
+extern ALLEGRO_EVENT eventOrder;
 int AllegroMain() {
 	// Initialize Allegro
 

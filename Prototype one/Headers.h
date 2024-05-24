@@ -8,35 +8,31 @@
 #include <allegro5/allegro_image.h>
 #include <allegro5/allegro_native_dialog.h>
 #include <allegro5/allegro_primitives.h>
-char Allegro[50]; // Declaration of the global variable
-bool RunEvent = true;
-int yourHealth = 5;
-int OpponentHealth = 3;
-bool nextTurnIsPlayer = true; //whos turn it is next (0 is the player, 1 is next person, etc...)
-bool yourTurn;
-int slots = 6;
-int bullets;
-int reload;
-int chamber;
-char cylinder[6];
-char response;
-bool Gamerun = true;
+
+struct inventory {
+    //struct inventory is used to store the inventory of the player and the opponent.
+    int Money = 0;
+    int DoubleBullet = 0;
+};
 
 
-ALLEGRO_TIMER *timer = nullptr;
-ALLEGRO_DISPLAY *display = nullptr;
-ALLEGRO_BITMAP *Table = nullptr;
-ALLEGRO_BITMAP *Dummy = nullptr;
-ALLEGRO_BITMAP *Player = nullptr;
-ALLEGRO_BITMAP *Dummyfires = nullptr;
-ALLEGRO_BITMAP *Dummyflash = nullptr;
-ALLEGRO_BITMAP *Playerfires = nullptr;
-ALLEGRO_BITMAP *Playerflash = nullptr;
-ALLEGRO_BITMAP *Buttons = nullptr;
 
-ALLEGRO_EVENT_QUEUE *event_queue = nullptr;
+
+
 
 
 const float FPS = 60;
 const int SCREEN_W = 800;       // screen width
 const int SCREEN_H = 800 ;       // screen height
+void checkMag(int & slots, char cylinder[]);
+char PlayerChoice();
+void LoadRandomBullets(int & bullets, int & slots, char cylinder[], int & reload);
+bool OpponentDummyTurn(bool & nextTurnIsPlayer, int & chamber, char cylinder[], int & OpponentHealth, int & slots, int & yourHealth, int & bullets, int & reload);
+bool checkIfGameCont(int & OpponentHealth, int & yourHealth);
+void PlayerShootsOpponent(bool &nextTurnIsPlayer, int &chamber, char cylinder[], int &OpponentHealth);
+bool Playerturn(int &yourHealth, int &OpponentHealth, char cylinder[], int &chamber, bool &nextTurnIsPlayer, inventory &PlayerInventory);
+int AllegroMain();
+int Button(char cylinder[], int &chamber);
+void DummyShootsPlayer(ALLEGRO_BITMAP *Table, ALLEGRO_BITMAP *Dummyfires, ALLEGRO_BITMAP *Player, ALLEGRO_BITMAP *Dummyflash);
+void PlayerShootsDummy(ALLEGRO_BITMAP *Table, ALLEGRO_BITMAP *Dummy, ALLEGRO_BITMAP *Player, ALLEGRO_BITMAP *Playerfires, ALLEGRO_BITMAP *Playerflash);
+bool frameOfGame();

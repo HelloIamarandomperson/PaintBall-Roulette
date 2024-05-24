@@ -1,19 +1,33 @@
 //Including the other file
 #include "Headers.h"
+extern ALLEGRO_TIMER *timer;
+extern ALLEGRO_DISPLAY *display;
+extern ALLEGRO_BITMAP *Table;
+extern ALLEGRO_BITMAP *Dummy;
+extern ALLEGRO_BITMAP *Player;
+extern ALLEGRO_BITMAP *Dummyfires;
+extern ALLEGRO_BITMAP *Dummyflash;
+extern ALLEGRO_BITMAP *Playerfires;
+extern ALLEGRO_BITMAP *Playerflash;
+extern ALLEGRO_BITMAP *Buttons;
+extern ALLEGRO_EVENT_QUEUE *event_queue;
+extern ALLEGRO_EVENT eventOrder;
 
-void PlayerShootsOpponent(bool &nextTurnIsPlayer, int &chamber, char cylinder[], int &OpponentHealth);
+extern char Allegro[50]; // Declaration of the global variable
+extern bool RunEvent;
+extern int OpponentHealth;
+extern bool nextTurnIsPlayer; //whos turn it is next (0 is the player, 1 is next person, etc...)
+extern int chamber;
+extern char cylinder[];
+extern char response;
 
 int Button(char cylinder[], int &chamber) {
-    RunEvent = true;
     // first 2 is coords for the top vertices's's, next 2 is for the bottom one.
-    while (RunEvent){
-        ALLEGRO_EVENT ButtonEvent;
-        al_wait_for_event(event_queue, &ButtonEvent);
-        if (ButtonEvent.mouse.x >= 0 && ButtonEvent.mouse.y >= 600 && ButtonEvent.mouse.x <= 200 && ButtonEvent.mouse.y <= 800 && ButtonEvent.type == ALLEGRO_EVENT_MOUSE_BUTTON_UP) {
-            PlayerShootsOpponent(nextTurnIsPlayer, chamber, cylinder, OpponentHealth);
-            RunEvent = false;
-            response = 'o';
-        }
+    al_wait_for_event(event_queue, &eventOrder);
+    if (eventOrder.mouse.x >= 0 && eventOrder.mouse.y >= 600 && eventOrder.mouse.x <= 200 && eventOrder.mouse.y <= 800 && eventOrder.type == ALLEGRO_EVENT_MOUSE_BUTTON_UP) {
+        PlayerShootsOpponent(nextTurnIsPlayer, chamber, cylinder, OpponentHealth);
+        response = 'o';
+        strcpy(Allegro, "Button Pressed");
     }
     return 0;
 }
@@ -71,7 +85,7 @@ void PlayerShootsDummy(ALLEGRO_BITMAP *Table, ALLEGRO_BITMAP *Dummy, ALLEGRO_BIT
 bool frameOfGame(){
     if (Allegro[0] != '\0'){
             if (strcmp(Allegro, "Player Is Choosing") == 0){
-                memset(Allegro, '\0', sizeof(Allegro));
+                al_wait_for_event(event_queue, &eventOrder);
                 Button(cylinder, chamber);
                 return true;
 

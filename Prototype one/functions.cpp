@@ -1,16 +1,22 @@
 //Including standard libraries
 
 //Including the other files
-#include "GraphicsMain.cpp"
-
-struct inventory {
-    //struct inventory is used to store the inventory of the player and the opponent.
-    int Money = 0;
-    int DoubleBullet = 0;
-};
+#include "Headers.h"
+extern char Allegro[50];
+extern char response;
 //initializes player inventory.
-inventory PlayerInventory;
-
+extern ALLEGRO_TIMER *timer;
+extern ALLEGRO_DISPLAY *display;
+extern ALLEGRO_BITMAP *Table;
+extern ALLEGRO_BITMAP *Dummy;
+extern ALLEGRO_BITMAP *Player;
+extern ALLEGRO_BITMAP *Dummyfires;
+extern ALLEGRO_BITMAP *Dummyflash;
+extern ALLEGRO_BITMAP *Playerfires;
+extern ALLEGRO_BITMAP *Playerflash;
+extern ALLEGRO_BITMAP *Buttons;
+extern ALLEGRO_EVENT_QUEUE *event_queue;
+extern ALLEGRO_EVENT eventOrder;
 void checkMag(int & slots, char cylinder[]) {
     //This is a dev function to check the Mag inside
     printf("\n");
@@ -26,9 +32,17 @@ void checkMag(int & slots, char cylinder[]) {
 
 char PlayerChoice() {
     //PlayerChoice is a scanf function that lowers all responses to their lower form for convenience.
+
     strcpy(Allegro, "Player Is Choosing");
-    scanf("%c", & response);
-    response = tolower(response);
+    //scanf("%c", &response);
+    al_wait_for_event(event_queue, &eventOrder);
+    if (Allegro == "Button Pressed"){
+        memset(Allegro, '\0', sizeof(Allegro));
+        response = tolower(response);
+
+    }
+
+
     return response;
 }
 
@@ -108,56 +122,63 @@ void PlayerShootsOpponent(bool &nextTurnIsPlayer, int &chamber, char cylinder[],
 bool Playerturn(int &yourHealth, int &OpponentHealth, char cylinder[], int &chamber, bool &nextTurnIsPlayer, inventory &PlayerInventory) {
     fflush(stdin);
     //fflush to fix bug.
-    printf("\nYou have %i health.", yourHealth);
-    printf("\nYour opponent has %i health.", OpponentHealth);
-    printf("\nYou have %i coins and %i DoubleBullets", PlayerInventory.Money, PlayerInventory.DoubleBullet);
-    printf("\nIf you choose to shoot yourself (s), you get to shoot again. \nIf you choose to shoot your opponent (o), it is no longer your turn. If you choose to go to shop press (p)\n\n");
+    if (Allegro[0] == '\0'){
+        printf("\nYou have %i health.", yourHealth);
+        printf("\nYour opponent has %i health.", OpponentHealth);
+        printf("\nYou have %i coins and %i DoubleBullets", PlayerInventory.Money, PlayerInventory.DoubleBullet);
+        printf("\nIf you choose to shoot yourself (s), you get to shoot again. \nIf you choose to shoot your opponent (o), it is no longer your turn. If you choose to go to shop press (p)\n\n");
+    }
     char PlayersChoice = PlayerChoice();
+    strcpy(Allegro, "Button check");
+    al_wait_for_event(event_queue, &eventOrder);
+
     //Self explanatory.
-    if (PlayersChoice == 's') {
-        //if player choose to shoot themselves
-        nextTurnIsPlayer = true;
-        //Makes it so the next turn is still the player
-        if (cylinder[chamber] == 'B') {
-            //if chamber contains bullet.
-            printf("Click... Bang! ...That probably hurt... you should like, not shoot yourself... or something...");
-            yourHealth--;
-            //lowers health by one
-            PlayerInventory.Money += 15;
-            //Adds money.
-            return false;
-        } else {
-            printf("Click.... It was a blank... Bit of a gambler, are you?\n");
-            //Adds money.
-            PlayerInventory.Money += 5;
-
-            return false;
-        }
-    } else if (PlayersChoice == 'o') {
-        PlayerShootsOpponent(nextTurnIsPlayer, chamber, cylinder, OpponentHealth);
-        return false;
-    } else if (PlayersChoice == 'p') {
-        //if player goes to shop
-        fflush(stdin);
-        //fflush to fix bug.
-        printf("shop in beta testing right now");
-        printf("\nwould you like to buy a double bullet? Cost 5 coins!\n");
-        char PlayersChoice = PlayerChoice();
-        if (PlayersChoice == 'y') {
-            if (PlayerInventory.Money < 5) {
-                printf("\nHaha poor");
+    if (Allegro == "Button Pressed"){
+        if (PlayersChoice == 's') {
+            //if player choose to shoot themselves
+            nextTurnIsPlayer = true;
+            //Makes it so the next turn is still the player
+            if (cylinder[chamber] == 'B') {
+                //if chamber contains bullet.
+                printf("Click... Bang! ...That probably hurt... you should like, not shoot yourself... or something...");
+                yourHealth--;
+                //lowers health by one
+                PlayerInventory.Money += 15;
+                //Adds money.
+                return false;
             } else {
-                printf("\n Here you go");
-                PlayerInventory.Money -= 5;
-                PlayerInventory.DoubleBullet += 1;
+                printf("Click.... It was a blank... Bit of a gambler, are you?\n");
+                //Adds money.
+                PlayerInventory.Money += 5;
+
+                return false;
             }
-        } else {
+        } else if (PlayersChoice == 'o') {
+            PlayerShootsOpponent(nextTurnIsPlayer, chamber, cylinder, OpponentHealth);
+            return false;
+        } else if (PlayersChoice == 'p') {
+            //if player goes to shop
+            fflush(stdin);
+            //fflush to fix bug.
+            printf("shop in beta testing right now");
+            printf("\nwould you like to buy a double bullet? Cost 5 coins!\n");
+            char PlayersChoice = PlayerChoice();
+            if (PlayersChoice == 'y') {
+                if (PlayerInventory.Money < 5) {
+                    printf("\nHaha poor");
+                } else {
+                    printf("\n Here you go");
+                    PlayerInventory.Money -= 5;
+                    PlayerInventory.DoubleBullet += 1;
+                    }
+            } else {
             printf("\nok, thanks for visiting the shop!");
+            }
+
+        } else {
+            printf("Invalid Option, s or o or p");
+
         }
-
-    } else {
-        printf("Invalid Option, s or o or p");
-
     }
     return true;
 }
