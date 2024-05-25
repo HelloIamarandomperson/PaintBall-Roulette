@@ -23,8 +23,8 @@
 	<ctype.h>
 	<windows.h>
 
-1715987458 source:c:\users\elaine\documents\github\russanroulete\prototype one\main.cpp
-	"functions.cpp"
+1716583091 source:c:\users\elaine\documents\github\russanroulete\prototype one\main.cpp
+	"Headers.h"
 
 1715987284 c:\users\elaine\documents\github\russanroulete\prototype one\functions.cpp
 	"GraphicsMain.cpp"
@@ -51,11 +51,10 @@
 	<allegro5/allegro_image.h>
 	<allegro5/allegro_native_dialog.h>
 
-1715987423 c:\users\elaine\documents\github\russanroulete\prototype one\headers.h
+1716584599 c:\users\elaine\documents\github\russanroulete\prototype one\headers.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
-	<windows.h>
 	<time.h>
 	<ctype.h>
 	<allegro5/allegro.h>
@@ -69,12 +68,8 @@
 	<allegro5/allegro_image.h>
 	<allegro5/allegro_native_dialog.h>
 
-1715819135 source:c:\users\elaine\documents\github\russanroulete\prototype one\graphicsmain.cpp
-	<windows.h>
+1716582657 source:c:\users\elaine\documents\github\russanroulete\prototype one\graphicsmain.cpp
 	"Headers.h"
-	<allegro5/allegro.h>
-	<allegro5/allegro_image.h>
-	<allegro5/allegro_native_dialog.h>
 
 1715987458 c:\users\elaine\documents\github\russanroulete\prototype one\graphicsmain.cpp
 	"graphicsFunctions.cpp"
@@ -130,5 +125,11 @@
 	<allegro5/allegro_primitives.h>
 
 1716571789 source:\\ad.ocdsb.ca\studenthome\9\emerk1\github\russanroulete\prototype one\functions.cpp
+	"Headers.h"
+
+1716583415 source:c:\users\elaine\documents\github\russanroulete\prototype one\functions.cpp
+	"Headers.h"
+
+1716585688 source:c:\users\elaine\documents\github\russanroulete\prototype one\graphicsfunctions.cpp
 	"Headers.h"
 

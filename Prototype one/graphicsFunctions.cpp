@@ -22,9 +22,15 @@ extern char cylinder[];
 extern char response;
 
 int Button(char cylinder[], int &chamber) {
+    printf("t");
     // first 2 is coords for the top vertices's's, next 2 is for the bottom one.
     al_wait_for_event(event_queue, &eventOrder);
-    if (eventOrder.mouse.x >= 0 && eventOrder.mouse.y >= 600 && eventOrder.mouse.x <= 200 && eventOrder.mouse.y <= 800 && eventOrder.type == ALLEGRO_EVENT_MOUSE_BUTTON_UP) {
+    if (eventOrder.type != ALLEGRO_EVENT_MOUSE_BUTTON_DOWN){
+        printf("AAAAAAAAAAAAAAAAA");
+    }
+
+    if (eventOrder.mouse.x >= 0 && eventOrder.mouse.y >= 600 && eventOrder.mouse.x <= 200 && eventOrder.mouse.y <= 800 && eventOrder.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN) {
+
         PlayerShootsOpponent(nextTurnIsPlayer, chamber, cylinder, OpponentHealth);
         response = 'o';
         strcpy(Allegro, "Button Pressed");
@@ -84,6 +90,7 @@ void PlayerShootsDummy(ALLEGRO_BITMAP *Table, ALLEGRO_BITMAP *Dummy, ALLEGRO_BIT
 
 bool frameOfGame(){
     if (Allegro[0] != '\0'){
+
             if (strcmp(Allegro, "Player Is Choosing") == 0){
                 al_wait_for_event(event_queue, &eventOrder);
                 Button(cylinder, chamber);

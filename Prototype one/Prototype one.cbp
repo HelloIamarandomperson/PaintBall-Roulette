@@ -36,7 +36,6 @@
 		</Unit>
 		<Unit filename="GraphicsMain.cpp">
 			<Option weight="0" />
-			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="Headers.h">
 			<Option compile="1" />
@@ -45,11 +44,8 @@
 		</Unit>
 		<Unit filename="functions.cpp">
 			<Option weight="80" />
-			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
-		<Unit filename="graphicsFunctions.cpp">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
+		<Unit filename="graphicsFunctions.cpp" />
 		<Unit filename="main.cpp">
 			<Option weight="100" />
 		</Unit>

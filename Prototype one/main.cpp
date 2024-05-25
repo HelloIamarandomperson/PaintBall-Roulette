@@ -41,9 +41,6 @@ int main() {
 
     timer = al_create_timer(1 / FPS);
 
-    al_register_event_source(event_queue, al_get_timer_event_source(timer));
-
-
 
     al_start_timer(timer);
     if (!timer) {
@@ -51,7 +48,10 @@ int main() {
         return -1;
     }
 
-    al_get_mouse_event_source();
+
+    al_register_event_source(event_queue, al_get_timer_event_source(timer));
+
+    //al_get_mouse_event_source();
     char cylinder[slots];
     srand(time(NULL));
 
@@ -112,7 +112,6 @@ int main() {
                 // checkMag is for dev pourposes only and shows the inside of the
                 // maganzine
             }
-            chamber++;
 
     }
     strcpy(Allegro, "Game Ends");

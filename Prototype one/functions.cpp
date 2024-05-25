@@ -129,7 +129,6 @@ bool Playerturn(int &yourHealth, int &OpponentHealth, char cylinder[], int &cham
         printf("\nIf you choose to shoot yourself (s), you get to shoot again. \nIf you choose to shoot your opponent (o), it is no longer your turn. If you choose to go to shop press (p)\n\n");
     }
     char PlayersChoice = PlayerChoice();
-    strcpy(Allegro, "Button check");
     al_wait_for_event(event_queue, &eventOrder);
 
     //Self explanatory.
