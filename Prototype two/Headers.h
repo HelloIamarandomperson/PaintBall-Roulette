@@ -21,7 +21,7 @@ struct inventory {
 
 
 
-const float FPS = 60;
+const float FPS = 120;
 const int SCREEN_W = 800;       // screen width
 const int SCREEN_H = 800 ;       // screen height
 void checkMag(int &slots);

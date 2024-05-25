@@ -2,7 +2,7 @@
 1716582657 source:c:\users\elaine\documents\github\russanroulete\prototype two\graphicsmain.cpp
 	"Headers.h"
 
-1716652814 c:\users\elaine\documents\github\russanroulete\prototype two\headers.h
+1716680407 c:\users\elaine\documents\github\russanroulete\prototype two\headers.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -13,12 +13,12 @@
 	<allegro5/allegro_native_dialog.h>
 	<allegro5/allegro_primitives.h>
 
-1716653808 source:c:\users\elaine\documents\github\russanroulete\prototype two\graphicsfunctions.cpp
+1716680748 source:c:\users\elaine\documents\github\russanroulete\prototype two\graphicsfunctions.cpp
 	"Headers.h"
 
-1716653658 source:c:\users\elaine\documents\github\russanroulete\prototype two\functions.cpp
+1716680778 source:c:\users\elaine\documents\github\russanroulete\prototype two\functions.cpp
 	"Headers.h"
 
-1716653361 source:c:\users\elaine\documents\github\russanroulete\prototype two\main.cpp
+1716680748 source:c:\users\elaine\documents\github\russanroulete\prototype two\main.cpp
 	"Headers.h"
 

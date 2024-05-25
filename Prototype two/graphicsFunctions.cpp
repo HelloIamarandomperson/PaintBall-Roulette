@@ -21,15 +21,20 @@ extern int chamber;
 extern char cylinder[];
 extern char response;
 
+
+ALLEGRO_MOUSE_STATE state;
+
 int Button(char cylinder[], int &chamber) {
-    printf("test");
+    ALLEGRO_EVENT ButtonEvent;
     // first 2 is coords for the top vertices's's, next 2 is for the bottom one.
-    al_wait_for_event(event_queue, &eventOrder);
-    if (eventOrder.mouse.x >= 0 && eventOrder.mouse.y >= 600 && eventOrder.mouse.x <= 200 && eventOrder.mouse.y <= 800 && eventOrder.type == ALLEGRO_EVENT_MOUSE_BUTTON_UP) {
+    printf("test");
+    al_wait_for_event(event_queue, &ButtonEvent);
+    al_get_mouse_state(&state);
+    if (ButtonEvent.mouse.x >= 0 && ButtonEvent.mouse.y >= 600 && ButtonEvent.mouse.x <= 200 && ButtonEvent.mouse.y <= 800 && state.buttons & 1) {
         PlayerShootsOpponent(nextTurnIsPlayer, chamber, cylinder, OpponentHealth);
         response = 'o';
         strcpy(Allegro, "Button Pressed");
-        printf("\n%s", Allegro);
+        //printf("\n%s", Allegro);
     }
     return 0;
 }
@@ -100,7 +105,6 @@ bool frameOfGame(){
                 al_draw_bitmap(Buttons, 0, 600, 0);
                 al_flip_display();
                 al_wait_for_event(event_queue, &eventOrder);
-                Button(cylinder, chamber);
                 return true;
 
             }

@@ -38,7 +38,7 @@ char PlayerChoice() {
     //printf("\n%s", Allegro);
     strcpy(Allegro, "Player Is Choosing");
     //scanf("%c", &response);
-    al_wait_for_event(event_queue, &eventOrder);
+    Button(cylinder, chamber);
     if (strcmp(Allegro, "Button Pressed") == 0){
         printf("\n%s", Allegro);
         memset(Allegro, '\0', sizeof(Allegro));
