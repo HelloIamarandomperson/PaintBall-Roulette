@@ -133,3 +133,23 @@
 1716585688 source:c:\users\elaine\documents\github\russanroulete\prototype one\graphicsfunctions.cpp
 	"Headers.h"
 
+1716582657 source:c:\users\elaine\documents\github\russanroulete\prototype two\graphicsmain.cpp
+	"Headers.h"
+
+1716584599 c:\users\elaine\documents\github\russanroulete\prototype two\headers.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	<ctype.h>
+	<allegro5/allegro.h>
+	<allegro5/allegro_image.h>
+	<allegro5/allegro_native_dialog.h>
+	<allegro5/allegro_primitives.h>
+
+1716585688 source:c:\users\elaine\documents\github\russanroulete\prototype two\graphicsfunctions.cpp
+	"Headers.h"
+
+1716583415 source:c:\users\elaine\documents\github\russanroulete\prototype two\functions.cpp
+	"Headers.h"
+
