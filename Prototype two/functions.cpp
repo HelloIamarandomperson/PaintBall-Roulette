@@ -4,6 +4,8 @@
 #include "Headers.h"
 extern char Allegro[50];
 extern char response;
+extern int chamber;
+extern char cylinder[6];
 //initializes player inventory.
 extern ALLEGRO_TIMER *timer;
 extern ALLEGRO_DISPLAY *display;
@@ -17,7 +19,8 @@ extern ALLEGRO_BITMAP *Playerflash;
 extern ALLEGRO_BITMAP *Buttons;
 extern ALLEGRO_EVENT_QUEUE *event_queue;
 extern ALLEGRO_EVENT eventOrder;
-void checkMag(int & slots, char cylinder[]) {
+
+void checkMag(int &slots) {
     //This is a dev function to check the Mag inside
     printf("\n");
     for (int i = 0; i < slots; i++) {
@@ -32,12 +35,14 @@ void checkMag(int & slots, char cylinder[]) {
 
 char PlayerChoice() {
     //PlayerChoice is a scanf function that lowers all responses to their lower form for convenience.
-
+    //printf("\n%s", Allegro);
     strcpy(Allegro, "Player Is Choosing");
     //scanf("%c", &response);
     al_wait_for_event(event_queue, &eventOrder);
-    if (Allegro == "Button Pressed"){
+    if (strcmp(Allegro, "Button Pressed") == 0){
+        printf("\n%s", Allegro);
         memset(Allegro, '\0', sizeof(Allegro));
+        response = 'o';
         response = tolower(response);
 
     }
@@ -46,7 +51,7 @@ char PlayerChoice() {
     return response;
 }
 
-void LoadRandomBullets(int & bullets, int & slots, char cylinder[], int & reload) {
+void LoadRandomBullets(int &bullets, int &slots, int &reload) {
     //Load Random Bullets is designed to load the bullets randomly
     bullets = rand() % (slots);
     //randomizes bullet count.
@@ -63,11 +68,12 @@ void LoadRandomBullets(int & bullets, int & slots, char cylinder[], int & reload
         }
     }
     int blanks = slots - bullets;
+    chamber = 0;
     printf("\nThere are %i bullets and %i blanks in the gun.\n", bullets, blanks);
     printf("The gun has been loaded randomly, and has a total of %i slots.\n", slots);
 }
 
-bool OpponentDummyTurn(bool & nextTurnIsPlayer, int & chamber, char cylinder[], int & OpponentHealth, int & slots, int & yourHealth, int & bullets, int & reload) {
+bool OpponentDummyTurn(bool &nextTurnIsPlayer, int &OpponentHealth, int &slots, int &yourHealth, int &bullets, int &reload) {
     int whoTheyShootin = 1; //rand() % (2); //1 is player, 2 is opponent
     if (whoTheyShootin == 1) {
         nextTurnIsPlayer = true;
@@ -83,6 +89,8 @@ bool OpponentDummyTurn(bool & nextTurnIsPlayer, int & chamber, char cylinder[], 
             printf("Click.... It was a blank... This time...");
         }
     }
+    chamber++;
+    printf("\n next chamber is %i", chamber);
     nextTurnIsPlayer = true;
     return false;
 }
@@ -100,11 +108,11 @@ bool checkIfGameCont(int & OpponentHealth, int & yourHealth) {
 }
 
 void PlayerShootsOpponent(bool &nextTurnIsPlayer, int &chamber, char cylinder[], int &OpponentHealth){
+    //Makes it so the screen shows the player shooting.
     //if the player shoots the opponent
     nextTurnIsPlayer = false;
     //make it so the Opponents turn is next.
-    strcpy(Allegro, "Player Fires");
-    //Makes it so the screen shows the player shooting.
+
     if (cylinder[chamber] == 'B') {
         //If chamber contains bullet
         fflush(stdin);
@@ -116,7 +124,8 @@ void PlayerShootsOpponent(bool &nextTurnIsPlayer, int &chamber, char cylinder[],
         printf("Click.... It was a blank...");
             //if miss thats it.
     }
-
+    chamber++;
+    printf("\n next chamber is %i", chamber);
 }
 
 bool Playerturn(int &yourHealth, int &OpponentHealth, char cylinder[], int &chamber, bool &nextTurnIsPlayer, inventory &PlayerInventory) {
@@ -130,9 +139,9 @@ bool Playerturn(int &yourHealth, int &OpponentHealth, char cylinder[], int &cham
     }
     char PlayersChoice = PlayerChoice();
     al_wait_for_event(event_queue, &eventOrder);
-
     //Self explanatory.
-    if (Allegro == "Button Pressed"){
+    if (strcmp(Allegro, "Button Pressed") == 0){
+        printf("\ntest");
         if (PlayersChoice == 's') {
             //if player choose to shoot themselves
             nextTurnIsPlayer = true;
@@ -154,6 +163,7 @@ bool Playerturn(int &yourHealth, int &OpponentHealth, char cylinder[], int &cham
             }
         } else if (PlayersChoice == 'o') {
             PlayerShootsOpponent(nextTurnIsPlayer, chamber, cylinder, OpponentHealth);
+            strcpy(Allegro, "Player Fires");
             return false;
         } else if (PlayersChoice == 'p') {
             //if player goes to shop
