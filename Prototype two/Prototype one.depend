@@ -22,3 +22,26 @@
 1716680748 source:c:\users\elaine\documents\github\russanroulete\prototype two\main.cpp
 	"Headers.h"
 
+1716686399 source:c:\users\emmex\documents\github\russanroulete\prototype two\graphicsmain.cpp
+	"Headers.h"
+
+1716686399 c:\users\emmex\documents\github\russanroulete\prototype two\headers.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	<ctype.h>
+	<allegro5/allegro.h>
+	<allegro5/allegro_image.h>
+	<allegro5/allegro_native_dialog.h>
+	<allegro5/allegro_primitives.h>
+
+1716686400 source:c:\users\emmex\documents\github\russanroulete\prototype two\graphicsfunctions.cpp
+	"Headers.h"
+
+1716686400 source:c:\users\emmex\documents\github\russanroulete\prototype two\functions.cpp
+	"Headers.h"
+
+1716686400 source:c:\users\emmex\documents\github\russanroulete\prototype two\main.cpp
+	"Headers.h"
+
