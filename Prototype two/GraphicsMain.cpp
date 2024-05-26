@@ -12,6 +12,7 @@ extern ALLEGRO_BITMAP *Playerflash;
 extern ALLEGRO_BITMAP *Buttons;
 extern ALLEGRO_EVENT_QUEUE *event_queue;
 extern ALLEGRO_EVENT eventOrder;
+ALLEGRO_EVENT ButtonEvent;
 int AllegroMain() {
 	// Initialize Allegro
 
@@ -55,7 +56,6 @@ int AllegroMain() {
 
 
     // Optionally wait for user input
-    // al_wait_for_event(event_queue, &event);
 
 
     //Start up phase.

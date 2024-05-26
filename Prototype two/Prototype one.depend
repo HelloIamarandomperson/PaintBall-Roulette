@@ -1,47 +1,27 @@
 # depslib dependency file v1.0
-1716582657 source:c:\users\elaine\documents\github\russanroulete\prototype two\graphicsmain.cpp
+1716766747 source:c:\users\elaine\documents\github\russanroulete\prototype two\graphicsmain.cpp
 	"Headers.h"
 
-1716680407 c:\users\elaine\documents\github\russanroulete\prototype two\headers.h
+1716766478 c:\users\elaine\documents\github\russanroulete\prototype two\headers.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<time.h>
 	<ctype.h>
 	<allegro5/allegro.h>
-	<allegro5/allegro_image.h>
-	<allegro5/allegro_native_dialog.h>
+	<allegro5/allegro_font.h>
+	<allegro5/allegro_ttf.h>
 	<allegro5/allegro_primitives.h>
-
-1716681189 source:c:\users\elaine\documents\github\russanroulete\prototype two\graphicsfunctions.cpp
-	"Headers.h"
-
-1716680778 source:c:\users\elaine\documents\github\russanroulete\prototype two\functions.cpp
-	"Headers.h"
-
-1716680748 source:c:\users\elaine\documents\github\russanroulete\prototype two\main.cpp
-	"Headers.h"
-
-1716686399 source:c:\users\emmex\documents\github\russanroulete\prototype two\graphicsmain.cpp
-	"Headers.h"
-
-1716686399 c:\users\emmex\documents\github\russanroulete\prototype two\headers.h
-	<stdio.h>
+	<allegro5/allegro_native_dialog.h>
+	<allegro5/allegro_image.h>
 	<stdlib.h>
-	<string.h>
-	<time.h>
-	<ctype.h>
-	<allegro5/allegro.h>
-	<allegro5/allegro_image.h>
-	<allegro5/allegro_native_dialog.h>
-	<allegro5/allegro_primitives.h>
 
-1716686400 source:c:\users\emmex\documents\github\russanroulete\prototype two\graphicsfunctions.cpp
+1716766747 source:c:\users\elaine\documents\github\russanroulete\prototype two\graphicsfunctions.cpp
 	"Headers.h"
 
-1716686400 source:c:\users\emmex\documents\github\russanroulete\prototype two\functions.cpp
+1716766676 source:c:\users\elaine\documents\github\russanroulete\prototype two\functions.cpp
 	"Headers.h"
 
-1716686400 source:c:\users\emmex\documents\github\russanroulete\prototype two\main.cpp
+1716766794 source:c:\users\elaine\documents\github\russanroulete\prototype two\main.cpp
 	"Headers.h"
 

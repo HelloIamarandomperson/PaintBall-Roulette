@@ -19,7 +19,7 @@ extern ALLEGRO_BITMAP *Playerflash;
 extern ALLEGRO_BITMAP *Buttons;
 extern ALLEGRO_EVENT_QUEUE *event_queue;
 extern ALLEGRO_EVENT eventOrder;
-
+extern ALLEGRO_EVENT ButtonEvent;
 void checkMag(int &slots) {
     //This is a dev function to check the Mag inside
     printf("\n");
@@ -38,6 +38,7 @@ char PlayerChoice() {
     //printf("\n%s", Allegro);
     strcpy(Allegro, "Player Is Choosing");
     //scanf("%c", &response);
+    al_wait_for_event(event_queue, &ButtonEvent);
     Button(cylinder, chamber);
     if (strcmp(Allegro, "Button Pressed") == 0){
         printf("\n%s", Allegro);
@@ -138,7 +139,6 @@ bool Playerturn(int &yourHealth, int &OpponentHealth, char cylinder[], int &cham
         printf("\nIf you choose to shoot yourself (s), you get to shoot again. \nIf you choose to shoot your opponent (o), it is no longer your turn. If you choose to go to shop press (p)\n\n");
     }
     char PlayersChoice = PlayerChoice();
-    al_wait_for_event(event_queue, &eventOrder);
     //Self explanatory.
     if (strcmp(Allegro, "Button Pressed") == 0){
         printf("\ntest");

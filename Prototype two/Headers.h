@@ -5,10 +5,12 @@
 #include <ctype.h>
 
 #include <allegro5/allegro.h>
-#include <allegro5/allegro_image.h>
+#include <allegro5/allegro_font.h>
+#include <allegro5/allegro_ttf.h>
+#include <allegro5/allegro_primitives.h> //for card
 #include <allegro5/allegro_native_dialog.h>
-#include <allegro5/allegro_primitives.h>
-
+#include <allegro5/allegro_image.h> //images
+#include <stdlib.h>
 struct inventory {
     //struct inventory is used to store the inventory of the player and the opponent.
     int Money = 0;

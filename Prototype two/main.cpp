@@ -64,7 +64,6 @@ int main() {
     // round 1
 
     while (Gamerun == true) {
-        al_wait_for_event(event_queue, &eventOrder);
         // While true for a convenient infinite loop that can only be broken
         // with breaks.
         // For loop for until chamber is empty.
