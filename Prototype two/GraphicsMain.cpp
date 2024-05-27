@@ -53,11 +53,6 @@ int AllegroMain() {
         al_destroy_display(display);
         return -1;
     }
-
-
-    // Optionally wait for user input
-
-
     //Start up phase.
     al_rest(1.0);
     al_draw_bitmap(Table, 0, 0, 0);
