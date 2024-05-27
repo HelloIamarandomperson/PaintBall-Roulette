@@ -31,7 +31,7 @@ char PlayerChoice();
 void LoadRandomBullets(int &bullets, int &slots, int &reload);
 bool OpponentDummyTurn(bool &nextTurnIsPlayer, int &OpponentHealth, int &slots, int &yourHealth, int &bullets, int &reload);
 bool checkIfGameCont(int & OpponentHealth, int & yourHealth);
-void PlayerShootsOpponent(bool &nextTurnIsPlayer, int &chamber, char cylinder[], int &OpponentHealth);
+void PlayerShootsOpponent(bool &nextTurnIsPlayer, int &chamber, int &OpponentHealth);
 bool Playerturn(int &yourHealth, int &OpponentHealth, char cylinder[], int &chamber, bool &nextTurnIsPlayer, inventory &PlayerInventory);
 int AllegroMain();
 int Button(char cylinder[], int &chamber);

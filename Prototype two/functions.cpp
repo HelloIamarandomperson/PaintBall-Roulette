@@ -106,7 +106,7 @@ bool checkIfGameCont(int & OpponentHealth, int & yourHealth) {
     return true;
 }
 
-void PlayerShootsOpponent(bool &nextTurnIsPlayer, int &chamber, char cylinder[], int &OpponentHealth){
+void PlayerShootsOpponent(bool &nextTurnIsPlayer, int &chamber, int &OpponentHealth){
     //Makes it so the screen shows the player shooting.
     //if the player shoots the opponent
     nextTurnIsPlayer = false;
@@ -121,7 +121,7 @@ void PlayerShootsOpponent(bool &nextTurnIsPlayer, int &chamber, char cylinder[],
         OpponentHealth--;
     } else {
         printf("Click.... It was a blank...");
-            //if miss thats it.
+        //if miss thats it.
     }
     chamber++;
     printf("\n next chamber is %i", chamber);
@@ -158,7 +158,7 @@ bool Playerturn(int &yourHealth, int &OpponentHealth, char cylinder[], int &cham
             return false;
         }
     } else if (PlayersChoice == 'o') {
-        PlayerShootsOpponent(nextTurnIsPlayer, chamber, cylinder, OpponentHealth);
+        PlayerShootsOpponent(nextTurnIsPlayer, chamber, OpponentHealth);
         return false;
     } else if (PlayersChoice == 'p') {
         //if player goes to shop
