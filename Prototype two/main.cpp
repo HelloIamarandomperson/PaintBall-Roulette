@@ -79,8 +79,9 @@ int main() {
             // if it is the players turn.
             if (Playerturn(yourHealth, OpponentHealth, cylinder, chamber, nextTurnIsPlayer, PlayerInventory) == false) {
                 // Function for player's turn.
+                frameOfGame();
             }
-        } else if (yourTurn == false) {
+        } else {
             // If not player turn
             if (OpponentDummyTurn(nextTurnIsPlayer, OpponentHealth, slots, yourHealth, bullets, reload) == false) {
                 // run function for the opponents turn

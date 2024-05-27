@@ -41,14 +41,12 @@ char PlayerChoice() {
     al_wait_for_event(event_queue, &ButtonEvent);
     Button(cylinder, chamber);
     if (strcmp(Allegro, "Button Pressed") == 0){
-        printf("\n%s", Allegro);
         memset(Allegro, '\0', sizeof(Allegro));
         response = 'o';
-        response = tolower(response);
-
     }
-
-
+    else{
+        response = '\0';
+    }
     return response;
 }
 
@@ -127,6 +125,7 @@ void PlayerShootsOpponent(bool &nextTurnIsPlayer, int &chamber, char cylinder[],
     }
     chamber++;
     printf("\n next chamber is %i", chamber);
+    strcpy(Allegro, "Player Fires");
 }
 
 bool Playerturn(int &yourHealth, int &OpponentHealth, char cylinder[], int &chamber, bool &nextTurnIsPlayer, inventory &PlayerInventory) {
@@ -140,53 +139,44 @@ bool Playerturn(int &yourHealth, int &OpponentHealth, char cylinder[], int &cham
     }
     char PlayersChoice = PlayerChoice();
     //Self explanatory.
-    if (strcmp(Allegro, "Button Pressed") == 0){
-        printf("\ntest");
-        if (PlayersChoice == 's') {
-            //if player choose to shoot themselves
-            nextTurnIsPlayer = true;
-            //Makes it so the next turn is still the player
-            if (cylinder[chamber] == 'B') {
-                //if chamber contains bullet.
-                printf("Click... Bang! ...That probably hurt... you should like, not shoot yourself... or something...");
-                yourHealth--;
-                //lowers health by one
-                PlayerInventory.Money += 15;
-                //Adds money.
-                return false;
-            } else {
-                printf("Click.... It was a blank... Bit of a gambler, are you?\n");
-                //Adds money.
-                PlayerInventory.Money += 5;
-
-                return false;
-            }
-        } else if (PlayersChoice == 'o') {
-            PlayerShootsOpponent(nextTurnIsPlayer, chamber, cylinder, OpponentHealth);
-            strcpy(Allegro, "Player Fires");
+    if (PlayersChoice == 's') {
+        //if player choose to shoot themselves
+        nextTurnIsPlayer = true;
+        //Makes it so the next turn is still the player
+        if (cylinder[chamber] == 'B') {
+            //if chamber contains bullet.
+            printf("Click... Bang! ...That probably hurt... you should like, not shoot yourself... or something...");
+            yourHealth--;
+            //lowers health by one
+            PlayerInventory.Money += 15;
+            //Adds money.
             return false;
-        } else if (PlayersChoice == 'p') {
-            //if player goes to shop
-            fflush(stdin);
-            //fflush to fix bug.
-            printf("shop in beta testing right now");
-            printf("\nwould you like to buy a double bullet? Cost 5 coins!\n");
-            char PlayersChoice = PlayerChoice();
-            if (PlayersChoice == 'y') {
-                if (PlayerInventory.Money < 5) {
-                    printf("\nHaha poor");
-                } else {
-                    printf("\n Here you go");
-                    PlayerInventory.Money -= 5;
-                    PlayerInventory.DoubleBullet += 1;
-                    }
-            } else {
-            printf("\nok, thanks for visiting the shop!");
-            }
-
         } else {
-            printf("Invalid Option, s or o or p");
-
+            printf("Click.... It was a blank... Bit of a gambler, are you?\n");
+            //Adds money.
+            PlayerInventory.Money += 5;
+            return false;
+        }
+    } else if (PlayersChoice == 'o') {
+        PlayerShootsOpponent(nextTurnIsPlayer, chamber, cylinder, OpponentHealth);
+        return false;
+    } else if (PlayersChoice == 'p') {
+        //if player goes to shop
+        fflush(stdin);
+            //fflush to fix bug.
+        printf("shop in beta testing right now");
+        printf("\nwould you like to buy a double bullet? Cost 5 coins!\n");
+        char PlayersChoice = PlayerChoice();
+        if (PlayersChoice == 'y') {
+            if (PlayerInventory.Money < 5) {
+                printf("\nHaha poor");
+            } else {
+                printf("\n Here you go");
+                PlayerInventory.Money -= 5;
+                PlayerInventory.DoubleBullet += 1;
+                }
+        } else {
+            printf("\nok, thanks for visiting the shop!");
         }
     }
     return true;

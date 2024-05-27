@@ -26,10 +26,8 @@ ALLEGRO_MOUSE_STATE state;
 
 int Button(char cylinder[], int &chamber) {
     // first 2 is coords for the top vertices's's, next 2 is for the bottom one.
-    printf("test");
     al_get_mouse_state(&state);
     if (ButtonEvent.mouse.x >= 0 && ButtonEvent.mouse.y >= 600 && ButtonEvent.mouse.x <= 200 && ButtonEvent.mouse.y <= 800 && state.buttons & 1) {
-        PlayerShootsOpponent(nextTurnIsPlayer, chamber, cylinder, OpponentHealth);
         response = 'o';
         strcpy(Allegro, "Button Pressed");
         //printf("\n%s", Allegro);
@@ -105,15 +103,15 @@ bool frameOfGame(){
                 return true;
 
             }
-            else if (strcmp(Allegro, "Dummy Fires") == 0){
-                memset(Allegro, '\0', sizeof(Allegro));
-                DummyShootsPlayer(Table, Dummyfires, Player, Dummyflash);
-                return true;
-            }
             else if (strcmp(Allegro, "Player Fires") == 0){
 
                 memset(Allegro, '\0', sizeof(Allegro));
                 PlayerShootsDummy(Table, Dummy, Player, Playerfires, Playerflash);
+                return true;
+            }
+            else if (strcmp(Allegro, "Dummy Fires") == 0){
+                memset(Allegro, '\0', sizeof(Allegro));
+                DummyShootsPlayer(Table, Dummyfires, Player, Dummyflash);
                 return true;
             }
             else if (strcmp(Allegro, "Game Ends") == 0){
