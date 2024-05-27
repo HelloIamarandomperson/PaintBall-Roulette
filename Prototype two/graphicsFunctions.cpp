@@ -29,7 +29,22 @@ int Button(char cylinder[], int &chamber) {
     al_get_mouse_state(&state);
     if (ButtonEvent.mouse.x >= 0 && ButtonEvent.mouse.y >= 600 && ButtonEvent.mouse.x <= 200 && ButtonEvent.mouse.y <= 800 && state.buttons & 1) {
         response = 'o';
-        strcpy(Allegro, "Button Pressed");
+        strcpy(Allegro, "Shoot Yourself");
+        //printf("\n%s", Allegro);
+    }
+    if (ButtonEvent.mouse.x >= 200 && ButtonEvent.mouse.y >= 600 && ButtonEvent.mouse.x <= 400 && ButtonEvent.mouse.y <= 800 && state.buttons & 1) {
+        response = 'o';
+        strcpy(Allegro, "Shoot the Opponent");
+        //printf("\n%s", Allegro);
+    }
+    if (ButtonEvent.mouse.x >= 400 && ButtonEvent.mouse.y >= 600 && ButtonEvent.mouse.x <= 600 && ButtonEvent.mouse.y <= 800 && state.buttons & 1) {
+        response = 'o';
+        strcpy(Allegro, "Go To Shop");
+        //printf("\n%s", Allegro);
+    }
+    if (ButtonEvent.mouse.x >= 600 && ButtonEvent.mouse.y >= 600 && ButtonEvent.mouse.x <= 800 && ButtonEvent.mouse.y <= 800 && state.buttons & 1) {
+        response = 'o';
+        strcpy(Allegro, "Open Inventory");
         //printf("\n%s", Allegro);
     }
     return 0;

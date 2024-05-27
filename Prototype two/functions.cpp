@@ -40,7 +40,7 @@ char PlayerChoice() {
     //scanf("%c", &response);
     al_wait_for_event(event_queue, &ButtonEvent);
     Button(cylinder, chamber);
-    if (strcmp(Allegro, "Button Pressed") == 0){
+    if (strcmp(Allegro, "Shoot the Opponent") == 0){
         memset(Allegro, '\0', sizeof(Allegro));
         response = 'o';
     }
