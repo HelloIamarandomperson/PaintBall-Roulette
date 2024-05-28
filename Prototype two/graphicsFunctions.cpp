@@ -81,9 +81,12 @@ void PlayerShootsPlayer(){
     al_draw_bitmap(Buttons, 0, 600, 0);
     al_flip_display();
     al_rest(.4);
+}
 
-
-
+void ShopScreen(){
+    al_draw_bitmap(Shop, 0, 0, 0);
+    al_flip_display();
+    al_rest(.4);
 }
 
 void DummyShootsPlayer(ALLEGRO_BITMAP *Table, ALLEGRO_BITMAP *Dummyfires, ALLEGRO_BITMAP *Player, ALLEGRO_BITMAP *Dummyflash){
@@ -172,6 +175,10 @@ bool frameOfGame(){
                 RunEvent = false;
                 al_destroy_bitmap(Table);
                 al_destroy_display(display);
+                return true;
+            }
+            else if (strcmp(Allegro, "Shop Screen") == 0){
+                ShopScreen();
                 return true;
             }
         }
