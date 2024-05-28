@@ -44,6 +44,10 @@ char PlayerChoice() {
         memset(Allegro, '\0', sizeof(Allegro));
         response = 'o';
     }
+    else if (strcmp(Allegro, "Shoot Yourself") == 0){
+        memset(Allegro, '\0', sizeof(Allegro));
+        response = 's';
+    }
     else{
         response = '\0';
     }
@@ -128,7 +132,29 @@ void PlayerShootsOpponent(bool &nextTurnIsPlayer, int &chamber, int &OpponentHea
     strcpy(Allegro, "Player Fires");
 }
 
-bool Playerturn(int &yourHealth, int &OpponentHealth, char cylinder[], int &chamber, bool &nextTurnIsPlayer, inventory &PlayerInventory) {
+void PlayerShootsThemselves(bool &nextTurnIsPlayer, int &chamber, int &yourHealth, inventory PlayerInventory){
+    strcpy(Allegro, "Shoot Yourself");
+        //if player choose to shoot themselves
+        nextTurnIsPlayer = true;
+        //Makes it so the next turn is still the player
+        if (cylinder[chamber] == 'B') {
+            //if chamber contains bullet.
+            printf("Click... Bang! ...That probably hurt... you should like, not shoot yourself... or something...");
+            yourHealth--;
+            //lowers health by one
+            PlayerInventory.Money += 15;
+            //Adds money.
+        } else {
+            printf("Click.... It was a blank... Bit of a gambler, are you?\n");
+            //Adds money.
+            PlayerInventory.Money += 5;
+        }
+    chamber++;
+}
+
+
+
+bool Playerturn(int &yourHealth, int &OpponentHealth, int &chamber, bool &nextTurnIsPlayer, inventory &PlayerInventory) {
     fflush(stdin);
     //fflush to fix bug.
     if (Allegro[0] == '\0'){
@@ -140,23 +166,8 @@ bool Playerturn(int &yourHealth, int &OpponentHealth, char cylinder[], int &cham
     char PlayersChoice = PlayerChoice();
     //Self explanatory.
     if (PlayersChoice == 's') {
-        //if player choose to shoot themselves
-        nextTurnIsPlayer = true;
-        //Makes it so the next turn is still the player
-        if (cylinder[chamber] == 'B') {
-            //if chamber contains bullet.
-            printf("Click... Bang! ...That probably hurt... you should like, not shoot yourself... or something...");
-            yourHealth--;
-            //lowers health by one
-            PlayerInventory.Money += 15;
-            //Adds money.
-            return false;
-        } else {
-            printf("Click.... It was a blank... Bit of a gambler, are you?\n");
-            //Adds money.
-            PlayerInventory.Money += 5;
-            return false;
-        }
+        PlayerShootsThemselves(nextTurnIsPlayer, chamber, yourHealth, PlayerInventory);
+        return true;
     } else if (PlayersChoice == 'o') {
         PlayerShootsOpponent(nextTurnIsPlayer, chamber, OpponentHealth);
         return false;
@@ -179,7 +190,7 @@ bool Playerturn(int &yourHealth, int &OpponentHealth, char cylinder[], int &cham
             printf("\nok, thanks for visiting the shop!");
         }
     }
-    return true;
+    return false;
 }
 
 

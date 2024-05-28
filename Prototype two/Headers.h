@@ -27,7 +27,11 @@ void LoadRandomBullets(int &bullets, int &slots, int &reload);
 bool OpponentDummyTurn(bool &nextTurnIsPlayer, int &OpponentHealth, int &slots, int &yourHealth, int &bullets, int &reload);
 bool checkIfGameCont(int & OpponentHealth, int & yourHealth);
 void PlayerShootsOpponent(bool &nextTurnIsPlayer, int &chamber, int &OpponentHealth);
-bool Playerturn(int &yourHealth, int &OpponentHealth, char cylinder[], int &chamber, bool &nextTurnIsPlayer, inventory &PlayerInventory);
+void PlayerShootsThemselves(bool &nextTurnIsPlayer, int &chamber, int &yourHealth, inventory PlayerInventory);
+
+
+
+bool Playerturn(int &yourHealth, int &OpponentHealth, int &chamber, bool &nextTurnIsPlayer, inventory &PlayerInventory);
 int AllegroMain();
 int Button(char cylinder[], int &chamber);
 void DummyShootsPlayer(ALLEGRO_BITMAP *Table, ALLEGRO_BITMAP *Dummyfires, ALLEGRO_BITMAP *Player, ALLEGRO_BITMAP *Dummyflash);

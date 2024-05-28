@@ -28,6 +28,10 @@ ALLEGRO_BITMAP * Dummyflash = nullptr;
 ALLEGRO_BITMAP * Playerfires = nullptr;
 ALLEGRO_BITMAP * Playerflash = nullptr;
 ALLEGRO_BITMAP * Buttons = nullptr;
+ALLEGRO_BITMAP *PlayerSelf1;
+ALLEGRO_BITMAP *PlayerSelf2;
+ALLEGRO_BITMAP *PlayerSelf3;
+
 ALLEGRO_EVENT_QUEUE * event_queue = nullptr;
 ALLEGRO_EVENT eventOrder;
 int main() {
@@ -77,9 +81,8 @@ int main() {
         }
         if (yourTurn == true) {
             // if it is the players turn.
-            if (Playerturn(yourHealth, OpponentHealth, cylinder, chamber, nextTurnIsPlayer, PlayerInventory) == false) {
+            if (Playerturn(yourHealth, OpponentHealth, chamber, nextTurnIsPlayer, PlayerInventory) == true) {
                 // Function for player's turn.
-                frameOfGame();
             }
         } else {
             // If not player turn

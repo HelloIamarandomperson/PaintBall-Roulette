@@ -10,6 +10,12 @@ extern ALLEGRO_BITMAP *Dummyflash;
 extern ALLEGRO_BITMAP *Playerfires;
 extern ALLEGRO_BITMAP *Playerflash;
 extern ALLEGRO_BITMAP *Buttons;
+extern ALLEGRO_BITMAP *PlayerSelf1;
+extern ALLEGRO_BITMAP *PlayerSelf2;
+extern ALLEGRO_BITMAP *PlayerSelf3;
+
+
+
 extern ALLEGRO_EVENT_QUEUE *event_queue;
 extern ALLEGRO_EVENT eventOrder;
 ALLEGRO_EVENT ButtonEvent;
@@ -45,9 +51,11 @@ int AllegroMain() {
     Playerfires = al_load_bitmap("PlayerGun.png");
     Playerflash = al_load_bitmap("PlayerFlash.png");
     Buttons = al_load_bitmap("buttons.png");
-
+    PlayerSelf1 = al_load_bitmap("PlayerPrepareShootSelf.png");
+    PlayerSelf2 = al_load_bitmap("PlayerShootSelf.png");
+    PlayerSelf3 = al_load_bitmap("PlayerShootSelfOof.png");
     //check if images are missing
-    if (!Table  || !Dummy || !Player || !Dummyfires || !Dummyflash || !Playerflash || !Playerfires || !Buttons) {
+    if (!Table  || !Dummy || !Player || !Dummyfires || !Dummyflash || !Playerflash || !Playerfires || !Buttons || !PlayerSelf1 || !PlayerSelf2 || !PlayerSelf3) {
         al_show_native_message_box(display, "Error", "Error", "Failed to load image!",
                                     nullptr, ALLEGRO_MESSAGEBOX_ERROR);
         al_destroy_display(display);

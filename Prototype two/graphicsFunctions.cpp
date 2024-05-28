@@ -10,6 +10,10 @@ extern ALLEGRO_BITMAP *Dummyflash;
 extern ALLEGRO_BITMAP *Playerfires;
 extern ALLEGRO_BITMAP *Playerflash;
 extern ALLEGRO_BITMAP *Buttons;
+extern ALLEGRO_BITMAP *PlayerSelf1;
+extern ALLEGRO_BITMAP *PlayerSelf2;
+extern ALLEGRO_BITMAP *PlayerSelf3;
+
 extern ALLEGRO_EVENT_QUEUE *event_queue;
 extern ALLEGRO_EVENT eventOrder;
 
@@ -30,6 +34,7 @@ int Button(char cylinder[], int &chamber) {
     if (ButtonEvent.mouse.x >= 0 && ButtonEvent.mouse.y >= 600 && ButtonEvent.mouse.x <= 200 && ButtonEvent.mouse.y <= 800 && state.buttons & 1) {
         response = 'o';
         strcpy(Allegro, "Shoot Yourself");
+
         //printf("\n%s", Allegro);
     }
     if (ButtonEvent.mouse.x >= 200 && ButtonEvent.mouse.y >= 600 && ButtonEvent.mouse.x <= 400 && ButtonEvent.mouse.y <= 800 && state.buttons & 1) {
@@ -50,7 +55,34 @@ int Button(char cylinder[], int &chamber) {
     return 0;
 }
 
+void PlayerShootsPlayer(){
+    memset(Allegro, '\0', sizeof(Allegro));
+    al_clear_to_color(al_map_rgb(0, 0, 0));
+    al_draw_bitmap(Table, 0, 0, 0);
+    al_draw_bitmap(PlayerSelf1, 0, 0, 0);
+    al_draw_bitmap(Dummy, 0, 0, 0);
+    al_draw_bitmap(Player, 0, 0, 0);
+    al_draw_bitmap(Buttons, 0, 600, 0);
+    al_flip_display();
+    al_rest(.8);
+    al_clear_to_color(al_map_rgb(0, 0, 0));
+    al_draw_bitmap(Table, 0, 0, 0);
+    al_draw_bitmap(Dummy, 0, 0, 0);
+    al_draw_bitmap(PlayerSelf2, 0, 0, 0);
+    al_draw_bitmap(Buttons, 0, 600, 0);
+    al_flip_display();
+    al_rest(.9);
+    al_clear_to_color(al_map_rgb(0, 0, 0));
+    al_draw_bitmap(Table, 0, 0, 0);
+    al_draw_bitmap(Dummy, 0, 0, 0);
+    al_draw_bitmap(PlayerSelf3, 0, 0, 0);
+    al_draw_bitmap(Buttons, 0, 600, 0);
+    al_flip_display();
+    al_rest(.4);
 
+
+
+}
 
 void DummyShootsPlayer(ALLEGRO_BITMAP *Table, ALLEGRO_BITMAP *Dummyfires, ALLEGRO_BITMAP *Player, ALLEGRO_BITMAP *Dummyflash){
     memset(Allegro, '\0', sizeof(Allegro));
@@ -123,6 +155,11 @@ bool frameOfGame(){
                 memset(Allegro, '\0', sizeof(Allegro));
                 PlayerShootsDummy(Table, Dummy, Player, Playerfires, Playerflash);
                 return true;
+            } else if (strcmp(Allegro, "Shoot Yourself") == 0){
+
+                memset(Allegro, '\0', sizeof(Allegro));
+                PlayerShootsPlayer();
+                return true;
             }
             else if (strcmp(Allegro, "Dummy Fires") == 0){
                 memset(Allegro, '\0', sizeof(Allegro));
@@ -134,7 +171,6 @@ bool frameOfGame(){
                 al_destroy_bitmap(Table);
                 al_destroy_display(display);
                 return true;
-
             }
         }
         else{
