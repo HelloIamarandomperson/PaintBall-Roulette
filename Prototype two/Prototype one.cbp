@@ -32,17 +32,20 @@
 			<Add option="-Wall" />
 		</Compiler>
 		<Unit filename="GraphicsMain.cpp">
-			<Option weight="0" />
+			<Option weight="64" />
 		</Unit>
 		<Unit filename="Headers.h">
 			<Option compile="1" />
 			<Option link="1" />
+			<Option weight="0" />
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="functions.cpp">
-			<Option weight="80" />
+			<Option weight="91" />
 		</Unit>
-		<Unit filename="graphicsFunctions.cpp" />
+		<Unit filename="graphicsFunctions.cpp">
+			<Option weight="30" />
+		</Unit>
 		<Unit filename="main.cpp">
 			<Option weight="100" />
 		</Unit>
