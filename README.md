@@ -1,6 +1,6 @@
 INSTALL INFORMATION
 
-In Continuing the classic GitHub tradition of making install guides that are unhelpful and unnecessarily long, putting the work on anyone who is attempting to install so the makers don't have to deal with as many Issues or Pull requests:
+In continuing the classic GitHub tradition of making install guides that are unhelpful and unnecessarily long, putting the work on anyone who is attempting to install so the makers don't have to deal with as many Issues or Pull requests:
 
 Step one:
 For WINDOWS COMPUTERS:
