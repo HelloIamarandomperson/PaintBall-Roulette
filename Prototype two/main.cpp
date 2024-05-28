@@ -28,9 +28,11 @@ ALLEGRO_BITMAP * Dummyflash = nullptr;
 ALLEGRO_BITMAP * Playerfires = nullptr;
 ALLEGRO_BITMAP * Playerflash = nullptr;
 ALLEGRO_BITMAP * Buttons = nullptr;
-ALLEGRO_BITMAP *PlayerSelf1;
-ALLEGRO_BITMAP *PlayerSelf2;
-ALLEGRO_BITMAP *PlayerSelf3;
+ALLEGRO_BITMAP *PlayerSelf1 = nullptr;
+ALLEGRO_BITMAP *PlayerSelf2 = nullptr;
+ALLEGRO_BITMAP *PlayerSelf3 = nullptr;
+ALLEGRO_BITMAP *Shop = nullptr;
+
 
 ALLEGRO_EVENT_QUEUE * event_queue = nullptr;
 ALLEGRO_EVENT eventOrder;

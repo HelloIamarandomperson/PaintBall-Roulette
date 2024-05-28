@@ -13,6 +13,8 @@ extern ALLEGRO_BITMAP *Buttons;
 extern ALLEGRO_BITMAP *PlayerSelf1;
 extern ALLEGRO_BITMAP *PlayerSelf2;
 extern ALLEGRO_BITMAP *PlayerSelf3;
+extern ALLEGRO_BITMAP *Shop;
+
 
 extern ALLEGRO_EVENT_QUEUE *event_queue;
 extern ALLEGRO_EVENT eventOrder;

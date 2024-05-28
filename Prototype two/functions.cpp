@@ -43,10 +43,12 @@ char PlayerChoice() {
     if (strcmp(Allegro, "Shoot the Opponent") == 0){
         memset(Allegro, '\0', sizeof(Allegro));
         response = 'o';
-    }
-    else if (strcmp(Allegro, "Shoot Yourself") == 0){
+    } else if (strcmp(Allegro, "Shoot Yourself") == 0){
         memset(Allegro, '\0', sizeof(Allegro));
         response = 's';
+    } else if (strcmp(Allegro, "Go To Shop") == 0){
+        memset(Allegro, '\0', sizeof(Allegro));
+        response = 'p';
     }
     else{
         response = '\0';
