@@ -21,7 +21,7 @@ ALLEGRO_EVENT ButtonEvent;
 
 extern int OpX;
 extern int OpY;
-
+extern int currentOp;
 
 
 
@@ -61,9 +61,7 @@ int AllegroMain() {
     PlayerSelf2 = al_load_bitmap("ImageFile\\PlayerShootSelf.png");
     PlayerSelf3 = al_load_bitmap("ImageFile\\PlayerShootSelfOof.png");
     Shop = al_load_bitmap("ImageFile\\Shop.png");
-    //Dummy = al_load_bitmap("ImageFile\\GhostlyCharacter.png");
-    //OpX = 175;
-    //OpY = 75;
+
     //check if images are missing
     if (!Table  || !Dummy || !Player || !Dummyfires || !Dummyflash || !Playerflash || !Playerfires || !Buttons || !PlayerSelf1 || !PlayerSelf2 || !PlayerSelf3 || !Shop) {
         al_show_native_message_box(display, "Error", "Error", "Failed to load image!",

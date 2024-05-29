@@ -28,10 +28,22 @@ extern char response;
 extern ALLEGRO_EVENT ButtonEvent;
 extern int OpX;
 extern int OpY;
-
+extern int currentOp;
 
 
 ALLEGRO_MOUSE_STATE state;
+
+void SwitchOp(){
+    currentOp++;
+    if (currentOp == 1){
+        Dummy = al_load_bitmap("ImageFile\\GhostlyCharacter.png");
+        OpX = 175;
+        OpY = 75;
+    }
+}
+
+
+
 
 int Button(char cylinder[], int &chamber) {
     // first 2 is coords for the top vertices's's, next 2 is for the bottom one.

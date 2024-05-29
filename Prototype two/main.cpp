@@ -17,7 +17,7 @@ char cylinder[6];
 char response;
 bool Gamerun = true;
 int chamber;
-
+int currentOp;
 int OpX = 0;
 int OpY = 0;
 
