@@ -15,7 +15,6 @@ extern ALLEGRO_BITMAP *PlayerSelf2;
 extern ALLEGRO_BITMAP *PlayerSelf3;
 extern ALLEGRO_BITMAP *Shop;
 
-
 extern ALLEGRO_EVENT_QUEUE *event_queue;
 extern ALLEGRO_EVENT eventOrder;
 
@@ -27,6 +26,10 @@ extern int chamber;
 extern char cylinder[];
 extern char response;
 extern ALLEGRO_EVENT ButtonEvent;
+extern int OpX;
+extern int OpY;
+
+
 
 ALLEGRO_MOUSE_STATE state;
 
@@ -60,24 +63,29 @@ int Button(char cylinder[], int &chamber) {
 void PlayerShootsPlayer(){
     memset(Allegro, '\0', sizeof(Allegro));
     al_clear_to_color(al_map_rgb(0, 0, 0));
-    al_draw_bitmap(Table, 0, 0, 0);
     al_draw_bitmap(PlayerSelf1, 0, 0, 0);
-    al_draw_bitmap(Dummy, 0, 0, 0);
+    al_draw_bitmap(Dummy, OpX, OpY, 0);
+    al_draw_bitmap(Table, 0, 0, 0);
     al_draw_bitmap(Player, 0, 0, 0);
     al_draw_bitmap(Buttons, 0, 600, 0);
     al_flip_display();
     al_rest(.8);
     al_clear_to_color(al_map_rgb(0, 0, 0));
+    al_draw_bitmap(Dummy, OpX, OpY, 0);
     al_draw_bitmap(Table, 0, 0, 0);
-    al_draw_bitmap(Dummy, 0, 0, 0);
     al_draw_bitmap(PlayerSelf2, 0, 0, 0);
     al_draw_bitmap(Buttons, 0, 600, 0);
     al_flip_display();
     al_rest(.9);
     al_clear_to_color(al_map_rgb(0, 0, 0));
+    al_draw_bitmap(Dummy, OpX, OpY, 0);
     al_draw_bitmap(Table, 0, 0, 0);
-    al_draw_bitmap(Dummy, 0, 0, 0);
-    al_draw_bitmap(PlayerSelf3, 0, 0, 0);
+    if (cylinder[chamber-1] == 'B') {
+        al_draw_bitmap(PlayerSelf3, 0, 0, 0);
+    } else{
+        al_draw_bitmap(PlayerSelf2, 0, 0, 0);
+    }
+
     al_draw_bitmap(Buttons, 0, 600, 0);
     al_flip_display();
     al_rest(.4);
@@ -92,23 +100,25 @@ void ShopScreen(){
 void DummyShootsPlayer(ALLEGRO_BITMAP *Table, ALLEGRO_BITMAP *Dummyfires, ALLEGRO_BITMAP *Player, ALLEGRO_BITMAP *Dummyflash){
     memset(Allegro, '\0', sizeof(Allegro));
     al_clear_to_color(al_map_rgb(0, 0, 0));
+    al_draw_bitmap(Dummyfires, OpX, OpY, 0);
     al_draw_bitmap(Table, 0, 0, 0);
-    al_draw_bitmap(Dummyfires, 0, 0, 0);
     al_draw_bitmap(Player, 0, 0, 0);
     al_draw_bitmap(Buttons, 0, 600, 0);
     al_flip_display();
     al_rest(.9);
     al_clear_to_color(al_map_rgb(0, 0, 0));
+    al_draw_bitmap(Dummyfires, OpX, OpY, 0);
     al_draw_bitmap(Table, 0, 0, 0);
-    al_draw_bitmap(Dummyfires, 0, 0, 0);
     al_draw_bitmap(Player, 0, 0, 0);
-    al_draw_bitmap(Dummyflash, 0, 0, 0);
+    if (cylinder[chamber-1] == 'B') {
+        al_draw_bitmap(Dummyflash, 0, 0, 0);
+    }
     al_draw_bitmap(Buttons, 0, 600, 0);
     al_flip_display();
     al_rest(.3);
     al_clear_to_color(al_map_rgb(0, 0, 0));
+    al_draw_bitmap(Dummyfires, OpX, OpY, 0);
     al_draw_bitmap(Table, 0, 0, 0);
-    al_draw_bitmap(Dummyfires, 0, 0, 0);
     al_draw_bitmap(Player, 0, 0, 0);
     al_draw_bitmap(Buttons, 0, 600, 0);
     al_flip_display();
@@ -117,26 +127,25 @@ void DummyShootsPlayer(ALLEGRO_BITMAP *Table, ALLEGRO_BITMAP *Dummyfires, ALLEGR
 }
 void PlayerShootsDummy(ALLEGRO_BITMAP *Table, ALLEGRO_BITMAP *Dummy, ALLEGRO_BITMAP *Player, ALLEGRO_BITMAP *Playerfires, ALLEGRO_BITMAP *Playerflash){
     al_clear_to_color(al_map_rgb(0, 0, 0));
+    al_draw_bitmap(Dummy, OpX, OpY, 0);
     al_draw_bitmap(Table, 0, 0, 0);
-    al_draw_bitmap(Dummy, 0, 0, 0);
-    al_draw_bitmap(Player, 0, 0, 0);
     al_draw_bitmap(Playerfires, 0, 0, 0);
     al_draw_bitmap(Buttons, 0, 600, 0);
     al_flip_display();
     al_rest(.9);
     al_clear_to_color(al_map_rgb(0, 0, 0));
+    al_draw_bitmap(Dummy, OpX, OpY, 0);
     al_draw_bitmap(Table, 0, 0, 0);
-    al_draw_bitmap(Dummy, 0, 0, 0);
-    al_draw_bitmap(Player, 0, 0, 0);
     al_draw_bitmap(Playerfires, 0, 0, 0);
-    al_draw_bitmap(Playerflash, 0, 0, 0);
+    if (cylinder[chamber-1] == 'B') {
+        al_draw_bitmap(Playerflash, 0, 0, 0);
+    }
     al_draw_bitmap(Buttons, 0, 600, 0);
     al_flip_display();
     al_rest(.3);
     al_clear_to_color(al_map_rgb(0, 0, 0));
+    al_draw_bitmap(Dummy, OpX, OpY, 0);
     al_draw_bitmap(Table, 0, 0, 0);
-    al_draw_bitmap(Dummy, 0, 0, 0);
-    al_draw_bitmap(Player, 0, 0, 0);
     al_draw_bitmap(Playerfires, 0, 0, 0);
     al_draw_bitmap(Buttons, 0, 600, 0);
     al_flip_display();
@@ -147,8 +156,8 @@ bool frameOfGame(){
     if (Allegro[0] != '\0'){
             if (strcmp(Allegro, "Player Is Choosing") == 0){
                 al_clear_to_color(al_map_rgb(0, 0, 0));
+                al_draw_bitmap(Dummy, OpX, OpY, 0);
                 al_draw_bitmap(Table, 0, 0, 0);
-                al_draw_bitmap(Dummy, 0, 0, 0);
                 al_draw_bitmap(Player, 0, 0, 0);
                 al_draw_bitmap(Buttons, 0, 600, 0);
                 al_flip_display();
@@ -184,16 +193,16 @@ bool frameOfGame(){
         }
         else{
         al_clear_to_color(al_map_rgb(0, 0, 0));
+        al_draw_bitmap(Dummy, OpX, OpY, 0);
         al_draw_bitmap(Table, 0, 0, 0);
-        al_draw_bitmap(Dummy, 0, 0, 0);
         al_draw_bitmap(Player, 0, 0, 0);
         al_draw_bitmap(Buttons, 0, 600, 0);
         al_flip_display();
         //Button(cylinder, chamber);
         // Clean up
         al_clear_to_color(al_map_rgb(0, 0, 0));
+        al_draw_bitmap(Dummy, OpX, OpY, 0);
         al_draw_bitmap(Table, 0, 0, 0);
-        al_draw_bitmap(Dummy, 0, 0, 0);
         al_draw_bitmap(Player, 0, 0, 0);
         al_draw_bitmap(Buttons, 0, 600, 0);
         al_flip_display();

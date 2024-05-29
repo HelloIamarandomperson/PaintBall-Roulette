@@ -17,6 +17,11 @@ char cylinder[6];
 char response;
 bool Gamerun = true;
 int chamber;
+
+int OpX = 0;
+int OpY = 0;
+
+
 // Creating the thread.
 ALLEGRO_TIMER * timer = nullptr;
 ALLEGRO_DISPLAY * display = nullptr;
@@ -32,7 +37,6 @@ ALLEGRO_BITMAP *PlayerSelf1 = nullptr;
 ALLEGRO_BITMAP *PlayerSelf2 = nullptr;
 ALLEGRO_BITMAP *PlayerSelf3 = nullptr;
 ALLEGRO_BITMAP *Shop = nullptr;
-
 
 ALLEGRO_EVENT_QUEUE * event_queue = nullptr;
 ALLEGRO_EVENT eventOrder;
