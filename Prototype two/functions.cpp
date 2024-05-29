@@ -43,10 +43,12 @@ char PlayerChoice() {
     if (strcmp(Allegro, "Shoot the Opponent") == 0){
         memset(Allegro, '\0', sizeof(Allegro));
         response = 'o';
-    }
-    else if (strcmp(Allegro, "Shoot Yourself") == 0){
+    } else if (strcmp(Allegro, "Shoot Yourself") == 0){
         memset(Allegro, '\0', sizeof(Allegro));
         response = 's';
+    } else if (strcmp(Allegro, "Go To Shop") == 0){
+        memset(Allegro, '\0', sizeof(Allegro));
+        response = 'p';
     }
     else{
         response = '\0';
@@ -152,16 +154,31 @@ void PlayerShootsThemselves(bool &nextTurnIsPlayer, int &chamber, int &yourHealt
     chamber++;
 }
 
+void PlayerGoesShop(inventory PlayerInventory){
+//if player goes to shop
+        char PlayersChoice = PlayerChoice();
+        if (PlayersChoice == 'y') {
+            if (PlayerInventory.Money < 5) {
 
+            } else {
+                PlayerInventory.Money -= 5;
+                PlayerInventory.DoubleBullet += 1;
+                }
+        } else {
+
+        }
+    strcpy(Allegro, "Shop Screen");
+}
 
 bool Playerturn(int &yourHealth, int &OpponentHealth, int &chamber, bool &nextTurnIsPlayer, inventory &PlayerInventory) {
-    fflush(stdin);
-    //fflush to fix bug.
     if (Allegro[0] == '\0'){
         printf("\nYou have %i health.", yourHealth);
         printf("\nYour opponent has %i health.", OpponentHealth);
         printf("\nYou have %i coins and %i DoubleBullets", PlayerInventory.Money, PlayerInventory.DoubleBullet);
         printf("\nIf you choose to shoot yourself (s), you get to shoot again. \nIf you choose to shoot your opponent (o), it is no longer your turn. If you choose to go to shop press (p)\n\n");
+    } else if (strcmp(Allegro, "Shop Screen") == 0){
+        PlayerGoesShop(PlayerInventory);
+        return false;
     }
     char PlayersChoice = PlayerChoice();
     //Self explanatory.
@@ -172,23 +189,7 @@ bool Playerturn(int &yourHealth, int &OpponentHealth, int &chamber, bool &nextTu
         PlayerShootsOpponent(nextTurnIsPlayer, chamber, OpponentHealth);
         return false;
     } else if (PlayersChoice == 'p') {
-        //if player goes to shop
-        fflush(stdin);
-            //fflush to fix bug.
-        printf("shop in beta testing right now");
-        printf("\nwould you like to buy a double bullet? Cost 5 coins!\n");
-        char PlayersChoice = PlayerChoice();
-        if (PlayersChoice == 'y') {
-            if (PlayerInventory.Money < 5) {
-                printf("\nHaha poor");
-            } else {
-                printf("\n Here you go");
-                PlayerInventory.Money -= 5;
-                PlayerInventory.DoubleBullet += 1;
-                }
-        } else {
-            printf("\nok, thanks for visiting the shop!");
-        }
+        PlayerGoesShop(PlayerInventory);
     }
     return false;
 }

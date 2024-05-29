@@ -13,7 +13,7 @@ extern ALLEGRO_BITMAP *Buttons;
 extern ALLEGRO_BITMAP *PlayerSelf1;
 extern ALLEGRO_BITMAP *PlayerSelf2;
 extern ALLEGRO_BITMAP *PlayerSelf3;
-
+extern ALLEGRO_BITMAP *Shop;
 
 
 extern ALLEGRO_EVENT_QUEUE *event_queue;
@@ -43,19 +43,21 @@ int AllegroMain() {
 
     // Create a display
     // Load the background image
-    Table = al_load_bitmap("Table.png");
-    Dummy = al_load_bitmap("Dummy.png");
-    Player = al_load_bitmap("Player.png");
-    Dummyfires = al_load_bitmap("Dummyshoot.png");
-    Dummyflash = al_load_bitmap("DummyFlash.png");
-    Playerfires = al_load_bitmap("PlayerGun.png");
-    Playerflash = al_load_bitmap("PlayerFlash.png");
-    Buttons = al_load_bitmap("buttons.png");
-    PlayerSelf1 = al_load_bitmap("PlayerPrepareShootSelf.png");
-    PlayerSelf2 = al_load_bitmap("PlayerShootSelf.png");
-    PlayerSelf3 = al_load_bitmap("PlayerShootSelfOof.png");
+    Table = al_load_bitmap("ImageFile\\Table.png");
+    Dummy = al_load_bitmap("ImageFile\\Dummy.png");
+    Player = al_load_bitmap("ImageFile\\Player.png");
+    Dummyfires = al_load_bitmap("ImageFile\\Dummyshoot.png");
+    Dummyflash = al_load_bitmap("ImageFile\\DummyFlash.png");
+    Playerfires = al_load_bitmap("ImageFile\\PlayerGun.png");
+    Playerflash = al_load_bitmap("ImageFile\\PlayerFlash.png");
+    Buttons = al_load_bitmap("ImageFile\\buttons.png");
+    PlayerSelf1 = al_load_bitmap("ImageFile\\PlayerPrepareShootSelf.png");
+    PlayerSelf2 = al_load_bitmap("ImageFile\\PlayerShootSelf.png");
+    PlayerSelf3 = al_load_bitmap("ImageFile\\PlayerShootSelfOof.png");
+    Shop = al_load_bitmap("ImageFile\\Shop.png");
+
     //check if images are missing
-    if (!Table  || !Dummy || !Player || !Dummyfires || !Dummyflash || !Playerflash || !Playerfires || !Buttons || !PlayerSelf1 || !PlayerSelf2 || !PlayerSelf3) {
+    if (!Table  || !Dummy || !Player || !Dummyfires || !Dummyflash || !Playerflash || !Playerfires || !Buttons || !PlayerSelf1 || !PlayerSelf2 || !PlayerSelf3 || !Shop) {
         al_show_native_message_box(display, "Error", "Error", "Failed to load image!",
                                     nullptr, ALLEGRO_MESSAGEBOX_ERROR);
         al_destroy_display(display);
