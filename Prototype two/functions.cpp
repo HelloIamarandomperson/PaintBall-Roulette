@@ -77,6 +77,28 @@ void LoadRandomBullets(int &bullets, int &slots, int &reload) {
     printf("The gun has been loaded randomly, and has a total of %i slots.\n", slots);
 }
 
+void LoadInventoryBullet(int &bullets, int &slots, int &reload) {
+    //Load Random Bullets is designed to load the bullets randomly
+    bullets = rand() % (slots);
+    //randomizes bullet count.
+    memset(cylinder, '\0', slots);
+    //Sets cylinder to only NULLs. This clears the bullets in the last chamber
+    printf("\nThe gun is being loaded");
+    for (int i = 0; i < bullets; i++) {
+        //randomizes the Mag.
+        reload = rand() % slots;
+        if (cylinder[reload] == '\0') {
+            cylinder[reload] = 'B';
+        } else {
+            i--;
+        }
+    }
+    int blanks = slots - bullets;
+    chamber = 0;
+    printf("\nThere are %i bullets and %i blanks in the gun.\n", bullets, blanks);
+    printf("The gun has been loaded randomly, and has a total of %i slots.\n", slots);
+}
+
 bool OpponentDummyTurn(bool &nextTurnIsPlayer, int &OpponentHealth, int &slots, int &yourHealth, int &bullets, int &reload) {
     int whoTheyShootin = 1; //rand() % (2); //1 is player, 2 is opponent
     if (whoTheyShootin == 1) {
