@@ -6,7 +6,6 @@ extern char Allegro[50];
 extern char response;
 extern int chamber;
 extern char cylinder[6];
-//initializes player inventory.
 extern ALLEGRO_TIMER *timer;
 extern ALLEGRO_DISPLAY *display;
 extern ALLEGRO_BITMAP *Table;

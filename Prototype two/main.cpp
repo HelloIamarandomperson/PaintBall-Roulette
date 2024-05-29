@@ -23,16 +23,16 @@ int OpY = 0;
 
 
 // Creating the thread.
-ALLEGRO_TIMER * timer = nullptr;
-ALLEGRO_DISPLAY * display = nullptr;
-ALLEGRO_BITMAP * Table = nullptr;
-ALLEGRO_BITMAP * Dummy = nullptr;
-ALLEGRO_BITMAP * Player = nullptr;
-ALLEGRO_BITMAP * Dummyfires = nullptr;
-ALLEGRO_BITMAP * Dummyflash = nullptr;
-ALLEGRO_BITMAP * Playerfires = nullptr;
-ALLEGRO_BITMAP * Playerflash = nullptr;
-ALLEGRO_BITMAP * Buttons = nullptr;
+ALLEGRO_TIMER *timer = nullptr;
+ALLEGRO_DISPLAY *display = nullptr;
+ALLEGRO_BITMAP *Table = nullptr;
+ALLEGRO_BITMAP *Dummy = nullptr;
+ALLEGRO_BITMAP *Player = nullptr;
+ALLEGRO_BITMAP *Dummyfires = nullptr;
+ALLEGRO_BITMAP *Dummyflash = nullptr;
+ALLEGRO_BITMAP *Playerfires = nullptr;
+ALLEGRO_BITMAP *Playerflash = nullptr;
+ALLEGRO_BITMAP *Buttons = nullptr;
 ALLEGRO_BITMAP *PlayerSelf1 = nullptr;
 ALLEGRO_BITMAP *PlayerSelf2 = nullptr;
 ALLEGRO_BITMAP *PlayerSelf3 = nullptr;
