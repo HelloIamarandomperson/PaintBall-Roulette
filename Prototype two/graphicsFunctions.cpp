@@ -52,6 +52,7 @@ void NormalScreenDraws(){
     al_draw_bitmap(Dummy, OpX, OpY, 0);
     al_draw_bitmap(Table, 0, 0, 0);
     al_draw_bitmap(Buttons, 0, 600, 0);
+    al_draw_bitmap(BlankBulletCounter, -34, 585, 0);
 }
 
 
