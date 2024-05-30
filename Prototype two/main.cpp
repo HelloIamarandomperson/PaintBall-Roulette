@@ -34,6 +34,16 @@ ALLEGRO_BITMAP *PlayerSelf1 = nullptr;
 ALLEGRO_BITMAP *PlayerSelf2 = nullptr;
 ALLEGRO_BITMAP *PlayerSelf3 = nullptr;
 ALLEGRO_BITMAP *Shop = nullptr;
+ALLEGRO_BITMAP *BlankBulletCounter = nullptr;
+ALLEGRO_BITMAP *FullBulletCounter = nullptr;
+ALLEGRO_BITMAP *IndividualBulletForCounter = nullptr;
+
+
+
+
+
+
+
 ALLEGRO_EVENT_QUEUE *event_queue = nullptr;
 ALLEGRO_EVENT eventOrder;
 

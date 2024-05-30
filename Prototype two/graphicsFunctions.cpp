@@ -14,6 +14,11 @@ extern ALLEGRO_BITMAP *PlayerSelf1;
 extern ALLEGRO_BITMAP *PlayerSelf2;
 extern ALLEGRO_BITMAP *PlayerSelf3;
 extern ALLEGRO_BITMAP *Shop;
+extern ALLEGRO_BITMAP *BlankBulletCounter;
+extern ALLEGRO_BITMAP *FullBulletCounter;
+extern ALLEGRO_BITMAP *IndividualBulletForCounter;
+
+
 
 extern ALLEGRO_EVENT_QUEUE *event_queue;
 extern ALLEGRO_EVENT eventOrder;
@@ -42,6 +47,12 @@ void SwitchOp(){
     }
 }
 
+void NormalScreenDraws(){
+    //BlankBulletCounter
+    al_draw_bitmap(Dummy, OpX, OpY, 0);
+    al_draw_bitmap(Table, 0, 0, 0);
+    al_draw_bitmap(Buttons, 0, 600, 0);
+}
 
 
 
@@ -75,30 +86,22 @@ int Button(char cylinder[], int &chamber) {
 void PlayerShootsPlayer(){
     memset(Allegro, '\0', sizeof(Allegro));
     al_clear_to_color(al_map_rgb(0, 0, 0));
-    al_draw_bitmap(PlayerSelf1, 0, 0, 0);
-    al_draw_bitmap(Dummy, OpX, OpY, 0);
-    al_draw_bitmap(Table, 0, 0, 0);
-    al_draw_bitmap(Player, 0, 0, 0);
-    al_draw_bitmap(Buttons, 0, 600, 0);
+    NormalScreenDraws();
+    al_draw_bitmap(Playerfires, 0, 0, 0);
     al_flip_display();
     al_rest(.8);
     al_clear_to_color(al_map_rgb(0, 0, 0));
-    al_draw_bitmap(Dummy, OpX, OpY, 0);
-    al_draw_bitmap(Table, 0, 0, 0);
+    NormalScreenDraws();
     al_draw_bitmap(PlayerSelf2, 0, 0, 0);
-    al_draw_bitmap(Buttons, 0, 600, 0);
     al_flip_display();
     al_rest(.9);
     al_clear_to_color(al_map_rgb(0, 0, 0));
-    al_draw_bitmap(Dummy, OpX, OpY, 0);
-    al_draw_bitmap(Table, 0, 0, 0);
+    NormalScreenDraws();
     if (cylinder[chamber-1] == 'B') {
         al_draw_bitmap(PlayerSelf3, 0, 0, 0);
     } else{
         al_draw_bitmap(PlayerSelf2, 0, 0, 0);
     }
-
-    al_draw_bitmap(Buttons, 0, 600, 0);
     al_flip_display();
     al_rest(.4);
 }
@@ -139,27 +142,21 @@ void DummyShootsPlayer(ALLEGRO_BITMAP *Table, ALLEGRO_BITMAP *Dummyfires, ALLEGR
 }
 void PlayerShootsDummy(ALLEGRO_BITMAP *Table, ALLEGRO_BITMAP *Dummy, ALLEGRO_BITMAP *Player, ALLEGRO_BITMAP *Playerfires, ALLEGRO_BITMAP *Playerflash){
     al_clear_to_color(al_map_rgb(0, 0, 0));
-    al_draw_bitmap(Dummy, OpX, OpY, 0);
-    al_draw_bitmap(Table, 0, 0, 0);
+    NormalScreenDraws();
     al_draw_bitmap(Playerfires, 0, 0, 0);
-    al_draw_bitmap(Buttons, 0, 600, 0);
     al_flip_display();
     al_rest(.9);
     al_clear_to_color(al_map_rgb(0, 0, 0));
-    al_draw_bitmap(Dummy, OpX, OpY, 0);
-    al_draw_bitmap(Table, 0, 0, 0);
+    NormalScreenDraws();
     al_draw_bitmap(Playerfires, 0, 0, 0);
     if (cylinder[chamber-1] == 'B') {
         al_draw_bitmap(Playerflash, 0, 0, 0);
     }
-    al_draw_bitmap(Buttons, 0, 600, 0);
     al_flip_display();
     al_rest(.3);
     al_clear_to_color(al_map_rgb(0, 0, 0));
-    al_draw_bitmap(Dummy, OpX, OpY, 0);
-    al_draw_bitmap(Table, 0, 0, 0);
+    NormalScreenDraws();
     al_draw_bitmap(Playerfires, 0, 0, 0);
-    al_draw_bitmap(Buttons, 0, 600, 0);
     al_flip_display();
     al_rest(.4);
 }
@@ -168,10 +165,8 @@ bool frameOfGame(){
     if (Allegro[0] != '\0'){
             if (strcmp(Allegro, "Player Is Choosing") == 0){
                 al_clear_to_color(al_map_rgb(0, 0, 0));
-                al_draw_bitmap(Dummy, OpX, OpY, 0);
-                al_draw_bitmap(Table, 0, 0, 0);
+                NormalScreenDraws();
                 al_draw_bitmap(Player, 0, 0, 0);
-                al_draw_bitmap(Buttons, 0, 600, 0);
                 al_flip_display();
                 return true;
 
@@ -205,20 +200,13 @@ bool frameOfGame(){
         }
         else{
         al_clear_to_color(al_map_rgb(0, 0, 0));
-        al_draw_bitmap(Dummy, OpX, OpY, 0);
-        al_draw_bitmap(Table, 0, 0, 0);
+        NormalScreenDraws();
         al_draw_bitmap(Player, 0, 0, 0);
-        al_draw_bitmap(Buttons, 0, 600, 0);
         al_flip_display();
-        //Button(cylinder, chamber);
-        // Clean up
         al_clear_to_color(al_map_rgb(0, 0, 0));
-        al_draw_bitmap(Dummy, OpX, OpY, 0);
-        al_draw_bitmap(Table, 0, 0, 0);
+        NormalScreenDraws();
         al_draw_bitmap(Player, 0, 0, 0);
-        al_draw_bitmap(Buttons, 0, 600, 0);
         al_flip_display();
-        //Button(cylinder, chamber);
         }
     return true;
 }
