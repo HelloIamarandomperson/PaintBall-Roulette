@@ -34,7 +34,7 @@ extern ALLEGRO_EVENT ButtonEvent;
 extern int OpX;
 extern int OpY;
 extern int currentOp;
-
+extern int slots;
 
 ALLEGRO_MOUSE_STATE state;
 
@@ -47,12 +47,40 @@ void SwitchOp(){
     }
 }
 
-void NormalScreenDraws(){
-    //BlankBulletCounter
+void NormalScreenDraws() {
+    // Draw background elements
     al_draw_bitmap(Dummy, OpX, OpY, 0);
     al_draw_bitmap(Table, 0, 0, 0);
     al_draw_bitmap(Buttons, 0, 600, 0);
     al_draw_bitmap(BlankBulletCounter, -34, 585, 0);
+
+    // Draw bullets in the counter based on the number of available slots using switch case
+    switch (chamber) {
+        case 0:
+            al_draw_bitmap(IndividualBulletForCounter, -33, 585, 0);
+
+            // Fall through
+        case 1:
+            al_draw_bitmap(IndividualBulletForCounter, 6, 585, 0);
+
+            // Fall through
+        case 2:
+            al_draw_bitmap(IndividualBulletForCounter, 45, 585, 0);
+
+            // Fall through
+        case 3:
+            al_draw_bitmap(IndividualBulletForCounter, 84, 585, 0);
+            // Fall through
+        case 4:
+            al_draw_bitmap(IndividualBulletForCounter, 123, 585, 0);
+            // Fall through
+        case 5:
+            al_draw_bitmap(IndividualBulletForCounter, 162, 585, 0);
+            break;
+        default:
+            al_draw_bitmap(FullBulletCounter, -34, 585, 0);
+            break;
+    }
 }
 
 
