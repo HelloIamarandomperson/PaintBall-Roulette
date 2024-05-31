@@ -1,7 +1,6 @@
-//Including standard libraries
-
-//Including the other files
 #include "Headers.h"
+//Including header.h
+
 extern char Allegro[50];
 extern char response;
 extern int chamber;
@@ -20,7 +19,6 @@ extern ALLEGRO_EVENT_QUEUE *event_queue;
 extern ALLEGRO_EVENT eventOrder;
 extern ALLEGRO_EVENT ButtonEvent;
 extern int slots;
-
 
 void checkMag(int &slots) {
     //This is a dev function to check the Mag inside
@@ -109,7 +107,6 @@ bool OpponentDummyTurn(bool &nextTurnIsPlayer, int &OpponentHealth, int &slots, 
         }
     }
     chamber++;
-    printf("\n next chamber is %i", chamber);
     nextTurnIsPlayer = true;
     return false;
 }

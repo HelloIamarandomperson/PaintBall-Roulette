@@ -25,7 +25,7 @@ extern ALLEGRO_EVENT eventOrder;
 extern char Allegro[50]; // Declaration of the global variable
 extern bool RunEvent;
 extern int OpponentHealth;
-extern bool nextTurnIsPlayer; //whos turn it is next (0 is the player, 1 is next person, etc...)
+extern bool nextTurnIsPlayer; //who's turn it is next (0 is the player, 1 is next person, etc...)
 extern int chamber;
 extern char cylinder[];
 extern char response;
