@@ -76,8 +76,6 @@ void LoadRandomBullets(int &bullets, int &slots, int &reload) {
     }
     int blanks = slots - bullets;
     chamber = 0;
-    printf("\nThere are %i bullets and %i blanks in the gun.\n", bullets, blanks);
-    printf("The gun has been loaded randomly, and has a total of %i slots.\n", slots);
 }
 
 void LoadInventoryBullet(int &bullets, int &slots, int &reload) {
@@ -98,24 +96,16 @@ void LoadInventoryBullet(int &bullets, int &slots, int &reload) {
     }
     int blanks = slots - bullets;
     chamber = 0;
-    printf("\nThere are %i bullets and %i blanks in the gun.\n", bullets, blanks);
-    printf("The gun has been loaded randomly, and has a total of %i slots.\n", slots);
 }
 
 bool OpponentDummyTurn(bool &nextTurnIsPlayer, int &OpponentHealth, int &slots, int &yourHealth, int &bullets, int &reload) {
     int whoTheyShootin = 1; //rand() % (2); //1 is player, 2 is opponent
     if (whoTheyShootin == 1) {
         nextTurnIsPlayer = true;
-        printf("\nThey raise the gun...");
         strcpy(Allegro, "Dummy Fires");
-        printf("\ntowards you...");
         if (cylinder[chamber] == 'B') {
             //If chamber contains bullet.
-            fflush(stdin);
-            printf("Click... \nBang! ...That probably hurt... you should like, not get shot... or something...");
             yourHealth--;
-        } else {
-            printf("Click.... It was a blank... This time...");
         }
     }
     chamber++;
@@ -143,15 +133,8 @@ void PlayerShootsOpponent(bool &nextTurnIsPlayer, int &chamber, int &OpponentHea
     //make it so the Opponents turn is next.
 
     if (cylinder[chamber] == 'B') {
-        //If chamber contains bullet
-        fflush(stdin);
-        //fflush here to fix bug
-        printf("Click.... Bang! It was a live round!");
-        //opponent loses health.
+        //If chamber contains bullet opponent loses health.
         OpponentHealth--;
-    } else {
-        printf("Click.... It was a blank...");
-        //if miss thats it.
     }
     chamber++;
     printf("\n next chamber is %i", chamber);
@@ -165,13 +148,11 @@ void PlayerShootsThemselves(bool &nextTurnIsPlayer, int &chamber, int &yourHealt
         //Makes it so the next turn is still the player
         if (cylinder[chamber] == 'B') {
             //if chamber contains bullet.
-            printf("Click... Bang! ...That probably hurt... you should like, not shoot yourself... or something...");
             yourHealth--;
             //lowers health by one
             PlayerInventory.Money += 15;
             //Adds money.
         } else {
-            printf("Click.... It was a blank... Bit of a gambler, are you?\n");
             //Adds money.
             PlayerInventory.Money += 5;
         }
@@ -199,7 +180,6 @@ bool Playerturn(int &yourHealth, int &OpponentHealth, int &chamber, bool &nextTu
         printf("\nYou have %i health.", yourHealth);
         printf("\nYour opponent has %i health.", OpponentHealth);
         printf("\nYou have %i coins and %i DoubleBullets", PlayerInventory.Money, PlayerInventory.DoubleBullet);
-        printf("\nIf you choose to shoot yourself (s), you get to shoot again. \nIf you choose to shoot your opponent (o), it is no longer your turn. If you choose to go to shop press (p)\n\n");
     } else if (strcmp(Allegro, "Shop Screen") == 0){
         PlayerGoesShop(PlayerInventory);
         return false;
