@@ -17,7 +17,6 @@ struct inventory {
     int DoubleBullet = 0;
 };
 
-
 const float FPS = 120;
 const int SCREEN_W = 800;       // screen width
 const int SCREEN_H = 800 ;       // screen height
@@ -28,7 +27,6 @@ bool OpponentDummyTurn(bool &nextTurnIsPlayer, int &OpponentHealth, int &slots, 
 bool checkIfGameCont(int & OpponentHealth, int & yourHealth);
 void PlayerShootsOpponent(bool &nextTurnIsPlayer, int &chamber, int &OpponentHealth);
 void PlayerShootsThemselves(bool &nextTurnIsPlayer, int &chamber, int &yourHealth, inventory PlayerInventory);
-
 
 
 bool Playerturn(int &yourHealth, int &OpponentHealth, int &chamber, bool &nextTurnIsPlayer, inventory &PlayerInventory);

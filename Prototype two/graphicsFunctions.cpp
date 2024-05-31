@@ -17,9 +17,8 @@ extern ALLEGRO_BITMAP *Shop;
 extern ALLEGRO_BITMAP *BlankBulletCounter;
 extern ALLEGRO_BITMAP *FullBulletCounter;
 extern ALLEGRO_BITMAP *IndividualBulletForCounter;
-
-
-
+extern ALLEGRO_BITMAP *InventoryButton;
+extern ALLEGRO_BITMAP *ShopButton;
 extern ALLEGRO_EVENT_QUEUE *event_queue;
 extern ALLEGRO_EVENT eventOrder;
 
@@ -47,38 +46,32 @@ void SwitchOp(){
     }
 }
 
-void NormalScreenDraws() {
-    // Draw background elements
-    al_draw_bitmap(Dummy, OpX, OpY, 0);
+void NormalScreenDraws(int DummyShow) {
+    // Draw background elements InventoryButton ShopButton
+    if (DummyShow == 0){
+        al_draw_bitmap(Dummy, OpX, OpY, 0);
+    }
+
     al_draw_bitmap(Table, 0, 0, 0);
     al_draw_bitmap(Buttons, 0, 600, 0);
+    al_draw_bitmap(InventoryButton, 600, 690, 0);
+    al_draw_bitmap(ShopButton, 450, 690, 0);
     al_draw_bitmap(BlankBulletCounter, -34, 585, 0);
 
     // Draw bullets in the counter based on the number of available slots using switch case
     switch (chamber) {
         case 0:
             al_draw_bitmap(IndividualBulletForCounter, -33, 585, 0);
-
-            // Fall through
         case 1:
             al_draw_bitmap(IndividualBulletForCounter, 6, 585, 0);
-
-            // Fall through
         case 2:
             al_draw_bitmap(IndividualBulletForCounter, 45, 585, 0);
-
-            // Fall through
         case 3:
             al_draw_bitmap(IndividualBulletForCounter, 84, 585, 0);
-            // Fall through
         case 4:
             al_draw_bitmap(IndividualBulletForCounter, 123, 585, 0);
-            // Fall through
         case 5:
             al_draw_bitmap(IndividualBulletForCounter, 162, 585, 0);
-            break;
-        default:
-            al_draw_bitmap(FullBulletCounter, -34, 585, 0);
             break;
     }
 }
@@ -115,17 +108,17 @@ int Button(char cylinder[], int &chamber) {
 void PlayerShootsPlayer(){
     memset(Allegro, '\0', sizeof(Allegro));
     al_clear_to_color(al_map_rgb(0, 0, 0));
-    NormalScreenDraws();
+    NormalScreenDraws(0);
     al_draw_bitmap(Playerfires, 0, 0, 0);
     al_flip_display();
     al_rest(.8);
     al_clear_to_color(al_map_rgb(0, 0, 0));
-    NormalScreenDraws();
+    NormalScreenDraws(0);
     al_draw_bitmap(PlayerSelf2, 0, 0, 0);
     al_flip_display();
     al_rest(.9);
     al_clear_to_color(al_map_rgb(0, 0, 0));
-    NormalScreenDraws();
+    NormalScreenDraws(0);
     if (cylinder[chamber-1] == 'B') {
         al_draw_bitmap(PlayerSelf3, 0, 0, 0);
     } else{
@@ -144,39 +137,36 @@ void ShopScreen(){
 void DummyShootsPlayer(ALLEGRO_BITMAP *Table, ALLEGRO_BITMAP *Dummyfires, ALLEGRO_BITMAP *Player, ALLEGRO_BITMAP *Dummyflash){
     memset(Allegro, '\0', sizeof(Allegro));
     al_clear_to_color(al_map_rgb(0, 0, 0));
+    NormalScreenDraws(1);
     al_draw_bitmap(Dummyfires, OpX, OpY, 0);
-    al_draw_bitmap(Table, 0, 0, 0);
     al_draw_bitmap(Player, 0, 0, 0);
-    al_draw_bitmap(Buttons, 0, 600, 0);
     al_flip_display();
     al_rest(.9);
     al_clear_to_color(al_map_rgb(0, 0, 0));
+    NormalScreenDraws(1);
     al_draw_bitmap(Dummyfires, OpX, OpY, 0);
-    al_draw_bitmap(Table, 0, 0, 0);
     al_draw_bitmap(Player, 0, 0, 0);
     if (cylinder[chamber-1] == 'B') {
         al_draw_bitmap(Dummyflash, 0, 0, 0);
     }
-    al_draw_bitmap(Buttons, 0, 600, 0);
     al_flip_display();
     al_rest(.3);
     al_clear_to_color(al_map_rgb(0, 0, 0));
     al_draw_bitmap(Dummyfires, OpX, OpY, 0);
-    al_draw_bitmap(Table, 0, 0, 0);
+    NormalScreenDraws(1);
     al_draw_bitmap(Player, 0, 0, 0);
-    al_draw_bitmap(Buttons, 0, 600, 0);
     al_flip_display();
     al_rest(.4);
 
 }
 void PlayerShootsDummy(ALLEGRO_BITMAP *Table, ALLEGRO_BITMAP *Dummy, ALLEGRO_BITMAP *Player, ALLEGRO_BITMAP *Playerfires, ALLEGRO_BITMAP *Playerflash){
     al_clear_to_color(al_map_rgb(0, 0, 0));
-    NormalScreenDraws();
+    NormalScreenDraws(0);
     al_draw_bitmap(Playerfires, 0, 0, 0);
     al_flip_display();
     al_rest(.9);
     al_clear_to_color(al_map_rgb(0, 0, 0));
-    NormalScreenDraws();
+    NormalScreenDraws(0);
     al_draw_bitmap(Playerfires, 0, 0, 0);
     if (cylinder[chamber-1] == 'B') {
         al_draw_bitmap(Playerflash, 0, 0, 0);
@@ -184,7 +174,7 @@ void PlayerShootsDummy(ALLEGRO_BITMAP *Table, ALLEGRO_BITMAP *Dummy, ALLEGRO_BIT
     al_flip_display();
     al_rest(.3);
     al_clear_to_color(al_map_rgb(0, 0, 0));
-    NormalScreenDraws();
+    NormalScreenDraws(0);
     al_draw_bitmap(Playerfires, 0, 0, 0);
     al_flip_display();
     al_rest(.4);
@@ -194,7 +184,7 @@ bool frameOfGame(){
     if (Allegro[0] != '\0'){
             if (strcmp(Allegro, "Player Is Choosing") == 0){
                 al_clear_to_color(al_map_rgb(0, 0, 0));
-                NormalScreenDraws();
+                NormalScreenDraws(0);
                 al_draw_bitmap(Player, 0, 0, 0);
                 al_flip_display();
                 return true;
@@ -229,11 +219,11 @@ bool frameOfGame(){
         }
         else{
         al_clear_to_color(al_map_rgb(0, 0, 0));
-        NormalScreenDraws();
+        NormalScreenDraws(0);
         al_draw_bitmap(Player, 0, 0, 0);
         al_flip_display();
         al_clear_to_color(al_map_rgb(0, 0, 0));
-        NormalScreenDraws();
+        NormalScreenDraws(0);
         al_draw_bitmap(Player, 0, 0, 0);
         al_flip_display();
         }

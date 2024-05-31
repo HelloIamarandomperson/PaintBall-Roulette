@@ -17,13 +17,11 @@ extern ALLEGRO_BITMAP *Shop;
 extern ALLEGRO_BITMAP *BlankBulletCounter;
 extern ALLEGRO_BITMAP *FullBulletCounter;
 extern ALLEGRO_BITMAP *IndividualBulletForCounter;
-
-
-
-
-
+extern ALLEGRO_BITMAP *InventoryButton;
+extern ALLEGRO_BITMAP *ShopButton;
 extern ALLEGRO_EVENT_QUEUE *event_queue;
 extern ALLEGRO_EVENT eventOrder;
+
 ALLEGRO_EVENT ButtonEvent;
 
 extern int OpX;
@@ -68,15 +66,17 @@ int AllegroMain() {
     PlayerSelf2 = al_load_bitmap("ImageFile\\PlayerShootSelf.png");
     PlayerSelf3 = al_load_bitmap("ImageFile\\PlayerShootSelfOof.png");
     Shop = al_load_bitmap("ImageFile\\Shop.png");
-
     IndividualBulletForCounter = al_load_bitmap("ImageFile\\Bulletcounter.png");
     FullBulletCounter = al_load_bitmap("ImageFile\\Bulletcounterfull.png");
     BlankBulletCounter = al_load_bitmap("ImageFile\\Bulletcount.png");
-
-
+    InventoryButton = al_load_bitmap("ImageFile\\InventoryButton.png");
+    ShopButton = al_load_bitmap("ImageFile\\ShopButton.png");
 
     //check if images are missing
-    if (!Table  || !Dummy || !Player || !Dummyfires || !Dummyflash || !Playerflash || !Playerfires || !Buttons || !PlayerSelf1 || !PlayerSelf2 || !PlayerSelf3 || !Shop || !IndividualBulletForCounter || !FullBulletCounter || !BlankBulletCounter) {
+    if (!Table  || !Dummy || !Player || !Dummyfires || !Dummyflash || !Playerflash
+        || !Playerfires || !Buttons || !PlayerSelf1 || !PlayerSelf2 || !PlayerSelf3
+        || !Shop || !IndividualBulletForCounter || !FullBulletCounter || !BlankBulletCounter
+        || !InventoryButton || ! ShopButton) {
         al_show_native_message_box(display, "Error", "Error", "Failed to load image!",
                                     nullptr, ALLEGRO_MESSAGEBOX_ERROR);
         al_destroy_display(display);

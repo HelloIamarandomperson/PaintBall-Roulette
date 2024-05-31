@@ -38,7 +38,8 @@ ALLEGRO_BITMAP *BlankBulletCounter = nullptr;
 ALLEGRO_BITMAP *FullBulletCounter = nullptr;
 ALLEGRO_BITMAP *IndividualBulletForCounter = nullptr;
 
-
+ALLEGRO_BITMAP *InventoryButton = nullptr;
+ALLEGRO_BITMAP *ShopButton = nullptr;
 
 
 

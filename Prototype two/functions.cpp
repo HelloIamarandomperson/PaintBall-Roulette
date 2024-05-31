@@ -20,6 +20,8 @@ extern ALLEGRO_EVENT_QUEUE *event_queue;
 extern ALLEGRO_EVENT eventOrder;
 extern ALLEGRO_EVENT ButtonEvent;
 extern int slots;
+
+
 void checkMag(int &slots) {
     //This is a dev function to check the Mag inside
     printf("\n");
@@ -215,6 +217,3 @@ bool Playerturn(int &yourHealth, int &OpponentHealth, int &chamber, bool &nextTu
     }
     return false;
 }
-
-
-
