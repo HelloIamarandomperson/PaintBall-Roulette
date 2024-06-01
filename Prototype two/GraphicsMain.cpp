@@ -21,6 +21,15 @@ extern ALLEGRO_BITMAP *InventoryButton;
 extern ALLEGRO_BITMAP *ShopButton;
 extern ALLEGRO_EVENT_QUEUE *event_queue;
 extern ALLEGRO_EVENT eventOrder;
+extern ALLEGRO_BITMAP *HealthBar1;
+extern ALLEGRO_BITMAP *HealthBar2;
+extern ALLEGRO_BITMAP *HealthBar3;
+extern ALLEGRO_BITMAP *HealthBar4;
+extern ALLEGRO_BITMAP *HealthBar5;
+
+
+
+
 
 ALLEGRO_EVENT ButtonEvent;
 
@@ -72,11 +81,18 @@ int AllegroMain() {
     InventoryButton = al_load_bitmap("ImageFile\\InventoryButton.png");
     ShopButton = al_load_bitmap("ImageFile\\ShopButton.png");
 
+    HealthBar1 = al_load_bitmap("ImageFile\\FullHealthBar.png");
+    HealthBar2 = al_load_bitmap("ImageFile\\HealthBarWithOneDamagePoint.png");
+    HealthBar3 = al_load_bitmap("ImageFile\\HealthBarHalfWayFull.png");
+    HealthBar4 = al_load_bitmap("ImageFile\\HealthBarOneHealthLeft.png");
+    HealthBar5 = al_load_bitmap("ImageFile\\HealthBarEmpty.png");
+
     //check if images are missing
     if (!Table  || !Dummy || !Player || !Dummyfires || !Dummyflash || !Playerflash
         || !Playerfires || !Buttons || !PlayerSelf1 || !PlayerSelf2 || !PlayerSelf3
         || !Shop || !IndividualBulletForCounter || !FullBulletCounter || !BlankBulletCounter
-        || !InventoryButton || ! ShopButton) {
+        || !InventoryButton || ! ShopButton || !HealthBar1 || !HealthBar2 || !HealthBar3
+        || !HealthBar4 || !HealthBar5) {
         al_show_native_message_box(display, "Error", "Error", "Failed to load image!",
                                     nullptr, ALLEGRO_MESSAGEBOX_ERROR);
         al_destroy_display(display);
