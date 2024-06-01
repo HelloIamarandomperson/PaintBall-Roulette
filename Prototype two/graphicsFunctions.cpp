@@ -105,7 +105,6 @@ void NormalScreenDraws(int ScreenDrawSpecial) {
             }else{
                 al_draw_bitmap(HealthBar4, 450, 600, 0);
             }
-
             break;
         case 1:
             if (ScreenDrawSpecial > 0 && cylinder[chamber-1] == 'B'){
