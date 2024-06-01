@@ -62,7 +62,7 @@ void NormalScreenDraws(int ScreenDrawSpecial) {
     al_draw_bitmap(Buttons, 0, 600, 0);
     al_draw_bitmap(InventoryButton, 600, 690, 0);
     al_draw_bitmap(ShopButton, 450, 690, 0);
-    al_draw_bitmap(BlankBulletCounter, -34, 585, 0);
+    al_draw_bitmap(BlankBulletCounter, 0, 630, 0);
 
     // Draw bullets in the counter based on the number of available slots using switch case
     switch (chamber) {
