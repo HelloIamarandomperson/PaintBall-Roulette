@@ -39,17 +39,22 @@ ALLEGRO_BITMAP *FullBulletCounter = nullptr;
 ALLEGRO_BITMAP *IndividualBulletForCounter = nullptr;
 ALLEGRO_BITMAP *InventoryButton = nullptr;
 ALLEGRO_BITMAP *ShopButton = nullptr;
-
-
 ALLEGRO_BITMAP *HealthBar1 = nullptr;
 ALLEGRO_BITMAP *HealthBar2 = nullptr;
 ALLEGRO_BITMAP *HealthBar3 = nullptr;
 ALLEGRO_BITMAP *HealthBar4 = nullptr;
 ALLEGRO_BITMAP *HealthBar5 = nullptr;
-
-
-
-
+ALLEGRO_BITMAP *One = nullptr;
+ALLEGRO_BITMAP *Two = nullptr;
+ALLEGRO_BITMAP *Three = nullptr;
+ALLEGRO_BITMAP *Four = nullptr;
+ALLEGRO_BITMAP *Five = nullptr;
+ALLEGRO_BITMAP *Six = nullptr;
+ALLEGRO_BITMAP *Seven = nullptr;
+ALLEGRO_BITMAP *Eight = nullptr;
+ALLEGRO_BITMAP *Nine = nullptr;
+ALLEGRO_BITMAP *Ball = nullptr;
+ALLEGRO_BITMAP *BallEmpty = nullptr;
 
 ALLEGRO_EVENT_QUEUE *event_queue = nullptr;
 ALLEGRO_EVENT eventOrder;

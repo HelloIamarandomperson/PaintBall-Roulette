@@ -26,6 +26,19 @@ extern ALLEGRO_BITMAP *HealthBar2;
 extern ALLEGRO_BITMAP *HealthBar3;
 extern ALLEGRO_BITMAP *HealthBar4;
 extern ALLEGRO_BITMAP *HealthBar5;
+extern ALLEGRO_BITMAP *One;
+extern ALLEGRO_BITMAP *Two;
+extern ALLEGRO_BITMAP *Three;
+extern ALLEGRO_BITMAP *Four;
+extern ALLEGRO_BITMAP *Five;
+extern ALLEGRO_BITMAP *Six;
+extern ALLEGRO_BITMAP *Seven;
+extern ALLEGRO_BITMAP *Eight;
+extern ALLEGRO_BITMAP *Nine;
+extern ALLEGRO_BITMAP *Ball;
+extern ALLEGRO_BITMAP *BallEmpty;
+
+
 
 extern int yourHealth;
 extern char Allegro[50]; // Declaration of the global variable
