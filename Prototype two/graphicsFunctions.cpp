@@ -89,14 +89,29 @@ void NormalScreenDraws(int ScreenDrawSpecial) {
         case 6:
             al_draw_bitmap(Ball, 80, 565, 0);
         case 5:
+            if (ScreenDrawSpecial > 0 && cylinder[chamber-1] == 'B'){
+                al_draw_bitmap(Ball, 80, 565, 0);
+            }
             al_draw_bitmap(Ball, 60, 565, 0);
         case 4:
+            if (ScreenDrawSpecial > 0 && cylinder[chamber-1] == 'B'){
+                al_draw_bitmap(Ball, 60, 565, 0);
+            }
             al_draw_bitmap(Ball, 40, 565, 0);
         case 3:
+            if (ScreenDrawSpecial > 0 && cylinder[chamber-1] == 'B'){
+                al_draw_bitmap(Ball, 40, 565, 0);
+            }
             al_draw_bitmap(Ball, 20, 565, 0);
         case 2:
+            if (ScreenDrawSpecial > 0 && cylinder[chamber-1] == 'B'){
+                al_draw_bitmap(Ball, 20, 565, 0);
+            }
             al_draw_bitmap(Ball, 0, 565, 0);
         case 1:
+            if (ScreenDrawSpecial > 0 && cylinder[chamber-1] == 'B'){
+                al_draw_bitmap(Ball, 0, 565, 0);
+            }
             al_draw_bitmap(Ball, -20, 565, 0);
         default:
             break;
@@ -159,23 +174,18 @@ int Button(char cylinder[], int &chamber) {
     if (ButtonEvent.mouse.x >= 0 && ButtonEvent.mouse.y >= 600 && ButtonEvent.mouse.x <= 200 && ButtonEvent.mouse.y <= 800 && state.buttons & 1) {
         response = 'o';
         strcpy(Allegro, "Shoot Yourself");
-
-        //printf("\n%s", Allegro);
     }
     if (ButtonEvent.mouse.x >= 200 && ButtonEvent.mouse.y >= 600 && ButtonEvent.mouse.x <= 400 && ButtonEvent.mouse.y <= 800 && state.buttons & 1) {
         response = 'o';
         strcpy(Allegro, "Shoot the Opponent");
-        //printf("\n%s", Allegro);
     }
     if (ButtonEvent.mouse.x >= 400 && ButtonEvent.mouse.y >= 600 && ButtonEvent.mouse.x <= 600 && ButtonEvent.mouse.y <= 800 && state.buttons & 1) {
         response = 'o';
         strcpy(Allegro, "Go To Shop");
-        //printf("\n%s", Allegro);
     }
     if (ButtonEvent.mouse.x >= 600 && ButtonEvent.mouse.y >= 600 && ButtonEvent.mouse.x <= 800 && ButtonEvent.mouse.y <= 800 && state.buttons & 1) {
         response = 'o';
         strcpy(Allegro, "Open Inventory");
-        //printf("\n%s", Allegro);
     }
     return 0;
 }

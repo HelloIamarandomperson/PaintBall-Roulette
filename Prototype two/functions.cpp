@@ -36,9 +36,7 @@ void checkMag(int &slots) {
 
 char PlayerChoice() {
     //PlayerChoice is a scanf function that lowers all responses to their lower form for convenience.
-    //printf("\n%s", Allegro);
     strcpy(Allegro, "Player Is Choosing");
-    //scanf("%c", &response);
     al_wait_for_event(event_queue, &ButtonEvent);
     Button(cylinder, chamber);
     if (strcmp(Allegro, "Shoot the Opponent") == 0){
@@ -63,7 +61,6 @@ void LoadRandomBullets(int &bullets, int &slots, int &reload) {
     //randomizes bullet count.
     memset(cylinder, '\0', slots);
     //Sets cylinder to only NULLs. This clears the bullets in the last chamber
-    printf("\nThe gun is being loaded");
     for (int i = 0; i < bullets; i++) {
         //randomizes the Mag.
         reload = rand() % slots;
@@ -103,6 +100,7 @@ bool OpponentDummyTurn(bool &nextTurnIsPlayer, int &OpponentHealth, int &yourHea
         strcpy(Allegro, "Dummy Fires");
         if (cylinder[chamber] == 'B') {
             //If chamber contains bullet.
+            bullets--;
             yourHealth--;
         }
     }
@@ -111,7 +109,7 @@ bool OpponentDummyTurn(bool &nextTurnIsPlayer, int &OpponentHealth, int &yourHea
     return false;
 }
 
-bool checkIfGameCont(int & OpponentHealth, int & yourHealth) {
+bool checkIfGameCont(int &OpponentHealth, int &yourHealth) {
     //checks if both are alive, else returns false.
     if (yourHealth <= 0) {
         return false;
@@ -129,10 +127,10 @@ void PlayerShootsOpponent(bool &nextTurnIsPlayer, int &chamber, int &OpponentHea
 
     if (cylinder[chamber] == 'B') {
         //If chamber contains bullet opponent loses health.
+        bullets--;
         OpponentHealth--;
     }
     chamber++;
-    printf("\n next chamber is %i", chamber);
     strcpy(Allegro, "Player Fires");
 }
 
@@ -143,6 +141,7 @@ void PlayerShootsThemselves(bool &nextTurnIsPlayer, int &chamber, int &yourHealt
         //Makes it so the next turn is still the player
         if (cylinder[chamber] == 'B') {
             //if chamber contains bullet.
+            bullets--;
             yourHealth--;
             //lowers health by one
             PlayerInventory.Money += 15;
@@ -171,13 +170,11 @@ void PlayerGoesShop(inventory PlayerInventory){
 }
 
 bool Playerturn(int &yourHealth, int &OpponentHealth, int &chamber, bool &nextTurnIsPlayer, inventory &PlayerInventory) {
-    if (Allegro[0] == '\0'){
-        printf("\nYou have %i health.", yourHealth);
-        printf("\nYour opponent has %i health.", OpponentHealth);
-        printf("\nYou have %i coins and %i DoubleBullets", PlayerInventory.Money, PlayerInventory.DoubleBullet);
-    } else if (strcmp(Allegro, "Shop Screen") == 0){
+    if (!Allegro[0] == '\0'){
+        if (strcmp(Allegro, "Shop Screen") == 0){
         PlayerGoesShop(PlayerInventory);
         return false;
+        }
     }
     char PlayersChoice = PlayerChoice();
     //Self explanatory.
