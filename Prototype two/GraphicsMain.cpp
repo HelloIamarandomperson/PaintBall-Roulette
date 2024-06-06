@@ -26,6 +26,7 @@ extern ALLEGRO_BITMAP *HealthBar2;
 extern ALLEGRO_BITMAP *HealthBar3;
 extern ALLEGRO_BITMAP *HealthBar4;
 extern ALLEGRO_BITMAP *HealthBar5;
+extern ALLEGRO_BITMAP *Zero;
 extern ALLEGRO_BITMAP *One;
 extern ALLEGRO_BITMAP *Two;
 extern ALLEGRO_BITMAP *Three;
@@ -89,19 +90,33 @@ int AllegroMain() {
     BlankBulletCounter = al_load_bitmap("ImageFile\\Bulletcount.png");
     InventoryButton = al_load_bitmap("ImageFile\\InventoryButton.png");
     ShopButton = al_load_bitmap("ImageFile\\ShopButton.png");
-
     HealthBar1 = al_load_bitmap("ImageFile\\FullHealthBar.png");
     HealthBar2 = al_load_bitmap("ImageFile\\HealthBarWithOneDamagePoint.png");
     HealthBar3 = al_load_bitmap("ImageFile\\HealthBarHalfWayFull.png");
     HealthBar4 = al_load_bitmap("ImageFile\\HealthBarOneHealthLeft.png");
     HealthBar5 = al_load_bitmap("ImageFile\\HealthBarEmpty.png");
+    Zero = al_load_bitmap("ImageFile\\0.png");
+    One = al_load_bitmap("ImageFile\\1.png");
+    Two = al_load_bitmap("ImageFile\\2.png");
+    Three = al_load_bitmap("ImageFile\\3.png");
+    Four = al_load_bitmap("ImageFile\\4.png");
+    Five = al_load_bitmap("ImageFile\\5.png");
+    Six = al_load_bitmap("ImageFile\\6.png");
+    Seven = al_load_bitmap("ImageFile\\7.png");
+    Eight = al_load_bitmap("ImageFile\\8.png");
+    Nine = al_load_bitmap("ImageFile\\9.png");
+    Ball = al_load_bitmap("ImageFile\\ball.png");
+    BallEmpty = al_load_bitmap("ImageFile\\ballempty.png");
+
+
 
     //check if images are missing
     if (!Table  || !Dummy || !Player || !Dummyfires || !Dummyflash || !Playerflash
         || !Playerfires || !Buttons || !PlayerSelf1 || !PlayerSelf2 || !PlayerSelf3
         || !Shop || !IndividualBulletForCounter || !FullBulletCounter || !BlankBulletCounter
         || !InventoryButton || ! ShopButton || !HealthBar1 || !HealthBar2 || !HealthBar3
-        || !HealthBar4 || !HealthBar5) {
+        || !HealthBar4 || !HealthBar5 || !Zero || !One || !Two || !Three || !Four
+        || !Five || !Six || ! Seven || ! Eight || !Nine || ! Ball || ! BallEmpty) {
         al_show_native_message_box(display, "Error", "Error", "Failed to load image!",
                                     nullptr, ALLEGRO_MESSAGEBOX_ERROR);
         al_destroy_display(display);

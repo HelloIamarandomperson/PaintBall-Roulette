@@ -26,6 +26,7 @@ extern ALLEGRO_BITMAP *HealthBar2;
 extern ALLEGRO_BITMAP *HealthBar3;
 extern ALLEGRO_BITMAP *HealthBar4;
 extern ALLEGRO_BITMAP *HealthBar5;
+extern ALLEGRO_BITMAP *Zero;
 extern ALLEGRO_BITMAP *One;
 extern ALLEGRO_BITMAP *Two;
 extern ALLEGRO_BITMAP *Three;

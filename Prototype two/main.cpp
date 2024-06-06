@@ -44,6 +44,7 @@ ALLEGRO_BITMAP *HealthBar2 = nullptr;
 ALLEGRO_BITMAP *HealthBar3 = nullptr;
 ALLEGRO_BITMAP *HealthBar4 = nullptr;
 ALLEGRO_BITMAP *HealthBar5 = nullptr;
+ALLEGRO_BITMAP *Zero = nullptr;
 ALLEGRO_BITMAP *One = nullptr;
 ALLEGRO_BITMAP *Two = nullptr;
 ALLEGRO_BITMAP *Three = nullptr;
