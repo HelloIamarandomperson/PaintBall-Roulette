@@ -54,7 +54,7 @@ extern int OpX;
 extern int OpY;
 extern int currentOp;
 extern int slots;
-
+extern int bullets;
 ALLEGRO_MOUSE_STATE state;
 
 void SwitchOp(){
@@ -78,7 +78,29 @@ void NormalScreenDraws(int ScreenDrawSpecial) {
     al_draw_bitmap(ShopButton, 450, 690, 0);
     al_draw_bitmap(BlankBulletCounter, 0, 630, 0);
 
+    al_draw_bitmap(BallEmpty, -20, 565, 0);
+    al_draw_bitmap(BallEmpty, 0, 565, 0);
+    al_draw_bitmap(BallEmpty, 20, 565, 0);
+    al_draw_bitmap(BallEmpty, 40, 565, 0);
+    al_draw_bitmap(BallEmpty, 60, 565, 0);
+    al_draw_bitmap(BallEmpty, 80, 565, 0);
     // Draw bullets in the counter based on the number of available slots using switch case
+    switch (bullets) {
+        case 6:
+            al_draw_bitmap(Ball, 80, 565, 0);
+        case 5:
+            al_draw_bitmap(Ball, 60, 565, 0);
+        case 4:
+            al_draw_bitmap(Ball, 40, 565, 0);
+        case 3:
+            al_draw_bitmap(Ball, 20, 565, 0);
+        case 2:
+            al_draw_bitmap(Ball, 0, 565, 0);
+        case 1:
+            al_draw_bitmap(Ball, -20, 565, 0);
+        default:
+            break;
+    }
     switch (chamber) {
         case 0:
             al_draw_bitmap(IndividualBulletForCounter, -33, 585, 0);
@@ -111,7 +133,6 @@ void NormalScreenDraws(int ScreenDrawSpecial) {
             }else{
                 al_draw_bitmap(HealthBar3, 450, 600, 0);
             }
-
             break;
         case 2:
             if (ScreenDrawSpecial > 0 && cylinder[chamber-1] == 'B'){
@@ -126,7 +147,6 @@ void NormalScreenDraws(int ScreenDrawSpecial) {
             }else{
                 al_draw_bitmap(HealthBar5, 450, 600, 0);
             }
-
             break;
     }
 }

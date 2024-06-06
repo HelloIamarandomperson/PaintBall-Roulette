@@ -19,6 +19,7 @@ extern ALLEGRO_EVENT_QUEUE *event_queue;
 extern ALLEGRO_EVENT eventOrder;
 extern ALLEGRO_EVENT ButtonEvent;
 extern int slots;
+extern int bullets;
 
 void checkMag(int &slots) {
     //This is a dev function to check the Mag inside
@@ -76,13 +77,12 @@ void LoadRandomBullets(int &bullets, int &slots, int &reload) {
     chamber = 0;
 }
 
-void LoadInventoryBullet(int &bullets, int &slots, int &reload) {
+void LoadInventoryBullet(int &reload) {
     //Load Random Bullets is designed to load the bullets randomly
     bullets = rand() % (slots);
     //randomizes bullet count.
     memset(cylinder, '\0', slots);
     //Sets cylinder to only NULLs. This clears the bullets in the last chamber
-    printf("\nThe gun is being loaded");
     for (int i = 0; i < bullets; i++) {
         //randomizes the Mag.
         reload = rand() % slots;
@@ -96,7 +96,7 @@ void LoadInventoryBullet(int &bullets, int &slots, int &reload) {
     chamber = 0;
 }
 
-bool OpponentDummyTurn(bool &nextTurnIsPlayer, int &OpponentHealth, int &slots, int &yourHealth, int &bullets, int &reload) {
+bool OpponentDummyTurn(bool &nextTurnIsPlayer, int &OpponentHealth, int &yourHealth, int &reload) {
     int whoTheyShootin = 1; //rand() % (2); //1 is player, 2 is opponent
     if (whoTheyShootin == 1) {
         nextTurnIsPlayer = true;
@@ -114,10 +114,8 @@ bool OpponentDummyTurn(bool &nextTurnIsPlayer, int &OpponentHealth, int &slots, 
 bool checkIfGameCont(int & OpponentHealth, int & yourHealth) {
     //checks if both are alive, else returns false.
     if (yourHealth <= 0) {
-        printf("You are dead. Shouldn't have shot yourself probably. L+ratio+skill-issue");
         return false;
     } else if (OpponentHealth <= 0) {
-        printf("\nYou killed the poor innocent other person. Hooray for you.");
         return false;
     }
     return true;

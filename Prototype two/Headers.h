@@ -23,7 +23,7 @@ const int SCREEN_H = 800 ;       // screen height
 void checkMag(int &slots);
 char PlayerChoice();
 void LoadRandomBullets(int &bullets, int &slots, int &reload);
-bool OpponentDummyTurn(bool &nextTurnIsPlayer, int &OpponentHealth, int &slots, int &yourHealth, int &bullets, int &reload);
+bool OpponentDummyTurn(bool &nextTurnIsPlayer, int &OpponentHealth, int &yourHealth, int &reload);
 bool checkIfGameCont(int & OpponentHealth, int & yourHealth);
 void PlayerShootsOpponent(bool &nextTurnIsPlayer, int &chamber, int &OpponentHealth);
 void PlayerShootsThemselves(bool &nextTurnIsPlayer, int &chamber, int &yourHealth, inventory PlayerInventory);

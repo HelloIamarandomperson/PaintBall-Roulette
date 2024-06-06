@@ -97,7 +97,7 @@ int main() {
                 // Player's turn logic
             }
         } else {
-            if (!OpponentDummyTurn(nextTurnIsPlayer, OpponentHealth, slots, yourHealth, bullets, reload)) {
+            if (!OpponentDummyTurn(nextTurnIsPlayer, OpponentHealth, yourHealth, reload)) {
                 nextTurnIsPlayer = true;
             }
         }
