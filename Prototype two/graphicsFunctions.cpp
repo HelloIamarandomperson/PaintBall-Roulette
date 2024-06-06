@@ -42,7 +42,7 @@ extern ALLEGRO_BITMAP *OpHeart;
 
 
 extern int yourHealth;
-extern char Allegro[50]; // Declaration of the global variable
+extern char EventHandler[50]; // Declaration of the global variable
 extern bool RunEvent;
 extern int OpponentHealth;
 extern bool nextTurnIsPlayer; //who's turn it is next (0 is the player, 1 is next person, etc...)
@@ -204,25 +204,25 @@ int Button(char cylinder[], int &chamber) {
     al_get_mouse_state(&state);
     if (ButtonEvent.mouse.x >= 0 && ButtonEvent.mouse.y >= 600 && ButtonEvent.mouse.x <= 200 && ButtonEvent.mouse.y <= 800 && state.buttons & 1) {
         response = 'o';
-        strcpy(Allegro, "Shoot Yourself");
+        strcpy(EventHandler, "Shoot Yourself");
     }
     if (ButtonEvent.mouse.x >= 200 && ButtonEvent.mouse.y >= 600 && ButtonEvent.mouse.x <= 400 && ButtonEvent.mouse.y <= 800 && state.buttons & 1) {
         response = 'o';
-        strcpy(Allegro, "Shoot the Opponent");
+        strcpy(EventHandler, "Shoot the Opponent");
     }
     if (ButtonEvent.mouse.x >= 400 && ButtonEvent.mouse.y >= 600 && ButtonEvent.mouse.x <= 600 && ButtonEvent.mouse.y <= 800 && state.buttons & 1) {
         response = 'o';
-        strcpy(Allegro, "Go To Shop");
+        strcpy(EventHandler, "Go To Shop");
     }
     if (ButtonEvent.mouse.x >= 600 && ButtonEvent.mouse.y >= 600 && ButtonEvent.mouse.x <= 800 && ButtonEvent.mouse.y <= 800 && state.buttons & 1) {
         response = 'o';
-        strcpy(Allegro, "Open Inventory");
+        strcpy(EventHandler, "Open Inventory");
     }
     return 0;
 }
 
 void PlayerShootsPlayer(){
-    memset(Allegro, '\0', sizeof(Allegro));
+    memset(EventHandler, '\0', sizeof(EventHandler));
     al_clear_to_color(al_map_rgb(0, 0, 0));
     NormalScreenDraws(2);
     al_draw_bitmap(Playerfires, 0, 0, 0);
@@ -251,7 +251,7 @@ void ShopScreen(){
 }
 
 void DummyShootsPlayer(ALLEGRO_BITMAP *Table, ALLEGRO_BITMAP *Dummyfires, ALLEGRO_BITMAP *Player, ALLEGRO_BITMAP *Dummyflash){
-    memset(Allegro, '\0', sizeof(Allegro));
+    memset(EventHandler, '\0', sizeof(EventHandler));
     al_clear_to_color(al_map_rgb(0, 0, 0));
     NormalScreenDraws(1);
     al_draw_bitmap(Dummyfires, OpX, OpY, 0);
@@ -296,8 +296,8 @@ void PlayerShootsDummy(ALLEGRO_BITMAP *Table, ALLEGRO_BITMAP *Dummy, ALLEGRO_BIT
 }
 
 bool frameOfGame(){
-    if (Allegro[0] != '\0'){
-            if (strcmp(Allegro, "Player Is Choosing") == 0){
+    if (EventHandler[0] != '\0'){
+            if (strcmp(EventHandler, "Player Is Choosing") == 0){
                 al_clear_to_color(al_map_rgb(0, 0, 0));
                 NormalScreenDraws(0);
                 al_draw_bitmap(Player, 0, 0, 0);
@@ -305,29 +305,29 @@ bool frameOfGame(){
                 return true;
 
             }
-            else if (strcmp(Allegro, "Player Fires") == 0){
+            else if (strcmp(EventHandler, "Player Fires") == 0){
 
-                memset(Allegro, '\0', sizeof(Allegro));
+                memset(EventHandler, '\0', sizeof(EventHandler));
                 PlayerShootsDummy(Table, Dummy, Player, Playerfires, Playerflash);
                 return true;
-            } else if (strcmp(Allegro, "Shoot Yourself") == 0){
+            } else if (strcmp(EventHandler, "Shoot Yourself") == 0){
 
-                memset(Allegro, '\0', sizeof(Allegro));
+                memset(EventHandler, '\0', sizeof(EventHandler));
                 PlayerShootsPlayer();
                 return true;
             }
-            else if (strcmp(Allegro, "Dummy Fires") == 0){
-                memset(Allegro, '\0', sizeof(Allegro));
+            else if (strcmp(EventHandler, "Dummy Fires") == 0){
+                memset(EventHandler, '\0', sizeof(EventHandler));
                 DummyShootsPlayer(Table, Dummyfires, Player, Dummyflash);
                 return true;
             }
-            else if (strcmp(Allegro, "Game Ends") == 0){
+            else if (strcmp(EventHandler, "Game Ends") == 0){
                 RunEvent = false;
                 al_destroy_bitmap(Table);
                 al_destroy_display(display);
                 return true;
             }
-            else if (strcmp(Allegro, "Shop Screen") == 0){
+            else if (strcmp(EventHandler, "Shop Screen") == 0){
                 ShopScreen();
                 return true;
             }

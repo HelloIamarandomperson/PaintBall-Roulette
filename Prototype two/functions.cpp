@@ -1,7 +1,7 @@
 #include "Headers.h"
 //Including header.h
 
-extern char Allegro[50];
+extern char EventHandler[50];
 extern char response;
 extern int chamber;
 extern char cylinder[6];
@@ -35,18 +35,18 @@ void checkMag(int &slots) {
 }
 
 char PlayerChoice() {
-    //PlayerChoice is a scanf function that lowers all responses to their lower form for convenience.
-    strcpy(Allegro, "Player Is Choosing");
+    //PlayerChoice is a function that tells the worl
+    strcpy(EventHandler, "Player Is Choosing");
     al_wait_for_event(event_queue, &ButtonEvent);
     Button(cylinder, chamber);
-    if (strcmp(Allegro, "Shoot the Opponent") == 0){
-        memset(Allegro, '\0', sizeof(Allegro));
+    if (strcmp(EventHandler, "Shoot the Opponent") == 0){
+        memset(EventHandler, '\0', sizeof(EventHandler));
         response = 'o';
-    } else if (strcmp(Allegro, "Shoot Yourself") == 0){
-        memset(Allegro, '\0', sizeof(Allegro));
+    } else if (strcmp(EventHandler, "Shoot Yourself") == 0){
+        memset(EventHandler, '\0', sizeof(EventHandler));
         response = 's';
-    } else if (strcmp(Allegro, "Go To Shop") == 0){
-        memset(Allegro, '\0', sizeof(Allegro));
+    } else if (strcmp(EventHandler, "Go To Shop") == 0){
+        memset(EventHandler, '\0', sizeof(EventHandler));
         response = 'p';
     }
     else{
@@ -97,7 +97,7 @@ bool OpponentDummyTurn(bool &nextTurnIsPlayer, int &OpponentHealth, int &yourHea
     int whoTheyShootin = 1; //rand() % (2); //1 is player, 2 is opponent
     if (whoTheyShootin == 1) {
         nextTurnIsPlayer = true;
-        strcpy(Allegro, "Dummy Fires");
+        strcpy(EventHandler, "Dummy Fires");
         if (cylinder[chamber] == 'B') {
             //If chamber contains bullet.
             bullets--;
@@ -131,11 +131,11 @@ void PlayerShootsOpponent(bool &nextTurnIsPlayer, int &chamber, int &OpponentHea
         OpponentHealth--;
     }
     chamber++;
-    strcpy(Allegro, "Player Fires");
+    strcpy(EventHandler, "Player Fires");
 }
 
 void PlayerShootsThemselves(bool &nextTurnIsPlayer, int &chamber, int &yourHealth, inventory PlayerInventory){
-    strcpy(Allegro, "Shoot Yourself");
+    strcpy(EventHandler, "Shoot Yourself");
         //if player choose to shoot themselves
         nextTurnIsPlayer = true;
         //Makes it so the next turn is still the player
@@ -166,12 +166,12 @@ void PlayerGoesShop(inventory PlayerInventory){
         } else {
 
         }
-    strcpy(Allegro, "Shop Screen");
+    strcpy(EventHandler, "Shop Screen");
 }
 
 bool Playerturn(int &yourHealth, int &OpponentHealth, int &chamber, bool &nextTurnIsPlayer, inventory &PlayerInventory) {
-    if (!Allegro[0] == '\0'){
-        if (strcmp(Allegro, "Shop Screen") == 0){
+    if (!EventHandler[0] == '\0'){
+        if (strcmp(EventHandler, "Shop Screen") == 0){
         PlayerGoesShop(PlayerInventory);
         return false;
         }
