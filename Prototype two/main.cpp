@@ -56,6 +56,11 @@ ALLEGRO_BITMAP *Eight = nullptr;
 ALLEGRO_BITMAP *Nine = nullptr;
 ALLEGRO_BITMAP *Ball = nullptr;
 ALLEGRO_BITMAP *BallEmpty = nullptr;
+ALLEGRO_BITMAP *OpHeart = nullptr;
+
+
+
+
 
 ALLEGRO_EVENT_QUEUE *event_queue = nullptr;
 ALLEGRO_EVENT eventOrder;

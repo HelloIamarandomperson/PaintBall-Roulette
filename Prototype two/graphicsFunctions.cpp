@@ -38,7 +38,7 @@ extern ALLEGRO_BITMAP *Eight;
 extern ALLEGRO_BITMAP *Nine;
 extern ALLEGRO_BITMAP *Ball;
 extern ALLEGRO_BITMAP *BallEmpty;
-
+extern ALLEGRO_BITMAP *OpHeart;
 
 
 extern int yourHealth;
@@ -85,6 +85,37 @@ void NormalScreenDraws(int ScreenDrawSpecial) {
     al_draw_bitmap(BallEmpty, 60, 565, 0);
     al_draw_bitmap(BallEmpty, 80, 565, 0);
     // Draw bullets in the counter based on the number of available slots using switch case
+    switch (OpponentHealth) {
+        case 6:
+            al_draw_bitmap(OpHeart, 160, 0, 0);
+        case 5:
+            if (ScreenDrawSpecial == 3 && cylinder[chamber-1] == 'B'){
+                al_draw_bitmap(OpHeart, 160, 0, 0);
+            }
+            al_draw_bitmap(OpHeart, 120, 0, 0);
+        case 4:
+            if (ScreenDrawSpecial == 3 && cylinder[chamber-1] == 'B'){
+                al_draw_bitmap(OpHeart, 120, 0, 0);
+            }
+            al_draw_bitmap(OpHeart, 80, 0, 0);
+        case 3:
+            if (ScreenDrawSpecial == 3 && cylinder[chamber-1] == 'B'){
+                al_draw_bitmap(OpHeart, 80, 0, 0);
+            }
+            al_draw_bitmap(OpHeart, 40, 0, 0);
+        case 2:
+            if (ScreenDrawSpecial == 3 && cylinder[chamber-1] == 'B'){
+                al_draw_bitmap(OpHeart, 40, 0, 0);
+            }
+            al_draw_bitmap(OpHeart, 0, 0, 0);
+        case 1:
+            if (ScreenDrawSpecial == 3 && cylinder[chamber-1] == 'B'){
+                al_draw_bitmap(OpHeart, 0, 0, 0);
+            }
+            al_draw_bitmap(OpHeart, -40, 0, 0);
+        default:
+            break;
+    }
     switch (bullets) {
         case 6:
             al_draw_bitmap(Ball, 80, 565, 0);
@@ -245,12 +276,12 @@ void DummyShootsPlayer(ALLEGRO_BITMAP *Table, ALLEGRO_BITMAP *Dummyfires, ALLEGR
 }
 void PlayerShootsDummy(ALLEGRO_BITMAP *Table, ALLEGRO_BITMAP *Dummy, ALLEGRO_BITMAP *Player, ALLEGRO_BITMAP *Playerfires, ALLEGRO_BITMAP *Playerflash){
     al_clear_to_color(al_map_rgb(0, 0, 0));
-    NormalScreenDraws(0);
+    NormalScreenDraws(3);
     al_draw_bitmap(Playerfires, 0, 0, 0);
     al_flip_display();
     al_rest(.9);
     al_clear_to_color(al_map_rgb(0, 0, 0));
-    NormalScreenDraws(0);
+    NormalScreenDraws(3);
     al_draw_bitmap(Playerfires, 0, 0, 0);
     if (cylinder[chamber-1] == 'B') {
         al_draw_bitmap(Playerflash, 0, 0, 0);
@@ -258,7 +289,7 @@ void PlayerShootsDummy(ALLEGRO_BITMAP *Table, ALLEGRO_BITMAP *Dummy, ALLEGRO_BIT
     al_flip_display();
     al_rest(.3);
     al_clear_to_color(al_map_rgb(0, 0, 0));
-    NormalScreenDraws(0);
+    NormalScreenDraws(3);
     al_draw_bitmap(Playerfires, 0, 0, 0);
     al_flip_display();
     al_rest(.4);
