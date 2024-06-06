@@ -109,7 +109,6 @@ int AllegroMain() {
     BallEmpty = al_load_bitmap("ImageFile\\ballempty.png");
     OpHeart = al_load_bitmap("ImageFile\\heart.png");
 
-
     //check if images are missing
     if (!Table  || !Dummy || !Player || !Dummyfires || !Dummyflash || !Playerflash
         || !Playerfires || !Buttons || !PlayerSelf1 || !PlayerSelf2 || !PlayerSelf3
