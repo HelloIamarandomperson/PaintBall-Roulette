@@ -70,7 +70,6 @@ void LoadRandomBullets(int &bullets, int &slots, int &reload) {
             i--;
         }
     }
-    int blanks = slots - bullets;
     chamber = 0;
 }
 
@@ -89,7 +88,6 @@ void LoadInventoryBullet(int &reload) {
             i--;
         }
     }
-    int blanks = slots - bullets;
     chamber = 0;
 }
 
