@@ -35,7 +35,7 @@ void checkMag(int &slots) {
 }
 
 char PlayerChoice() {
-    //PlayerChoice is a function that tells the worl
+    //PlayerChoice is a function that checks if player has asked to do something tells the game the proper response
     strcpy(EventHandler, "Player Is Choosing");
     al_wait_for_event(event_queue, &ButtonEvent);
     Button(cylinder, chamber);
