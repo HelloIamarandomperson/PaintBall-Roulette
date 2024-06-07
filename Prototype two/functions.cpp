@@ -47,7 +47,9 @@ char PlayerChoice() {
         response = 's';
     } else if (strcmp(EventHandler, "Go To Shop") == 0){
         memset(EventHandler, '\0', sizeof(EventHandler));
-        response = 'p';
+        //Since shop doesn't have items due to lack of assets, it is useless and so for now dosn't do anything.
+        //response = 'p';
+        response = '\0';
     }
     else{
         response = '\0';
