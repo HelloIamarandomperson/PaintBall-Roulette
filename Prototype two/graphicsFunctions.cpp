@@ -42,7 +42,7 @@ extern ALLEGRO_BITMAP *Nine;
 extern ALLEGRO_BITMAP *Ball;
 extern ALLEGRO_BITMAP *BallEmpty;
 extern ALLEGRO_BITMAP *OpHeart;
-
+extern ALLEGRO_BITMAP *ShootSelfButton;
 
 extern int yourHealth; // Declaration of the global variable
 extern char EventHandler[50];
@@ -82,6 +82,7 @@ void NormalScreenDraws(int ScreenDrawSpecial) {
 
     al_draw_bitmap(Table, 0, 0, 0);
     al_draw_bitmap(Buttons, 0, 600, 0);
+    al_draw_bitmap(ShootSelfButton, 50, 700, 0);
     al_draw_bitmap(InventoryButton, 600, 690, 0);
     al_draw_bitmap(ShopButton, 450, 690, 0);
     al_draw_bitmap(BlankBulletCounter, 0, 630, 0);

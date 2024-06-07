@@ -39,6 +39,7 @@ extern ALLEGRO_BITMAP *Nine;
 extern ALLEGRO_BITMAP *Ball;
 extern ALLEGRO_BITMAP *BallEmpty;
 extern ALLEGRO_BITMAP *OpHeart;
+extern ALLEGRO_BITMAP *ShootSelfButton;
 
 
 ALLEGRO_EVENT ButtonEvent;
@@ -108,14 +109,15 @@ int AllegroMain() {
     Ball = al_load_bitmap("ImageFile\\ball.png");
     BallEmpty = al_load_bitmap("ImageFile\\ballempty.png");
     OpHeart = al_load_bitmap("ImageFile\\heart.png");
-
+    ShootSelfButton = al_load_bitmap("ImageFile\\ShootSelfButton.png");
     //check if images are missing
     if (!Table  || !Dummy || !Player || !Dummyfires || !Dummyflash || !Playerflash
         || !Playerfires || !Buttons || !PlayerSelf1 || !PlayerSelf2 || !PlayerSelf3
         || !Shop || !IndividualBulletForCounter || !FullBulletCounter || !BlankBulletCounter
         || !InventoryButton || ! ShopButton || !HealthBar1 || !HealthBar2 || !HealthBar3
         || !HealthBar4 || !HealthBar5 || !Zero || !One || !Two || !Three || !Four
-        || !Five || !Six || !Seven || !Eight || !Nine || !Ball || !BallEmpty || !OpHeart) {
+        || !Five || !Six || !Seven || !Eight || !Nine || !Ball || !BallEmpty || !OpHeart
+        || !ShootSelfButton) {
         al_show_native_message_box(display, "Error", "Error", "Failed to load image!",
                                     nullptr, ALLEGRO_MESSAGEBOX_ERROR);
         al_destroy_display(display);
