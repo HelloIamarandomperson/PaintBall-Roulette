@@ -1,5 +1,8 @@
 //Including the other file
 #include "Headers.h"
+
+
+//the externs
 extern ALLEGRO_TIMER *timer;
 extern ALLEGRO_DISPLAY *display;
 extern ALLEGRO_BITMAP *Table;
@@ -41,8 +44,8 @@ extern ALLEGRO_BITMAP *BallEmpty;
 extern ALLEGRO_BITMAP *OpHeart;
 
 
-extern int yourHealth;
-extern char EventHandler[50]; // Declaration of the global variable
+extern int yourHealth; // Declaration of the global variable
+extern char EventHandler[50];
 extern bool RunEvent;
 extern int OpponentHealth;
 extern bool nextTurnIsPlayer; //who's turn it is next (0 is the player, 1 is next person, etc...)
@@ -58,6 +61,8 @@ extern int bullets;
 ALLEGRO_MOUSE_STATE state;
 
 void SwitchOp(){
+    //Variable that would be for switching opponnents, the asset I have is half cut off and only one out of many that was needed,
+    //since the assets never showed up it was not possible to implement, but would only need to add 5 to opponent health and run the while loop again so wouldn't take much effort.
     currentOp++;
     if (currentOp == 1){
         Dummy = al_load_bitmap("ImageFile\\GhostlyCharacter.png");
@@ -67,8 +72,11 @@ void SwitchOp(){
 }
 
 void NormalScreenDraws(int ScreenDrawSpecial) {
-    // Draw background elements InventoryButton ShopButton
+    // Draws background elements so It can be done with one function instead of repeated a bunch of times.
     if (ScreenDrawSpecial != 1){
+        //screen draw special is here to make very small changes to normal screen draws that most of the time don't need to happen.
+
+        //In this case screenDrawSpecial == 1 means don't draw dummy, which happens when the dummy is firing
         al_draw_bitmap(Dummy, OpX, OpY, 0);
     }
 
@@ -84,7 +92,7 @@ void NormalScreenDraws(int ScreenDrawSpecial) {
     al_draw_bitmap(BallEmpty, 40, 565, 0);
     al_draw_bitmap(BallEmpty, 60, 565, 0);
     al_draw_bitmap(BallEmpty, 80, 565, 0);
-    // Draw bullets in the counter based on the number of available slots using switch case
+    // Draw OpponentHealth in the counter
     switch (OpponentHealth) {
         case 6:
             al_draw_bitmap(OpHeart, 160, 0, 0);
