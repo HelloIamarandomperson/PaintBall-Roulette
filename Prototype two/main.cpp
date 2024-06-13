@@ -58,7 +58,7 @@ ALLEGRO_BITMAP *Ball = nullptr;
 ALLEGRO_BITMAP *BallEmpty = nullptr;
 ALLEGRO_BITMAP *OpHeart = nullptr;
 ALLEGRO_BITMAP *ShootSelfButton = nullptr;
-
+ALLEGRO_BITMAP *ShootOpButton = nullptr;
 
 
 //Allegro event related pointers
