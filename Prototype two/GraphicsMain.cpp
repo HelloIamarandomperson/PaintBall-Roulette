@@ -40,7 +40,7 @@ extern ALLEGRO_BITMAP *Ball;
 extern ALLEGRO_BITMAP *BallEmpty;
 extern ALLEGRO_BITMAP *OpHeart;
 extern ALLEGRO_BITMAP *ShootSelfButton;
-
+extern ALLEGRO_BITMAP *ShootOpButton;
 
 ALLEGRO_EVENT ButtonEvent;
 
@@ -110,6 +110,9 @@ int AllegroMain() {
     BallEmpty = al_load_bitmap("ImageFile\\ballempty.png");
     OpHeart = al_load_bitmap("ImageFile\\heart.png");
     ShootSelfButton = al_load_bitmap("ImageFile\\ShootSelfButton.png");
+    ShootOpButton = al_load_bitmap("ImageFile\\ShootOpButton.png");
+
+
     //check if images are missing
     if (!Table  || !Dummy || !Player || !Dummyfires || !Dummyflash || !Playerflash
         || !Playerfires || !Buttons || !PlayerSelf1 || !PlayerSelf2 || !PlayerSelf3
