@@ -21,19 +21,6 @@ extern ALLEGRO_EVENT ButtonEvent;
 extern int slots;
 extern int bullets;
 
-void checkMag(int &slots) {
-    //This is a dev function to check the Mag inside
-    printf("\n");
-    for (int i = 0; i < slots; i++) {
-        if (cylinder[i] == '\0') {
-            printf("0 ");
-        } else {
-            printf("%c ", cylinder[i]);
-        }
-    }
-    printf("\n");
-}
-
 char PlayerChoice() {
     //PlayerChoice is a function that checks if player has asked to do something tells the game the proper response
     strcpy(EventHandler, "Player Is Choosing");
